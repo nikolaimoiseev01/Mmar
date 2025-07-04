@@ -8,16 +8,30 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
-
+    darkMode: 'class', // 🔑 включаем классический режим 'class'
     theme: {
         extend: {
             fontFamily: {
                 sans: ['Lato', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                main_bg: '#ECEBF3',
+                bright: {
+                    200: '#ECEBF3',
+                    300: '#E5E5E5',
+                    400: '#D9D9D9'
+                },
                 maroon: {
                     500: '#ECEBF3'
+                },
+                red: {
+                    50: '#E5E2EA',
+                    100: '#C4BDC4',
+                    300: '#9C8E95',
+                    500: '#3C1F24',
+                    700: '#240309'
+                },
+                green: {
+                    300: '#E6EFE8'
                 }
             },
             screens: {

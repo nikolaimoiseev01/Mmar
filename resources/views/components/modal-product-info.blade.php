@@ -1,0 +1,75 @@
+@props([
+    'name',         // ID модалки
+    'tabs' => [],   // Список табов
+    'maxWidth' => '2xl',
+])
+
+@php
+    $maxWidthClass = [
+        'sm' => 'sm:max-w-sm',
+        'md' => 'sm:max-w-md',
+        'lg' => 'sm:max-w-lg',
+        'xl' => 'sm:max-w-xl',
+        '2xl' => 'sm:max-w-2xl',
+    ][$maxWidth];
+@endphp
+
+<div
+    x-data="{
+        show: false,
+        activeTab: '{{ $tabs[0] ?? 'default' }}',
+
+        open(tab) {
+            this.activeTab = tab;
+            this.show = true;
+            document.body.classList.add('overflow-y-hidden');
+        },
+
+        close() {
+            this.show = false;
+            document.body.classList.remove('overflow-y-hidden');
+        }
+    }"
+    x-on:open-modal.window="
+        if ($event.detail.name === '{{ $name }}') {
+            open($event.detail.tab);
+        }
+    "
+    x-show="show"
+    x-on:keydown.escape.window="close()"
+    style="display: none"
+    class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto"
+>
+    <!-- Overlay -->
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" @click="close()"></div>
+
+    <!-- Modal -->
+    <div
+        class="relative flex flex-col bg-bright-200 h-[80vh] rounded-lg shadow-xl transform transition-all sm:w-full max-w-2xl sm:mx-auto z-50 p-6">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-4">
+            <h1>Product Information</h1>
+            <button @click="close()">✕</button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex flex-wrap w-full mb-4">
+            @foreach ($tabs as $tab)
+                <button
+                    @click="activeTab = '{{ $tab }}'"
+                    :class="activeTab === '{{ $tab }}' ? 'bg-bright-200' : 'bg-red-100'"
+                    class="py-4 flex-1 border"
+                >
+                    {{ strtoupper($tab) }}
+                </button>
+            @endforeach
+        </div>
+
+        <!-- Tab slots -->
+        @foreach($contents as $key=>$content)
+            <div class="overflow-auto" x-show="activeTab === '{{$key}}'">
+                {{$content}}
+            </div>
+        @endforeach
+    </div>
+</div>

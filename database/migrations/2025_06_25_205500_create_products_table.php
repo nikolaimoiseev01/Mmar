@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->foreignId('brand_id')->nullable()->constrained();
+            $table->foreignId('category_id')->nullable()->constrained();
+            $table->json('designers')->nullable();
+            $table->string('gender')->nullable();
+            $table->text('details');
+            $table->text('materials');
+            $table->text('aftercare');
+            $table->text('manufacturing');
+            $table->float('price');
             $table->timestamps();
         });
     }

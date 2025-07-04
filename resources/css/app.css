@@ -7,10 +7,45 @@
     box-sizing: border-box;
 }
 
+html {
+    @apply text-[1vw] 2xl:text-[16px]
+}
 body {
-    @apply bg-main_bg;
+    @apply bg-bright-200 dark:bg-red-700 text-red-700 dark:text-bright-200;
+}
+
+a {
+    @apply cursor-pointer;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+h1 {
+    @apply font-[Forum] font-normal text-6xl;
 }
 
 h2 {
     @apply font-[Forum] font-normal text-5xl;
+}
+
+.content {
+    @apply w-full px-6;
+}
+
+.post-content {
+    @apply w-full max-w-6xl px-6;
+}
+
+
+
+input[type="checkbox"] {
+    @apply focus:outline-none focus:ring-0
+    bg-bright-200
+    hover:bg-blue-100
+    focus:bg-blue-100
+    checked:focus:bg-red-700
+    checked:hover:bg-red-700
+    checked:bg-red-700;
 }
