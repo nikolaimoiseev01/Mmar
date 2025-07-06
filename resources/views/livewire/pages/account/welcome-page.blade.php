@@ -1,4 +1,7 @@
 <main class="flex-1">
+    @section('title')
+        Account
+    @endsection
     <div class="content mt-10 flex flex-col gap-16">
         <div class="flex justify-between">
             <h1 class="text-5xl">Welcome back, {{Auth::user()->first_name}}!</h1>

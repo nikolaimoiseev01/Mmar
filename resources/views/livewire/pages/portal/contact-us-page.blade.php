@@ -1,4 +1,7 @@
 <main class="flex-1">
+    @section('title')
+        Contact Us
+    @endsection
     <div class="flex md:flex-col">
         <div class="flex flex-col gap-16 px-6 pt-6 w-1/2 md:w-full md:mb-16">
             <h1 class="text-5xl">Contact Us</h1>

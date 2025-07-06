@@ -1,5 +1,7 @@
 <main class="flex-1">
-
+    @section('title')
+        Main
+    @endsection
     <section class="w-full h-screen relative flex items-center justify-center mb-20">
         <img src="/fixed/welcome-bg.png" class="absolute w-full h-full object-cover" alt="">
         <div class="flex flex-col items-center relative gap-2">

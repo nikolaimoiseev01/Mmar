@@ -1,6 +1,6 @@
 <main class="flex-1 content flex flex-col gap-8 max-w-5xl">
     @section('title')
-        Suize Guide
+        Size Guide
     @endsection
     <h1 class="mt-12 text-start">How to Find the Right Fit</h1>
     <p>At MMAR, we understand the importance of finding the right fit. Each of our trusted brand partners offers their

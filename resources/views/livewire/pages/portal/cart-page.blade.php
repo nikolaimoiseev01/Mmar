@@ -1,5 +1,7 @@
 <main class="min-h-screen flex flex-col">
-
+    @section('title')
+        Cart
+    @endsection
     <!-- Двухколоночный блок -->
     <div class="flex flex-1 md:flex-col relative mb-20">
 
