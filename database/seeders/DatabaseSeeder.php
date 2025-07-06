@@ -2,13 +2,16 @@
 
 namespace Database\Seeders;
 
+use App\Helpers\Constant;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Subcategory;
 use App\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -49,15 +52,24 @@ class DatabaseSeeder extends Seeder
         ],
         [
             'name' => 'Shoes',
-            'img' => '/fixed/test/icon-cat-shoes.svg'
+            'img' => '/fixed/test/icon-cat-shoes.svg',
+            'subcategories' => [
+                'Boots', 'Casual&Flats', 'Heels', 'Sneakers'
+            ]
         ],
         [
             'name' => 'Bags',
-            'img' => '/fixed/test/icon-cat-bags.svg'
+            'img' => '/fixed/test/icon-cat-bags.svg',
+            'subcategories' => [
+                'Shoulder', 'Bags', 'Crossbody', 'Handbags', 'Luggage and Travel', 'Backpacks'
+            ]
         ],
         [
             'name' => 'Accessories',
-            'img' => '/fixed/test/icon-cat-accessories.svg'
+            'img' => '/fixed/test/icon-cat-accessories.svg',
+            'subcategories' => [
+                'Hats', 'Scarves', 'Belts', 'Gloves', 'Wallets', 'Sunglasses', 'Jewelry'
+            ]
         ]
     ];
 
@@ -123,23 +135,40 @@ class DatabaseSeeder extends Seeder
             \App\Models\Brand::create(['name' => $brand]);
         }
         foreach ($this->categories as $category) {
-            $cateogry = Category::create(['name' => $category['name']]);
-            $cateogry->addMediaFromUrl(ENV('APP_URL') . $category['img'])
+            $new_cateogry = Category::create(['name' => $category['name']]);
+            $new_cateogry->addMediaFromUrl(ENV('APP_URL') . $category['img'])
                 ->toMediaCollection('cover');
+            if ($category['subcategories'] ?? null) {
+                foreach ($category['subcategories'] as $subcategory) {
+                    Subcategory::create(['name' => $subcategory, 'category_id' => $new_cateogry['id']]);
+                }
+            }
         }
 
         for ($i = 0; $i < 30; $i++) {
 
             $brand = \App\Models\Brand::inRandomOrder()->first();
             $category = \App\Models\Category::inRandomOrder()->first();
+            $subcategories = $category->subcategories;
+            if ($subcategories->isNotEmpty()) {
+                $subcategory = $subcategories->random();
+                // Теперь $subcategory — случайная подкатегория
+            } else {
+                // Нет подкатегорий
+            }
 
             $product = Product::create([
                 'name' => 'Product ' . ($i + 1),
                 'slug' => Str::slug('Product ' . ($i + 1)),
                 'brand_id' => $brand['id'],
                 'category_id' => $category['id'],
+                'subcategory_id' => $subcategory['id'] ?? null,
                 'designers' => json_encode(['Alex', 'John', 'Emily']),
                 'gender' => 'male',
+                'exclusive' => Arr::random(Constant::EXCLUSIVE),
+                'customization_options' => Arr::random(Constant::CUSTOMMIZATION_OPTIONS),
+                'material_focus' => Arr::random(Constant::MATERIAL_FOCUS),
+                'availability' => Arr::random(Constant::AVAILABILITY),
                 'details' => 'Details for product ' . ($i + 1),
                 'materials' => 'Materials for product ' . ($i + 1),
                 'aftercare' => 'Aftercare instructions for product ' . ($i + 1),

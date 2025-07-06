@@ -7,7 +7,7 @@
      x-data="tocHandler">
 
     <!-- Main Article -->
-    <main class="w-2/3 space-y-12">
+    <main class="w-2/3 space-y-12 lg:w-full">
         <article class="space-y-12 pr-6">
             @foreach($post['content'] as $topic)
                 <div>
@@ -20,7 +20,7 @@
     </main>
 
     <!-- Table of Contents -->
-    <aside class="w-1/3">
+    <aside class="w-1/3 lg:hidden">
         <div class="sticky top-20 p-4 border-l border-gray-300">
             <h3 class="font-bold text-red-100 mb-4">Table of Contents</h3>
             <nav class="space-y-2 mb-10">

@@ -1,11 +1,19 @@
-<header class="w-full border-b border-red-100 bg-bright-200 dark:bg-red-700 flex flex-col relative z-50" x-data="{ cart: false }">
+<header
+    x-data="{ isHome: window.location.pathname === '/',  cart: false, mobileMenu: false  }"
+    :class="isHome ?
+        'absolute top-0 left-0'
+        :'relative'"
+    class="w-full border-b border-red-100 bg-bright-200 dark:bg-red-700 flex flex-col z-50">
 
     <livewire:components.cart/>
     <x-login-modal/>
 
+    <x-header.mobile-menu/>
+
     <!-- Верхняя полоса -->
-    <div class="content grid grid-cols-3 items-center py-4">
-        <div></div>
+    <div class="content grid grid-cols-3 items-center py-4 md:hidden">
+        <div>
+        </div>
         <div>
             <x-logo class="w-28 mx-auto"/>
         </div>
@@ -16,50 +24,45 @@
     </div>
 
     <!-- Навигация -->
-    <div class="content grid grid-cols-3 items-center py-2">
-        <div></div>
-        <div class="flex gap-16 justify-center">
+    <div class="content grid grid-cols-3 items-center py-2 md:flex md:justify-between">
+        <div class="md:flex-1">
+            <x-heroicon-c-bars-3 class="w-6 hidden md:block" @click="mobileMenu = true"/>
+        </div>
+        <div class=" hidden md:block">
+            <x-logo class="w-20 md:flex-1 mx-auto"/>
+        </div>
+        <div class="flex gap-16 justify-center md:hidden group/links">
             <!-- Группа с дропдауном -->
-            <div class="relative group inline-block">
+            <div class="relative group/categories_block inline-block">
                 <!-- Триггер -->
-                <a wire:navigate href="{{route('portal.shop')}}" class="cursor-pointer">Shop</a>
+                <a wire:navigate href="{{route('portal.shop')}}" class="cursor-pointer group-hover/links:opacity-50 hover:!opacity-100 transition">Shop</a>
 
                 <!-- Дропдаун -->
                 <div
                     class="absolute left-1/2 -translate-x-1/2 top-full z-20
-                w-max bg-bright-200 dark:bg-red-700 px-16 py-8 flex gap-20 justify-center
+                w-max bg-bright-200 dark:bg-red-700 px-16 py-8
 
                  opacity-0 transform translate-y-2
                  transition-all duration-300 ease-in-out
 
                  pointer-events-none
-                 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto
+                 group-hover/categories_block:opacity-100 group-hover/categories_block:translate-y-0 group-hover/categories_block:pointer-events-auto
                  hover:opacity-100 hover:translate-y-0 hover:pointer-events-auto">
-
-                    @foreach ($categories as $category)
-                        <a wire:navigate href="{{ route('portal.shop') }}?category[0]={{ $category['name'] }}"
-                           class="flex flex-col gap-3 max-h-28 justify-center items-center text-center">
-                            <img src="{{ $category->getFirstMediaUrl('cover') }}"
-                                 class="h-16 w-14 hover:scale-110 transition"
-                                 alt="">
-                            <p>{{ $category['name'] }}</p>
-                        </a>
-                    @endforeach
+                    <x-header.categories/>
                 </div>
             </div>
 
             <!-- Остальные ссылки -->
-            <a href="">Designers</a>
-            <a wire:navigate href="{{ route('portal.about') }}">About</a>
+            <a href="" class=" group-hover/links:opacity-50 hover:!opacity-100 transition">Designers</a>
+            <a wire:navigate href="{{ route('portal.about') }}" class=" group-hover/links:opacity-50 hover:!opacity-100 transition">About</a>
         </div>
-        <div class="flex justify-end gap-6">
-            <a href="{{route('portal.cart')}}" class="relative w-fit" wire:navigate>
+        <div class="flex justify-end gap-6 md:flex-1 group/buttons">
+            <a class="relative w-fit md:hidden group-hover/buttons:opacity-50 hover:!opacity-100 transition" wire:navigate>
                 <svg class="w-7 h-5" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.62695 0.0078125C9.95718 0.176558 12.6055 2.93058 12.6055 6.30273L12.5977 6.62695C12.5132 8.29288 11.7815 9.78774 10.6494 10.8662L17.2607 17.4775L16.7383 18L10.082 11.3438C9.0287 12.1346 7.72124 12.6055 6.30273 12.6055L5.97852 12.5977C2.75566 12.4344 0.171117 9.8498 0.0078125 6.62695L0 6.30273C0 2.82184 2.82184 0 6.30273 0L6.62695 0.0078125ZM6.30273 1C3.37412 1 1 3.37412 1 6.30273C1.00001 9.23134 3.37413 11.6055 6.30273 11.6055C9.23133 11.6055 11.6055 9.23133 11.6055 6.30273C11.6055 3.37413 9.23134 1.00001 6.30273 1Z"  class="fill-red-700 dark:fill-bright-200"/>
                 </svg>
-
             </a>
-            <a class="relative w-fit"
+            <a class="relative w-fit group-hover/buttons:opacity-50 hover:!opacity-100 transition"
                @Auth
                    wire:navigate
                    href="{{route('account.welcome')}}"
@@ -73,13 +76,13 @@
                 </svg>
 
             </a>
-            <a href="{{route('portal.cart')}}" class="relative w-fit" wire:navigate>
+            <a class="relative w-fit md:hidden group-hover/buttons:opacity-50 hover:!opacity-100 transition" wire:navigate>
                 <svg class="w-7 h-5" width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 3.04685V17.9746C1 18.8854 2.00969 19.3429 2.60031 18.6981L8.5 12.2577L14.3997 18.6981C14.9903 19.3429 16 18.8864 16 17.9746V3.04685C16 2.504 15.8025 1.98337 15.4508 1.59951C15.0992 1.21565 14.6223 1 14.125 1H2.875C2.37772 1 1.90081 1.21565 1.54917 1.59951C1.19754 1.98337 1 2.504 1 3.04685Z" class="stroke-red-700 dark:stroke-bright-200" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
 
             </a>
-            <a @click="cart = true" class="relative w-fit" wire:navigate>
+            <a @click="cart = true" class="relative w-fit group-hover/buttons:opacity-50 hover:!opacity-100 transition" wire:navigate>
                     <span id="basket-badge"
                           class="aspect-square rounded-full bg-red-700 absolute -top-2 -right-2 text-white text-xs flex items-center justify-center w-5 h-5 hidden">5</span>
                 <svg class="w-7 h-5" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +91,6 @@
                 </svg>
             </a>
         </div>
-
     </div>
 
     <script>

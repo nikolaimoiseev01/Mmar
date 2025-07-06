@@ -1,6 +1,6 @@
 <main class="flex-1">
-    <div class="flex">
-        <div class="flex flex-col gap-16 px-6 pt-6">
+    <div class="flex md:flex-col">
+        <div class="flex flex-col gap-16 px-6 pt-6 w-1/2 md:w-full md:mb-16">
             <h1 class="text-5xl">Contact Us</h1>
             <div class="flex flex-col gap-4">
                 <p class="text-red-100">Reach out to us for any inquiries or support.<br>
@@ -34,13 +34,13 @@
                 <h1 class="text-5xl">FAQ & Helpful Links</h1>
                 <div class="flex flex-col gap-4">
                     @foreach($links as $link)
-                        <a href="" class="group py-4 text-xl flex justify-between border-b border-red-100 items-center">
+                        <a href="{{$link['link']}}" wire:navigate class="group py-4 text-xl flex justify-between border-b border-red-100 items-center">
                             <span>{{$link['title']}}</span>
                             <svg width="16" class="transition group-hover:rotate-45" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M0.717366 15.1264L14.1523 1.69187M14.1523 1.69187L0.717309 1.69187M14.1523 1.69187L14.1523 15.1269"
-                                    stroke="black" stroke-width="2"/>
+                                    class="stroke-red-700 dark:stroke-bright-200" stroke-width="2"/>
                             </svg>
 
                         </a>
@@ -49,6 +49,6 @@
                 </div>
             </div>
         </div>
-        <img src="/fixed/contact-1.png" class="w-1/2" alt="">
+        <img src="/fixed/contact-1.png" class="w-1/2 md:w-full" alt="">
     </div>
 </main>

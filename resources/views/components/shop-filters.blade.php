@@ -31,6 +31,18 @@
                                 <input type="checkbox" value="{{$option['value']}}" id="{{$option['value']}}"
                                        wire:model.live="{{$filter['model']}}" class="mr-2"> {{$option['label']}}
                             </label>
+                            @if($option['suboptions'] ?? null)
+                                <div class="flex flex-col pl-6">
+                                    @foreach($option['suboptions'] as $option)
+                                        <label class="block cursor-pointer">
+                                            <input type="checkbox" value="{{$option['value']}}"
+                                                   id="{{$option['value']}}"
+                                                   wire:model.live="{{$filter['submodel']}}"
+                                                   class="mr-2"> {{$option['label']}}
+                                        </label>
+                                    @endforeach
+                                </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>

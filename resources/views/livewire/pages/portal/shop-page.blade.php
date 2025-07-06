@@ -27,10 +27,10 @@
         </a>
 
         @if($filtersArray)
-            <div class="flex gap-4">
+            <div class="flex gap-4 flex-wrap">
                 @foreach($filtersArray as $key => $filter)
                     @foreach($filter as $value)
-                        <div class="inline-block border border-red-700 px-3 py-1 flex gap-2">
+                        <div class="inline-block border border-red-700 dark:border-bright-200 px-3 py-1 flex gap-2">
                             <span>{{$value}}</span>
                             <x-heroicon-o-x-mark
                                 wire:click="removeFilter('{{ $key }}', '{{ $value }}')"
@@ -75,7 +75,7 @@
         </x-ui.dropdown>
     </div>
 
-    <div class="grid grid-cols-4 gap-4 content">
+    <div class="grid grid-cols-4 md:grid-cols-3 sm:!grid-cols-2 gap-4 content">
         @foreach($products as $product)
             <x-product-card :product="$product"/>
         @endforeach

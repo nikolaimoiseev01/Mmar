@@ -3,7 +3,7 @@
     <div class="flex flex-1 flex-col gap-4">
         <div class="flex flex-col">
             @foreach($products as $product)
-                <div class="flex gap-4 border border-b-red-100 pb-4 pt-4 last:pb-0 last:border-0">
+                <div class="flex gap-4 border-b border-b-red-100 pb-4 pt-4 last:pb-0 last:border-0">
                     <img src="{{$product->getFirstMediaUrl('examples')}}" class="w-32 aspect-square" alt="">
                     <div class="flex flex-col  text-base">
                         <h3 class="font-bold text-lg">{{$product['name']}}</h3>

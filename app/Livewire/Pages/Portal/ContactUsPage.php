@@ -13,15 +13,15 @@ class ContactUsPage extends Component
         $this->links = [
             [
                 'title' => 'FAQ',
-                'link' => ''
+                'link' => route('portal.faq')
             ],
             [
                 'title' => 'Size Guide',
-                'link' => ''
+                'link' => route('portal.size-guide')
             ],
             [
                 'title' => 'Shipping & Returns Policy',
-                'link' => ''
+                'link' => route('portal.shipping-info')
             ]
         ];
         return view('livewire.pages.portal.contact-us-page');

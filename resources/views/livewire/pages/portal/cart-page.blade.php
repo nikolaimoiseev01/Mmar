@@ -1,10 +1,10 @@
 <main class="min-h-screen flex flex-col">
 
     <!-- Двухколоночный блок -->
-    <div class="flex flex-1 relative mb-20">
+    <div class="flex flex-1 md:flex-col relative mb-20">
 
         <!-- Левая колонка -->
-        <div class="w-2/3 overflow-y-auto h-screen px-6 pt-8 flex flex-col gap-16">
+        <div class="w-2/3 md:w-full md:order-2 overflow-y-auto h-screen md:h-auto px-6 pt-8 flex flex-col gap-16">
 
             <!-- Contact -->
             <section>
@@ -94,11 +94,30 @@
         </div>
 
         <!-- Правая колонка: Cart -->
-        <div class="w-1/3 relative">
-            <div class="sticky top-0 h-screen flex flex-col bg-red-50 pt-36 px-4 pb-8 overflow-y-auto">
-                <div class="flex flex-col">
+        <div class="w-1/3 relative md:w-full md:pt-6"
+             x-data="{
+                isEnabled: false,
+                isOpen: false,
+                init() {
+                  // Включаем, если ширина >= 768px
+                  this.isEnabled = window.innerWidth <= 768;
+
+                  window.addEventListener('resize', () => {
+                    this.isEnabled = window.innerWidth <= 768;
+                  });
+                }
+              }"
+        >
+            <div class="flex justify-between content hidden md:block" >
+                <div class="flex gap-2" @click="isOpen = !isOpen" >
+                    <span class="text-2xl">Order summary</span>
+                    <x-heroicon-c-chevron-down class="w-4"/>
+                </div>
+            </div>
+            <div x-show="!isEnabled || isOpen" class="sticky md:relative top-0 md:h-auto dark:bg-red-700 h-screen flex flex-col bg-red-50 pt-36 md:pt-0 px-4 pb-8 overflow-y-auto"            >
+                <div class="flex flex-col mb-8">
                     @foreach($cart_products as $product)
-                        <div class="flex gap-4 border border-b-red-100 pb-4 pt-4 last:pb-0 last:border-0">
+                        <div class="flex gap-4 border-b border-b-red-100 pb-4 pt-4 last:pb-0 last:border-0">
                             <img src="{{$product->getFirstMediaUrl('examples')}}" class="w-32 aspect-square" alt="">
                             <div class="flex flex-col text-base">
                                 <h3 class="font-bold text-lg">{{$product['name']}}</h3>
@@ -132,7 +151,7 @@
     <!-- Recently Viewed: на всю ширину -->
     <section class="w-full px-6 mt-12">
         <h2 class="mb-8">Complete the Look</h2>
-        <x-three-cards :products="$recent_products"/>
+        <x-three-cards id="complete" :products="$recent_products"/>
     </section>
 
 </main>

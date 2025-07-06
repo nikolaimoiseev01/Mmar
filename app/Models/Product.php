@@ -20,4 +20,9 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsTo(Brand::class);
     }
+
+    public function subcategory(): BelongsTo
+    {
+        return $this->belongsTo(Subcategory::class);
+    }
 }

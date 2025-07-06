@@ -41,7 +41,7 @@
         x-transition:leave="transition transform duration-300"
         x-transition:leave-start="{{ $enterEnd }}"
         x-transition:leave-end="{{ $enterStart }}"
-        {{$attributes ->merge(['class' => "fixed $positionClasses top-0 h-screen w-full max-w-md bg-bright-200 z-50 p-6 overflow-auto"])}}
+        {{$attributes ->merge(['class' => "fixed $positionClasses top-0 h-screen w-full max-w-md bg-bright-200 dark:bg-red-500 z-50 p-6 overflow-auto md:max-w-full md:pt-16"])}}
     >
         <x-heroicon-o-x-mark
             @click="{{ $name }} = false"

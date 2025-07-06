@@ -45,7 +45,7 @@
 
     <!-- Modal -->
     <div
-        class="relative flex flex-col bg-bright-200 h-[80vh] rounded-lg shadow-xl transform transition-all sm:w-full max-w-2xl sm:mx-auto z-50 p-6">
+        class="relative flex flex-col bg-bright-200 dark:bg-red-500 h-[80vh] rounded-lg shadow-xl transform transition-all sm:w-full max-w-2xl sm:mx-auto z-50 p-6">
         <!-- Header -->
         <div class="flex justify-between items-center mb-4">
             <h1>Product Information</h1>
@@ -53,12 +53,12 @@
         </div>
 
         <!-- Tabs -->
-        <div class="flex flex-wrap w-full mb-4">
+        <div class="flex flex-wrap w-full mb-4 md:flex-wrap">
             @foreach ($tabs as $tab)
                 <button
                     @click="activeTab = '{{ $tab }}'"
-                    :class="activeTab === '{{ $tab }}' ? 'bg-bright-200' : 'bg-red-100'"
-                    class="py-4 flex-1 border"
+                    :class="activeTab === '{{ $tab }}' ? 'bg-bright-200 dark:bg-red-700 dark:text-bright-200' : 'bg-red-100'"
+                    class="py-4 flex-1 border md:w-1/2 md:min-w-[50%] dark:text-red-700"
                 >
                     {{ strtoupper($tab) }}
                 </button>

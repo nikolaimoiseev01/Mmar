@@ -1,7 +1,7 @@
 <div x-data="{ editing: false }" class="space-y-6">
 
     <!-- Заголовок и экшены -->
-    <div class="flex justify-between items-start">
+    <div class="flex justify-between items-start gap-4 md:flex-col">
         <h3 class="text-base uppercase text-red-300">
             PERSONAL INFORMATION
         </h3>
@@ -18,26 +18,26 @@
     </div>
 
     <!-- Просмотр -->
-    <div x-show="!editing" x-cloak class="flex justify-between gap-6">
+    <div x-show="!editing" x-cloak class="flex justify-between gap-6 flex-wrap">
         <div>
-            <p class="text-xs text-gray-500">First name</p>
-            <p class="text-base text-black font-medium">Polina</p>
+            <p class="text-xs text-red-300 dark:text-bright-100">First name</p>
+            <p class="text-base font-medium">{{Auth()->user()->first_name}}</p>
         </div>
         <div>
-            <p class="text-xs text-gray-500">Last name</p>
-            <p class="text-base text-black font-medium">Kreneva</p>
+            <p class="text-xs text-red-300 dark:text-bright-100">Last name</p>
+            <p class="text-base font-medium">{{Auth()->user()->last_name}}</p>
         </div>
         <div>
-            <p class="text-xs text-gray-500">Age</p>
-            <p class="text-base text-black font-medium">25</p>
+            <p class="text-xs text-red-300 dark:text-bright-100">Age</p>
+            <p class="text-base font-medium">{{Auth()->user()->age}}</p>
         </div>
         <div>
-            <p class="text-xs text-gray-500">Phone number</p>
-            <p class="text-base text-black font-medium">+1-800-123-4567</p>
+            <p class="text-xs text-red-300 dark:text-bright-100">Phone number</p>
+            <p class="text-base font-medium">{{Auth()->user()->telephone}}</p>
         </div>
         <div>
-            <p class="text-xs text-gray-500">Email</p>
-            <p class="text-base text-black font-medium">kreneva.polinaa@gmail.com</p>
+            <p class="text-xs text-red-300 dark:text-bright-100">Email</p>
+            <p class="text-base font-medium">{{Auth()->user()->email}}</p>
         </div>
     </div>
 

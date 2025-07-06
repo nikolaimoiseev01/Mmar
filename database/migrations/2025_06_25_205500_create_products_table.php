@@ -17,12 +17,19 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->foreignId('brand_id')->nullable()->constrained();
             $table->foreignId('category_id')->nullable()->constrained();
+            $table->foreignId('subcategory_id')->nullable()->constrained();
             $table->json('designers')->nullable();
             $table->string('gender')->nullable();
             $table->text('details');
             $table->text('materials');
             $table->text('aftercare');
             $table->text('manufacturing');
+            $table->string('exclusive');
+
+            $table->string('customization_options');
+            $table->string('material_focus');
+            $table->string('availability');
+
             $table->float('price');
             $table->timestamps();
         });

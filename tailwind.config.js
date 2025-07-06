@@ -31,7 +31,8 @@ export default {
                     700: '#240309'
                 },
                 green: {
-                    300: '#E6EFE8'
+                    300: '#E6EFE8',
+                    500: '#ACC12F'
                 }
             },
             screens: {

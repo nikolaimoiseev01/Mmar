@@ -8,6 +8,15 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import {Navigation, Pagination} from "swiper/modules";
+// typical import
+import gsap from "gsap";
+// get other plugins:
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+// don't forget to register plugins
+gsap.registerPlugin(ScrollTrigger);
+window.gsap = gsap;
+window.ScrollTrigger = ScrollTrigger;
 
 window.$ = $;
 livewire_hot_reload();

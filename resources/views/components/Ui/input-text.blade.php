@@ -11,6 +11,6 @@
     value="{{ old($name, $value) }}"
     placeholder="{{ $placeholder }}"
     {{ $attributes->merge([
-        'class' => 'w-full border border-gray-300 bg-bright-200 rounded p-3'
+        'class' => 'w-full border border-gray-300 bg-bright-200 dark:text-red-700 rounded p-3'
     ]) }}
 />

@@ -21,8 +21,8 @@
         </div>
     </section>
 
-    <section class="content mb-20">
-        <div class="mb-4 flex justify-between">
+    <section class="mb-20">
+        <div class="mb-4 flex justify-between content">
             <h2>Just In</h2>
             <x-ui.link-arrow
                 href="{{route('portal.shop')}}"
@@ -31,11 +31,11 @@
                 iconSize="h-4 w-4"
             />
         </div>
-        <x-three-cards :products="$products"/>
+        <x-three-cards id="index1" :products="$products"/>
     </section>
 
-    <section class="flex mb-20 pl-6">
-        <div class="w-1/2 flex flex-col pt-32 gap-12">
+    <section class="flex md:flex-col mb-20 pl-6 md:pl-0 h-screen" id="welcomeSection">
+        <div class="w-1/2 md:w-full md:px-6 flex flex-col pt-32 gap-12">
             <p class="font-[Forum] text-2xl leading-relaxed">
                 Welcome to MMAR,<br>
                 the ultimate destination where next-gen fashion is curated, connecting you with innovative, sustainable,
@@ -53,11 +53,11 @@
             />
         </div>
 
-        <img class="w-1/2 max-h-[800px] object-right object-contain" src="/fixed/welcome2.png" alt="">
+        <img class="w-1/2 md:w-full max-h-[800px] object-right object-contain" src="/fixed/welcome2.png" alt="">
     </section>
 
-    <section class="content mb-20">
-        <div class="mb-4 flex justify-between">
+    <section class="mb-20 bg-bright-200 relative pt-16" id="whatMatters">
+        <div class="mb-4 content flex justify-between">
             <h2>Find What Matters to You</h2>
             <x-ui.link-arrow
                 href="/about"
@@ -66,43 +66,37 @@
                 iconSize="h-4 w-4"
             />
         </div>
-
-        @php
-            $imgs = [
-                '/fixed/what-matters-1.jpg',
-                '/fixed/what-matters-1.jpg',
-                '/fixed/what-matters-1.jpg'
-            ]
-        @endphp
-        <div class="flex gap-4 w-full">
-            @foreach($imgs as $img)
-                <div class="flex flex-col flex-1">
-                    <img src="{{$img}}" class="object-cover flex-1 aspect-[1/1.5] mb-2"
-                         alt="">
-                    <x-ui.link-arrow
-                        href="/about"
-                        text="Innovative Materials"
-                        textSize="text-lg"
-                        class="font-bold"
-                        iconSize="h-4 w-4"
-                    />
-                </div>
-            @endforeach
-        </div>
+        <x-three-vertical-cards id="whatMatters"/>
     </section>
 
+    @push('page-js')
+        <script type="module">
+            ScrollTrigger.create({
+                trigger: "#welcomeSection",
+                start: "top top",
+                endTrigger: "#whatMatters",
+                end: "top top", // «конец» триггера совпадёт с top другого элемента
+                pinSpacing: false,
+                pin: true,
+                scrub: true
+            });
+        </script>
+    @endpush
 
-    <section class="content mb-20">
-        <h2 class="mb-4">Recommended Just for You</h2>
-        <x-three-cards :products="$products"/>
+
+    <section class="mb-20">
+        <div class="content">
+            <h2 class="mb-4">Recommended Just for You</h2>
+        </div>
+        <x-three-cards id="index2" :products="$products"/>
     </section>
 
 
     <section class="content mb-20">
         <h2 class="mb-4">Insights and Inspiration</h2>
-        <div class="flex gap-4 bg-green-300 dark:bg-red-500 p-4">
-            <img src="/fixed/insights.png" class="w-2/3 min-w-2/3" alt="">
-            <div class="flex flex-col gap-6 w-1/3">
+        <div class="flex gap-4 bg-green-300 dark:bg-red-500 p-4 md:flex-col">
+            <img src="/fixed/insights.png" class="w-2/3 min-w-2/3 md:order-2 md:w-full" alt="">
+            <div class="flex flex-col gap-6 w-1/3 md:w-full">
                 <span class="rounded-3xl bg-red-100 px-3 py-2 text-bright-200 w-fit">
                     {{$post->postTopic['name']}}
                 </span>
@@ -124,7 +118,17 @@
         </div>
     </section>
 
-    <livewire:components.subscribtion-form/>
+    <section class="relative flex flex-col items-center justify-center py-40">
+        <img src="/fixed/subscribe-bg.png" class="w-full h-full absolute object-cover" alt="">
+        <div class="content flex flex-col items-center gap-9">
+            <h2 class="text-white relative text-center">
+                Enjoy 15% Off Your First Purchase
+            </h2>
+            <livewire:components.subscribe-form/>
+            <p class="relative text-white">We respect your privacy. Unsubscribe anytime.</p>
+        </div>
+
+    </section>
 
 
 </main>

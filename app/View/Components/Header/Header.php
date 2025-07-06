@@ -21,9 +21,7 @@ class Header extends Component
      */
     public function render(): View|Closure|string
     {
-        $categories = Category::with('media')->get();
-        return view('components.header.header', [
-            'categories' => $categories,
-        ]);
+
+        return view('components.header.header');
     }
 }

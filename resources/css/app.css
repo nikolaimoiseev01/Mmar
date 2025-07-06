@@ -8,10 +8,13 @@
 }
 
 html {
-    @apply text-[1vw] 2xl:text-[16px]
+    @apply text-[1vw] 2xl:text-[16px] md:!text-[14px]
 }
 body {
     @apply bg-bright-200 dark:bg-red-700 text-red-700 dark:text-bright-200;
+}
+button {
+    @apply hover:!text-red-700 dark:hover:!text-bright-200
 }
 
 a {
@@ -31,7 +34,7 @@ h2 {
 }
 
 .content {
-    @apply w-full px-6;
+    @apply !w-full !px-6;
 }
 
 .post-content {
