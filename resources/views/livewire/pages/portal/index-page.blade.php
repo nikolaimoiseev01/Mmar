@@ -58,7 +58,7 @@
         <img class="w-1/2 md:w-full max-h-[800px] object-right object-contain" src="/fixed/welcome2.png" alt="">
     </section>
 
-    <section class="pb-20 bg-bright-200 relative pt-16" id="whatMatters">
+    <section class="pb-20 bg-bright-200 dark:bg-red-700 relative pt-16" id="whatMatters">
         <div class="mb-4 content flex justify-between  gap-4 md:flex-col">
             <h2>Find What Matters to You</h2>
             <x-ui.link-arrow
@@ -86,7 +86,7 @@
     @endpush
 
 
-    <section class="mb-20 bg-bright-200 relative">
+    <section class="mb-20 bg-bright-200 dark:bg-red-700 relative">
         <div class="content">
             <h2 class="mb-4">Recommended Just for You</h2>
         </div>
