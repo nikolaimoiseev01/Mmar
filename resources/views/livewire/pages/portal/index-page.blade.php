@@ -24,7 +24,7 @@
     </section>
 
     <section class="mb-20">
-        <div class="mb-4 flex justify-between content">
+        <div class="mb-4 flex justify-between content gap-4 md:flex-col">
             <h2>Just In</h2>
             <x-ui.link-arrow
                 href="{{route('portal.shop')}}"
@@ -58,8 +58,8 @@
         <img class="w-1/2 md:w-full max-h-[800px] object-right object-contain" src="/fixed/welcome2.png" alt="">
     </section>
 
-    <section class="mb-20 bg-bright-200 relative pt-16" id="whatMatters">
-        <div class="mb-4 content flex justify-between">
+    <section class="pb-20 bg-bright-200 relative pt-16" id="whatMatters">
+        <div class="mb-4 content flex justify-between  gap-4 md:flex-col">
             <h2>Find What Matters to You</h2>
             <x-ui.link-arrow
                 href="/about"
@@ -86,7 +86,7 @@
     @endpush
 
 
-    <section class="mb-20">
+    <section class="mb-20 bg-bright-200 relative">
         <div class="content">
             <h2 class="mb-4">Recommended Just for You</h2>
         </div>
