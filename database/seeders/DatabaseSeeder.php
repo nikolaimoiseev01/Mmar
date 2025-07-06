@@ -119,13 +119,14 @@ class DatabaseSeeder extends Seeder
     {
         $file = new Filesystem;
         $file->cleanDirectory(storage_path('app/public/media'));
+        $email = ENV('APP_ENV') == ('local') ? 'admin@mail.ru' : ENV('ADMIN_EMAIL');
         $password = ENV('APP_ENV') == ('local') ? '12345678' : ENV('ADMIN_PASSWORD');
         User::create([
             'first_name' => 'admin',
             'last_name' => 'admin',
             'age' => 30,
             'telephone' => '12345678',
-            'email' => 'admin@mail.ru',
+            'email' => $email,
             'email_verified_at' => now(),
             'password' => Hash::make($password),
             'remember_token' => Str::random(10),
