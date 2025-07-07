@@ -58,7 +58,7 @@
         <img class="w-1/2 md:w-full max-h-[800px] object-right object-contain" src="/fixed/welcome2.png" alt="">
     </section>
 
-    <section class="pb-20 bg-bright-200 dark:bg-red-700 relative pt-16" id="whatMatters">
+    <section class="pb-20 bg-bright-200 dark:bg-red-700 relative pt-16" id="whatMattersBlock">
         <div class="mb-4 content flex justify-between  gap-4 md:flex-col">
             <h2>Find What Matters to You</h2>
             <x-ui.link-arrow
@@ -68,20 +68,22 @@
                 iconSize="h-4 w-4"
             />
         </div>
-        <x-three-vertical-cards id="whatMatters"/>
+        <x-three-vertical-cards id="whatMattersSlider"/>
     </section>
 
     @push('page-js')
         <script type="module">
-            ScrollTrigger.create({
-                trigger: "#welcomeSection",
-                start: "top top",
-                endTrigger: "#whatMatters",
-                end: "top top", // «конец» триггера совпадёт с top другого элемента
-                pinSpacing: false,
-                pin: true,
-                scrub: true
-            });
+            document.addEventListener('DOMContentLoaded', () => {
+                ScrollTrigger.create({
+                    trigger: "#welcomeSection",
+                    start: "top top",
+                    endTrigger: "#whatMattersBlock",
+                    end: "top top", // «конец» триггера совпадёт с top другого элемента
+                    pinSpacing: false,
+                    pin: true,
+                    scrub: true
+                });
+            })
         </script>
     @endpush
 
