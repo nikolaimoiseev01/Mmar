@@ -25,14 +25,14 @@
                          x-transition:leave="transition ease-in duration-300"
                          x-transition:leave-start="opacity-100 max-h-screen"
                          x-transition:leave-end="opacity-0 max-h-0"
-                         class="overflow-hidden">
+                         class="overflow-hidden flex flex-col gap-2 mt-2">
                         @foreach($filter['options'] as $option)
                             <label class="block cursor-pointer">
                                 <input type="checkbox" value="{{$option['value']}}" id="{{$option['value']}}"
                                        wire:model.live="{{$filter['model']}}" class="mr-2"> {{$option['label']}}
                             </label>
                             @if($option['suboptions'] ?? null)
-                                <div class="flex flex-col pl-6">
+                                <div class="flex flex-col pl-6 gap-1">
                                     @foreach($option['suboptions'] as $option)
                                         <label class="block cursor-pointer">
                                             <input type="checkbox" value="{{$option['value']}}"

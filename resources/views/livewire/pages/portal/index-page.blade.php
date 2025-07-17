@@ -2,11 +2,11 @@
     @section('title')
         Main
     @endsection
-    <section class="w-full h-screen relative flex items-center justify-center mb-20">
+    <section class="smooth-content w-full h-screen relative flex items-center justify-center mb-20">
         <img src="/fixed/welcome-bg.png" class="absolute w-full h-full object-cover" alt="">
         <div class="flex flex-col items-center relative gap-2">
             <x-logo class="w-40 md:w-32"/>
-            <svg width="234" height="53" viewBox="0 0 234 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="234" height="53" viewsmooth-content="0 0 234 53" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M190.635 49.2963V38.3626L190.487 36.8851L190.561 30.9011L190.709 29.4975L190.561 28.0938V26.6163L190.487 24.991L190.709 22.036L190.561 20.5584L190.487 3.64079L191.373 1.57225L192.703 0.83349L197.062 0.464111L198.687 0.537987L200.165 0.83349H201.642L202.972 0.464111H204.449L205.927 0.759615H210.36L212.502 0.611862L214.866 0.685737L219.077 1.64613L221.884 2.60652L224.47 4.01017L228.681 8.44274L229.494 9.62477L230.085 10.8807L231.414 15.0916L231.636 16.5691L231.784 21.2233L230.823 25.5082L227.942 30.6795L226.908 31.566L225.874 32.6741L225.209 34.2994L225.283 36.0725L226.169 37.1806L228.533 41.0222L229.198 42.3519L231.71 46.1196L232.301 47.5233L233.187 48.5575L234 50.1828L233.557 51.8081L232.153 52.473L229.715 52.5469L228.312 52.3991L222.475 52.473L219.964 51.8081L218.338 50.4783L217.526 49.2224L216.935 47.7449L216.122 46.6368L214.718 43.9772L213.167 41.7609L212.576 40.4312L211.689 38.9536L210.212 37.6977L205.927 37.1067L204.523 37.9194L203.858 39.3969L203.711 44.125L203.932 45.6764L203.785 47.0061V49.5179L203.12 51.6603L200.756 52.3991H198.539L197.357 52.5469L194.993 52.3252L193.516 52.5469L191.373 51.5865L190.635 49.2963ZM205.927 25.2865L207.552 25.1388L211.098 25.2865L212.502 25.2127L214.644 24.6955L215.974 24.1045L216.787 23.4396L217.599 22.3315L218.264 20.854L218.486 18.6377L218.19 16.7169L217.747 15.5349L215.9 13.2447L214.497 12.8753L212.576 12.7276L210.507 12.2843L207.552 12.5798L206.075 12.5059L204.523 13.0969L203.858 14.5006L203.711 17.6034L203.858 18.8593V23.2919L204.449 24.4739L205.927 25.2865Z"
                     fill="#ECEBF3"/>
@@ -23,7 +23,7 @@
         </div>
     </section>
 
-    <section class="mb-20">
+    <section class="smooth-content mb-20">
         <div class="mb-4 flex justify-between content gap-4 md:flex-col">
             <h2>Just In</h2>
             <x-ui.link-arrow
@@ -36,7 +36,7 @@
         <x-three-cards id="index1" :products="$products"/>
     </section>
 
-    <section class="flex md:flex-col mb-20 pl-6 md:pl-0 h-screen" id="welcomeSection">
+    <section class="smooth-content flex md:flex-col mb-20 pl-6 md:pl-0 h-screen" id="welcomeSection">
         <div class="w-1/2 md:w-full md:px-6 flex flex-col pt-32 gap-12">
             <p class="font-[Forum] text-2xl leading-relaxed">
                 Welcome to MMAR,<br>
@@ -88,7 +88,7 @@
     @endpush
 
 
-    <section class="mb-20 bg-bright-200 dark:bg-red-700 relative">
+    <section class="smooth-content mb-20 bg-bright-200 dark:bg-red-700 relative">
         <div class="content">
             <h2 class="mb-4">Recommended Just for You</h2>
         </div>
@@ -96,19 +96,19 @@
     </section>
 
 
-    <section class="content mb-20">
+    <section class="smooth-content content mb-20">
         <h2 class="mb-4">Insights and Inspiration</h2>
         <div class="flex gap-4 bg-green-300 dark:bg-red-500 p-4 md:flex-col">
             <img src="/fixed/insights.png" class="w-2/3 min-w-2/3 md:order-2 md:w-full" alt="">
             <div class="flex flex-col gap-6 w-1/3 md:w-full">
-                <span class="rounded-3xl bg-red-100 px-3 py-2 text-bright-200 w-fit">
+                <span class="rounded-3xl bg-red-300 px-3 py-2 text-bright-200 w-fit">
                     {{$post->postTopic['name']}}
                 </span>
                 <h3 class="text-2xl font-bold">
                     {{$post['title']}}
                 </h3>
                 <p class="font-base">{{$post['description']}}</p>
-                <div class="flex justify-between">
+                <div class="flex justify-between mt-auto">
                     <p class="opacity-40">{{ $post['created_at']->format('F d, Y') }}</p>
                     <x-ui.link-arrow
                         href="{{route('portal.post', $post['id'])}}"
@@ -122,13 +122,13 @@
         </div>
     </section>
 
-    <section class="relative flex flex-col items-center justify-center py-40">
+    <section class="smooth-content relative flex flex-col items-center justify-center py-40">
         <img src="/fixed/subscribe-bg.png" class="w-full h-full absolute object-cover" alt="">
-        <div class="content flex flex-col items-center gap-9">
-            <h2 class="text-white relative text-center">
+        <div class="content flex flex-col items-center">
+            <h2 class="text-white relative text-center mb-9">
                 Enjoy 15% Off Your First Purchase
             </h2>
-            <livewire:components.subscribe-form/>
+            <livewire:components.subscribe-form class="mb-4"/>
             <p class="relative text-white">We respect your privacy. Unsubscribe anytime.</p>
         </div>
 

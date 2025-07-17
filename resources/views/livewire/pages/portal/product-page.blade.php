@@ -39,7 +39,7 @@
             <x-ui.link
                 id="big-basket-button-{{$product['id']}}"
                 wire:ignore
-                wire:click="addIdToCookie()"
+                wire:click="addIdToCookie({{$product['id']}})"
                 class="mb-8 hover:!bg-green-500 hover:!text-bright-200"
             >
                 ADD TO CART
@@ -63,7 +63,7 @@
                 </div>
                 <div @click="window.dispatchEvent(new CustomEvent('open-modal', { detail: { name: 'product-info', tab: 'aftercare' } }))"
                     class="flex gap-2 flex-1 cursor-pointer">
-                    <x-iconoir-wash class="w-5" />
+{{--                    <x-iconoir-wash class="w-5" />--}}
                     <p>AFTERCARE</p>
                 </div>
                 <div @click="window.dispatchEvent(new CustomEvent('open-modal', { detail: { name: 'product-info', tab: 'manufacturing' } }))"

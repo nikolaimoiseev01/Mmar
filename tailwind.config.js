@@ -33,6 +33,9 @@ export default {
                 green: {
                     300: '#E6EFE8',
                     500: '#ACC12F'
+                },
+                blue: {
+                    300: '#C2E0FE'
                 }
             },
             screens: {

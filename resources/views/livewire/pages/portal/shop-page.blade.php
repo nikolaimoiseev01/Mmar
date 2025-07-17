@@ -75,9 +75,9 @@
         </x-ui.dropdown>
     </div>
 
-    <div class="grid grid-cols-4 md:grid-cols-3 sm:!grid-cols-2 gap-4 content">
+    <div class="grid grid-cols-3 md:grid-cols-3 sm:!grid-cols-2 gap-4 content">
         @foreach($products as $product)
-            <x-product-card :product="$product"/>
+            <x-product-card :product="$product" shopMode="true"/>
         @endforeach
     </div>
 </main>

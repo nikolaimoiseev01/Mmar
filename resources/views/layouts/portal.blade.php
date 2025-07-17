@@ -19,6 +19,8 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/fixed/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/fixed/favicon/site.webmanifest" />
 
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.6/dist/lenis.css">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,8 +28,14 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <script>
+        window.APP_ENV = "{{ env('APP_ENV') }}"
+    </script>
+
 </head>
-<body class="antialiased flex flex-col min-h-screen" x-data="currencySwitcher()">
+<body class="antialiased flex flex-col min-h-screen overflow-x-hidden" x-data="currencySwitcher()">
+<div id="cursor" class="fixed top-0 left-0 w-5 h-5 rounded-full bg-transparent border-2 border-red-700 pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2"></div>
+
 <x-header.header/>
 {{ $slot }}
 <x-footer/>

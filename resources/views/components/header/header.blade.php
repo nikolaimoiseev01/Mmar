@@ -24,7 +24,7 @@
     </div>
 
     <!-- Навигация -->
-    <div class="content grid grid-cols-3 items-center py-2 md:flex md:justify-between">
+    <div class="content relative grid grid-cols-3 items-center py-2 md:flex md:justify-between">
         <div class="md:flex-1">
             <x-heroicon-c-bars-3 class="w-6 hidden md:block" @click="mobileMenu = true"/>
         </div>
@@ -33,14 +33,14 @@
         </div>
         <div class="flex gap-16 justify-center md:hidden group/links">
             <!-- Группа с дропдауном -->
-            <div class="relative group/categories_block inline-block">
+            <div class="group/categories_block inline-block">
                 <!-- Триггер -->
                 <a wire:navigate href="{{route('portal.shop')}}" class="cursor-pointer group-hover/links:opacity-50 hover:!opacity-100 transition">Shop</a>
 
                 <!-- Дропдаун -->
                 <div
-                    class="absolute left-1/2 -translate-x-1/2 top-full z-20
-                w-max bg-bright-200 dark:bg-red-700 px-16 py-8
+                    class="absolute top-8 z-20 left-0
+                w-screen bg-bright-200 dark:bg-red-700 px-16 py-8
 
                  opacity-0 transform translate-y-2
                  transition-all duration-300 ease-in-out

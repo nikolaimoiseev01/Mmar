@@ -8,12 +8,12 @@
             'text' => 'Innovative Materials'
         ],
         [
-            'image' => "/fixed/what-matters-1.jpg",
-            'text' => 'Innovative Materials'
+            'image' => "/fixed/what-matters-2.png",
+            'text' => 'Exclusively Handmade'
         ],
         [
-            'image' => "/fixed/what-matters-1.jpg",
-            'text' => 'Innovative Materials'
+            'image' => "/fixed/what-matters-3.png",
+            'text' => 'Vegan Brands'
         ]
 
     ]
@@ -27,8 +27,8 @@
     <div class="flex gap-4 w-full swiper-wrapper">
         @foreach($elements as $element)
             <div class="flex flex-col flex-1 md:!flex-none md:!w-[80vw] swiper-slide">
-                <a href="/shop?material_focus[0]={{$element['text']}}" wire:navigate class="flex-1 aspect-[1/1.5]">
-                    <img src="{{$element['image']}}" class="object-cover  mb-2"
+                <a href="/shop?material_focus[0]={{$element['text']}}" wire:navigate class="flex-1">
+                    <img src="{{$element['image']}}" class="object-cover w-full mb-2 aspect-[1/1.5]"
                          alt="">
                 </a>
 

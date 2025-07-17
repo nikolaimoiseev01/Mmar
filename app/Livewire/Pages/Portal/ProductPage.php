@@ -12,6 +12,8 @@ class ProductPage extends Component
     public $product;
     public $products;
     public $amount = 1;
+
+    protected $listeners = ['addIdToCookie'];
     public function render()
     {
         $this->products = Product::orderBy('created_at', 'desc')->take(3)->get();
@@ -26,12 +28,12 @@ class ProductPage extends Component
             ->firstOrFail();
     }
 
-    public function addIdToCookie(Request $request)
+    public function addIdToCookie(Request $request, $id)
     {
         $cookie = collect(json_decode($request->cookie('basket-products')));
-        if (!$cookie->contains('id', $this->product['id'])) {
+        if (!$cookie->contains('id', $id)) {
             $to_add = [
-                'id' => $this->product['id'],
+                'id' => $id,
                 'amount' => $this->amount,
                 'price' => $this->product['price']
             ];

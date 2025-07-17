@@ -166,6 +166,7 @@ class DatabaseSeeder extends Seeder
                 'subcategory_id' => $subcategory['id'] ?? null,
                 'designers' => json_encode(['Alex', 'John', 'Emily']),
                 'gender' => 'male',
+                'label' => ['Label 1', 'Label 2'],
                 'exclusive' => Arr::random(Constant::EXCLUSIVE),
                 'customization_options' => Arr::random(Constant::CUSTOMMIZATION_OPTIONS),
                 'material_focus' => Arr::random(Constant::MATERIAL_FOCUS),

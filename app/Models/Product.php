@@ -25,4 +25,8 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsTo(Subcategory::class);
     }
+
+    protected $casts = [
+        'label' => 'array'
+    ];
 }

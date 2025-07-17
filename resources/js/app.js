@@ -13,6 +13,9 @@ import gsap from "gsap";
 // get other plugins:
 import ScrollTrigger from "gsap/ScrollTrigger";
 
+import Lenis from '@studio-freight/lenis';
+
+
 // don't forget to register plugins
 gsap.registerPlugin(ScrollTrigger);
 window.gsap = gsap;
@@ -89,3 +92,80 @@ document.addEventListener('afterBasketUpdate', function () {
     updateBasketButtons()
     updateBasketCount()
 });
+
+
+gsap.registerPlugin(ScrollTrigger)
+
+// Инициализация Lenis
+const lenis = new Lenis({
+    smooth: true,
+})
+
+// rAF для Lenis
+function raf(time) {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
+}
+requestAnimationFrame(raf)
+
+// Связка Lenis + ScrollTrigger
+ScrollTrigger.scrollerProxy(document.body, {
+    scrollTop(value) {
+        return arguments.length ? lenis.scrollTo(value, { immediate: true }) : window.scrollY
+    },
+    getBoundingClientRect() {
+        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight }
+    },
+    pinType: document.body.style.transform ? 'transform' : 'fixed',
+})
+
+lenis.on('scroll', ScrollTrigger.update)
+ScrollTrigger.refresh()
+
+// Анимации появления блоков
+gsap.utils.toArray('.smooth-content').forEach((el) => {
+    gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: el,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+        },
+    })
+})
+
+;
+console.log(window.APP_ENV)
+if (window.APP_ENV === 'production') {
+    $('body').style('cursor', 'none')
+    const cursor = document.getElementById('cursor')
+
+    let mouseX = 0
+    let mouseY = 0
+    let currentX = 0
+    let currentY = 0
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX
+        mouseY = e.clientY
+    })
+
+    function animateCursor() {
+        currentX += (mouseX - currentX) * 0.2
+        currentY += (mouseY - currentY) * 0.2
+
+        cursor.style.transform = `translate(${currentX}px, ${currentY}px)`
+        requestAnimationFrame(animateCursor)
+    }
+
+    animateCursor()
+}
+
+
+
+
+
+
