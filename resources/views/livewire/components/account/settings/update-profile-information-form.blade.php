@@ -1,4 +1,4 @@
-<div x-data="{ editing: false }" class="space-y-6">
+<section id="personal_information"  x-data="{ editing: false }" class="space-y-14 pb-16 border-b border-red-100">
 
     <!-- Заголовок и экшены -->
     <div class="flex justify-between items-start gap-4 md:flex-col">
@@ -6,14 +6,14 @@
             PERSONAL INFORMATION
         </h3>
 
-        <div class="flex items-center space-x-4 text-sm">
+        <div class="flex items-center space-x-4 text-sm font-bold">
             <button type="button"
-                    class="flex items-center space-x-1 underline"
+                    class="flex items-center space-x-1"
                     @click="editing = !editing">
                 <span x-text="editing ? 'Cancel' : 'Edit'"></span>
                 <span>&gt;</span>
             </button>
-            <a href="#" class="underline">Change password &gt;</a>
+            <a href="#">Change password &gt;</a>
         </div>
     </div>
 
@@ -93,4 +93,4 @@
         </div>
     </form>
 
-</div>
+</section>

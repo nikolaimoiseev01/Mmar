@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Livewire\Pages\Account\OrderDetailsPage;
 use App\Livewire\Pages\Account\SettingsPage;
 use App\Livewire\Pages\Account\WelcomePage;
 use App\Livewire\Pages\Auth\ConfirmPasswordPage;
@@ -78,6 +79,7 @@ Route::get('/shipping-info', ShippingInfoPage::class)->name('portal.shipping-inf
 
 Route::middleware('auth')->prefix('account')->group(function () {
     Route::get('welcome', WelcomePage::class)->middleware(['auth', 'verified'])->name('account.welcome');
+    Route::get('order/1', OrderDetailsPage::class)->middleware(['auth', 'verified'])->name('account.order');
     Route::get('settings', SettingsPage::class)->middleware(['auth', 'verified'])->name('account.settings');
 });
 

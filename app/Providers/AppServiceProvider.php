@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::unguard();
-        EncryptCookies::except('basket-products');
+        EncryptCookies::except(['basket-products', 'wishlist-products']);
         RedirectIfAuthenticated::redirectUsing(function () {
             return route('account.welcome');
         });

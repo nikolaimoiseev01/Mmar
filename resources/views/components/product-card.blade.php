@@ -10,11 +10,11 @@
             <div class="flex flex-col gap-2 absolute  top-3 left-3">
                 @foreach($product['label'] as $label)
                     <span
-                        class="py-1 px-4 bg-blue-300 w-fit rounded-2xl flex justify-center z-30 items-center">{{$label}}</span>
+                        class="py-1 px-4 bg-blue-300 dark:bg-red-700 dark:text-bright-200 w-fit rounded-2xl flex justify-center z-30 items-center">{{$label}}</span>
                 @endforeach
             </div>
             <div class="absolute opacity-0 group-hover:opacity-100 transition bottom-3 right-3 flex gap-4 z-30">
-                <div class="bg-blue-300 p-4 rounded-full flex justify-center items-center aspect-square group/svg">
+                <div class="bg-blue-300 dark:bg-red-700 dark:text-bright-200 p-4 rounded-full flex justify-center items-center aspect-square group/svg">
                     <svg class="w-7 h-5" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path class="stroke-red-700 dark:stroke-bright-200 group-hover/svg:fill-red-700 transition"
                               d="M4.4541 4.73535H12.4854C13.1975 4.73538 13.8119 5.23603 13.9551 5.93359L15.958 15.6982C16.1488 16.6285 15.4379 17.5 14.4883 17.5H2.45117C1.50159 17.5 0.790632 16.6285 0.981445 15.6982L2.98438 5.93359C3.12761 5.23603 3.74196 4.73535 4.4541 4.73535Z"
@@ -24,7 +24,7 @@
                               fill="#240309"/>
                     </svg>
                 </div>
-                <div class="bg-blue-300 p-4 rounded-full flex justify-center items-center group/svg">
+                <div class="bg-blue-300 dark:bg-red-700 dark:text-bright-200 p-4 rounded-full flex justify-center items-center group/svg">
                     <svg class="w-7 h-5" width="17" height="20" viewBox="0 0 17 20" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path

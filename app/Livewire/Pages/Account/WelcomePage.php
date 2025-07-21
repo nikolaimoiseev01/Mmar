@@ -8,9 +8,28 @@ use Livewire\Component;
 class WelcomePage extends Component
 {
     public $products;
+    public $contents;
     public function render()
     {
         $this->products = Product::orderBy('created_at', 'desc')->take(3)->get();
+        $this->contents = [
+            [
+                'id' => 'personal_information',
+                'title' => 'Personal Information',
+            ],
+            [
+                'id' => 'shipping_addresses',
+                'title' => 'Shipping Address',
+            ],
+            [
+                'id' => 'order_history',
+                'title' => 'Order History',
+            ],
+            [
+                'id' => 'recently_viewed',
+                'title' => 'Recently Viewed',
+            ]
+        ];
         return view('livewire.pages.account.welcome-page');
     }
 

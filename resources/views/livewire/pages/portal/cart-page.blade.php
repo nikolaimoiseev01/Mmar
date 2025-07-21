@@ -6,7 +6,7 @@
     <div class="flex flex-1 md:flex-col relative mb-20">
 
         <!-- Левая колонка -->
-        <div class="w-2/3 md:w-full md:order-2 overflow-y-auto h-screen md:h-auto px-6 pt-8 flex flex-col gap-16">
+        <div class="w-2/3 md:w-full md:order-2 overflow-y-auto md:h-auto px-6 pt-8 flex flex-col gap-16">
 
             <!-- Contact -->
             <section>
@@ -37,16 +37,16 @@
                 </div>
                 <x-ui.input-text name="phone" placeholder="Phone" class="mb-4"/>
 
-                <h3 class="font-semibold mb-2">SHIPPING METHOD</h3>
-                <div class="bg-gray-100 text-gray-500 p-4 rounded mb-2">
-                    Enter your shipping address to view available shipping methods.
+                <h3 class="mb-2 mt-8">SHIPPING METHOD</h3>
+                <div class="flex w-full p-4 flex-col gap-4 border border-gray-300 rounded-xl mb-4">
+                    <div class="flex justify-between">
+                        <p>Express Courier (Air)</p>
+                        <p>€5</p>
+                    </div>
+                    <p class="text-red-300">4 business days</p>
                 </div>
-                <p class="text-sm text-gray-600">
-                    Please allow 1-2 business days for processing before your order ships.
-                </p>
-                <p class="text-sm text-gray-600">
-                    Carrier delivery times may be impacted by increased holiday shipping volume, which could result in delays.
-                </p>
+                <p class="text-xs text-red-400">Please allow 1-2 business days for processing before your order ships.<br>
+                    Carrier delivery times may be impacted by increased holiday shipping volume, which could result in delays.</p>
             </section>
 
             <!-- Payment -->
@@ -116,11 +116,15 @@
                     <x-heroicon-c-chevron-down class="w-4"/>
                 </div>
             </div>
-            <div x-show="!isEnabled || isOpen" class="sticky md:relative top-0 md:h-auto dark:bg-red-700 h-screen flex flex-col bg-red-50 pt-36 md:pt-0 px-4 pb-8 overflow-y-auto"            >
+            <div x-show="!isEnabled || isOpen" class="sticky md:relative top-0 md:h-auto dark:bg-red-700 h-[calc(100vh-135px)] flex flex-col bg-red-50 pt-6md:pt-0 px-4 pb-8 overflow-y-auto"            >
                 <div class="flex flex-col mb-8">
                     @foreach($cart_products as $product)
                         <div class="flex gap-4 border-b border-b-red-100 pb-4 pt-4 last:pb-0 last:border-0">
-                            <img src="{{$product->getFirstMediaUrl('examples')}}" class="w-32 aspect-square" alt="">
+                            <div class="w-32 aspect-square relative">
+                                <img src="{{$product->getFirstMediaUrl('examples')}}" class="w-32 aspect-square" alt="">
+                                <span class="bg-red-300 w-6 h-6 flex items-center justify-center rounded-full absolute -top-2 -right-2 text-bright-200 aspect-square">{{$product['count']}}</span>
+                            </div>
+
                             <div class="flex flex-col text-base">
                                 <h3 class="font-bold text-lg">{{$product['name']}}</h3>
                                 <p class="text-base">COLOR: JASPER</p>
@@ -129,6 +133,10 @@
                             <p class="ml-auto mt-auto" x-text="formatPrice({{$product['price']}})"></p>
                         </div>
                     @endforeach
+                </div>
+                <div class="flex gap-4">
+                    <x-ui.input-text name="promocode" class="bg-red-50" placeholder="Discount code"/>
+                    <x-ui.link class="w-fit max-w-fit">APPLY</x-ui.link>
                 </div>
                 <div class="mt-auto flex flex-col gap-4">
                     <div class="flex justify-between">
@@ -140,10 +148,11 @@
                         <p>5</p>
                     </div>
                     <div class="w-full h-px bg-red-100"></div>
-                    <div class="flex justify-between font-bold">
+                    <div class="flex justify-between font-bold mb-8">
                         <p>TOTAL:</p>
                         <p x-text="formatPrice({{$cart_products->sum('price') + 5}})"></p>
                     </div>
+                    <p class="text-red-300 text-sm">The total amount you pay includes all applicable customs duties & taxes. We guarantee no additional charges on delivery.</p>
                 </div>
             </div>
         </div>

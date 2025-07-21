@@ -9,6 +9,7 @@
         "php": "^8.2",
         "andreiio/blade-iconoir": "^4.7",
         "blade-ui-kit/blade-heroicons": "^2.6",
+        "faisal50x/blade-ionicons": "^1.1",
         "filament/filament": "^3.3",
         "filament/spatie-laravel-media-library-plugin": "^3.2",
         "laravel/framework": "^12.0",

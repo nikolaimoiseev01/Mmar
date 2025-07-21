@@ -34,8 +34,7 @@
 
 </head>
 <body class="antialiased flex flex-col min-h-screen overflow-x-hidden" x-data="currencySwitcher()">
-<div id="cursor" class="fixed top-0 left-0 w-5 h-5 rounded-full bg-transparent border-2 border-red-700 pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2"></div>
-
+<div id="cursor" class="fixed top-0 left-0 w-5 h-5 rounded-full bg-transparent border-2 border-red-700 dark:border-red-300 pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2"></div>
 <x-header.header/>
 {{ $slot }}
 <x-footer/>

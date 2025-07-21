@@ -1,4 +1,4 @@
-<footer class="mt-12 py-8 flex flex-col">
+<footer class="mb-12 py-8 flex flex-col border-t border-red-50">
     <div class="content flex gap-16 md:gap-8 justify-between mb-12">
         <div class="flex flex-col gap-4 md:hidden">
             <p class="font-bold">Shop</p>

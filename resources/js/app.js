@@ -29,7 +29,6 @@ Swiper.use([Navigation, Pagination]);
 window.Swiper = Swiper;
 
 
-
 // Установка куки
 function setCookie(name, value, days) {
     let expires = "";
@@ -94,6 +93,24 @@ document.addEventListener('afterBasketUpdate', function () {
 });
 
 
+
+document.addEventListener('DOMContentLoaded', function () {
+    window.updateWishlistCount = function () {
+        let data = getCookie('wishlist-products');
+        data = data ? JSON.parse(data) : [];
+        let products_cnt = Object.keys(data).length
+        if (products_cnt > 0) {
+            $('#wishlist-badge').removeClass('hidden');
+            $('#wishlist-badge').text(products_cnt);
+        } else {
+            $('#wishlist-badge').addClass('hidden');
+        }
+    }
+})
+document.addEventListener('afterWishlistUpdate', function () {
+    updateWishlistCount()
+});
+
 gsap.registerPlugin(ScrollTrigger)
 
 // Инициализация Lenis
@@ -106,15 +123,16 @@ function raf(time) {
     lenis.raf(time)
     requestAnimationFrame(raf)
 }
+
 requestAnimationFrame(raf)
 
 // Связка Lenis + ScrollTrigger
 ScrollTrigger.scrollerProxy(document.body, {
     scrollTop(value) {
-        return arguments.length ? lenis.scrollTo(value, { immediate: true }) : window.scrollY
+        return arguments.length ? lenis.scrollTo(value, {immediate: true}) : window.scrollY
     },
     getBoundingClientRect() {
-        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight }
+        return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight}
     },
     pinType: document.body.style.transform ? 'transform' : 'fixed',
 })
@@ -138,9 +156,12 @@ gsap.utils.toArray('.smooth-content').forEach((el) => {
 })
 
 ;
-console.log(window.APP_ENV)
 if (window.APP_ENV === 'production') {
-    $('body').style('cursor', 'none')
+    document.body.style.setProperty('cursor', 'none', 'important');
+
+    document.querySelectorAll('*').forEach(el => {
+        el.style.setProperty('cursor', 'none', 'important');
+    });
     const cursor = document.getElementById('cursor')
 
     let mouseX = 0

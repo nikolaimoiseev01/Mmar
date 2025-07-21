@@ -9,6 +9,7 @@
                         <h3 class="font-bold text-lg">{{$product['name']}}</h3>
                         <p class="text-base">COLOR: JASPER</p>
                         <p class="text-base">SIZE: 38</p>
+                        <p class="text-base mt-auto">Amount: {{$product['count']}}</p>
                     </div>
                     <p class="ml-auto mt-auto" x-text="formatPrice({{$product['price']}})"></p>
                 </div>
@@ -24,8 +25,6 @@
             @else
                 <x-ui.link onclick="window.dispatchEvent(new CustomEvent('open-modal', { detail: 'auth-modal' }))">CHECKOUT</x-ui.link>
             @endauth
-
-
         </div>
     </div>
 </x-sidebar>

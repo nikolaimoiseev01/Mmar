@@ -1,11 +1,12 @@
 <header
-    x-data="{ isHome: window.location.pathname === '/',  cart: false, mobileMenu: false  }"
+    x-data="{ isHome: window.location.pathname === '/',  cart: false, wishlist: false, mobileMenu: false  }"
     :class="isHome ?
         'absolute top-0 left-0'
         :'relative'"
     class="w-full border-b border-red-100 bg-bright-200 dark:bg-red-700 flex flex-col z-50">
 
     <livewire:components.cart/>
+    <livewire:components.wish-list/>
     <x-login-modal/>
 
     <x-header.mobile-menu/>
@@ -76,7 +77,9 @@
                 </svg>
 
             </a>
-            <a class="relative w-fit md:hidden group-hover/buttons:opacity-50 hover:!opacity-100 transition" wire:navigate>
+            <a @click="wishlist = true" class="relative w-fit md:hidden group-hover/buttons:opacity-50 hover:!opacity-100 transition" wire:navigate>
+                <span id="wishlist-badge"
+                      class="aspect-square rounded-full bg-red-700 absolute -top-2 -right-2 text-white text-xs flex items-center justify-center w-5 h-5 hidden">5</span>
                 <svg class="w-7 h-5" width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 3.04685V17.9746C1 18.8854 2.00969 19.3429 2.60031 18.6981L8.5 12.2577L14.3997 18.6981C14.9903 19.3429 16 18.8864 16 17.9746V3.04685C16 2.504 15.8025 1.98337 15.4508 1.59951C15.0992 1.21565 14.6223 1 14.125 1H2.875C2.37772 1 1.90081 1.21565 1.54917 1.59951C1.19754 1.98337 1 2.504 1 3.04685Z" class="stroke-red-700 dark:stroke-bright-200" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -98,6 +101,7 @@
             setTimeout(function () {
                 updateBasketCount()
                 updateBasketButtons()
+                updateWishlistCount()
             }, 1)
         })
     </script>

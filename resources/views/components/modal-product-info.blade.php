@@ -47,13 +47,13 @@
     <div
         class="relative flex flex-col bg-bright-200 dark:bg-red-500 h-[80vh] rounded-lg shadow-xl transform transition-all sm:w-full max-w-2xl sm:mx-auto z-50 p-6">
         <!-- Header -->
-        <div class="flex justify-between items-center mb-4">
-            <h1>Product Information</h1>
-            <button @click="close()">✕</button>
+        <div class="flex justify-between items-center mb-5">
+            <h1 class="text-5xl">Product Information</h1>
+            <button class="text-3xl" @click="close()">✕</button>
         </div>
 
         <!-- Tabs -->
-        <div class="flex flex-wrap w-full mb-4 md:flex-wrap">
+        <div class="flex flex-wrap w-full mb-9 md:flex-wrap">
             @foreach ($tabs as $tab)
                 <button
                     @click="activeTab = '{{ $tab }}'"

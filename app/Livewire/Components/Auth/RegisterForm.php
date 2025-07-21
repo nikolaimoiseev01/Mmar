@@ -19,7 +19,7 @@ class RegisterForm extends Component
 
     public string $first_name = '';
     public string $last_name = '';
-    public int $age = 0;
+    public int $age;
     public string $telephone = '';
     public string $email = '';
     public string $password = '';

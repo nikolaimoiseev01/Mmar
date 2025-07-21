@@ -14,7 +14,6 @@
                     <h2 id="{{Str::slug($topic['title'])}}" class="text-2xl font-bold scroll-mt-12 mb-6">{{$topic['title']}}</h2>
                     {!! $topic['text'] !!}
                 </div>
-
             @endforeach
         </article>
     </main>
