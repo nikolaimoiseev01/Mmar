@@ -93,7 +93,6 @@ document.addEventListener('afterBasketUpdate', function () {
 });
 
 
-
 document.addEventListener('DOMContentLoaded', function () {
     window.updateWishlistCount = function () {
         let data = getCookie('wishlist-products');
@@ -159,6 +158,12 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 })
+Livewire.hook('morph.updated', ({el, component}) => {
+    updateBasketCount()
+    updateBasketButtons()
+    updateWishlistCount()
+    smoothContent()
+});
 
 window.addEventListener('livewire:navigated', function () {
     updateBasketCount()
