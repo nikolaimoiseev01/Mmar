@@ -10,6 +10,7 @@
                 @forelse($product['label'] as $label)
                     <span
                         class="py-1 px-4 bg-blue-300 dark:bg-red-700 dark:text-bright-200 w-fit rounded-2xl flex justify-center z-30 items-center sm:text-xs">{{$label}}</span>
+                @empty
                 @endforelse
             </div>
             <div
