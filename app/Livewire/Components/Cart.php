@@ -33,7 +33,9 @@ class Cart extends Component
             ->with('media')
             ->get()
             ->map(function ($product) use ($cookie) {
-                $product->count = $cookie[$product->id]->count ?? 1;
+                $cookie_product = collect($cookie)->firstWhere('id', $product->id);
+                $product->count =$cookie_product->count ?? 1;
+                $product->count_price =$cookie_product->count * $product->price;
                 return $product;
             });
     }

@@ -34,7 +34,7 @@
 
     <!-- Switch -->
     <button @click="toggleTheme()"
-            class="relative inline-flex h-6 w-12 items-center rounded-full transition-colors duration-300"
+            class="relative inline-flex h-6 w-12 sm:w-16 sm:h-7 items-center rounded-full transition-colors duration-300"
             :class="darkMode ? 'bg-gray-400' : 'bg-gray-300'">
         <span class="sr-only">Toggle theme</span>
         <span class="inline-block h-4 w-4 transform rounded-full bg-gray-900 transition-transform duration-300"

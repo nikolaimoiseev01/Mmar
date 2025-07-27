@@ -42,7 +42,6 @@ class ProductPage extends Component
 
     public function makeToCookie(Request $request)
     {
-        $cookie = collect(json_decode($request->cookie('basket-products')));
         $this->dispatch('addIdToCookie',
             id: $this->product->id, count: $this->count, price: $this->product->price
         );

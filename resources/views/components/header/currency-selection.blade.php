@@ -1,6 +1,6 @@
-<div class="relative inline-block text-left">
+<div {{$attributes->merge(['class' => 'relative inline-block text-left'])}}>
     <!-- Триггер -->
-    <button @click="open = !open" class="flex items-center gap-1 px-4 py-2 ">
+    <button @click="open = !open" class="flex items-center gap-1 px-4 py-2 sm:p-0 ">
         <span x-text="currency" class="font-medium"></span>
         <svg class="w-4 h-4 transform transition-transform duration-200"
              :class="{ 'rotate-180': open }"

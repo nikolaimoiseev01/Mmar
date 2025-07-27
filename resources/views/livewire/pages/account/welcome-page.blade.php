@@ -2,17 +2,17 @@
     @section('title')
         Account
     @endsection
-        <div class="container mx-auto flex max-w-7xl px-6 py-10 gap-8"
+        <div class="container mx-auto flex md:flex-col max-w-7xl px-6 sm:px-0 py-10 gap-8"
              x-data="tocHandler">
 
             <!-- Table of Contents -->
-            <aside class="w-1/3 lg:hidden">
+            <aside class="w-1/3 md:w-full">
                 <div class="sticky top-20 p-4">
-                    <nav class="flex flex-col gap-2 mb-10">
+                    <nav class="flex flex-col md:flex-row flex-wrap gap-2">
                         @foreach($contents as $content)
                             <a href="#{{$content['id']}}"
                                :class="active === '{{$content['id']}}' ? 'bg-red-300 text-bright-200' : 'text-red-300'"
-                               class="w-fit rounded-3xl py-2 px-4 border border-red-300 transition hover:bg-red-300 hover:text-bright-200">
+                               class="w-fit min-w-max rounded-3xl py-2 px-4 border border-red-300 transition hover:bg-red-300 hover:text-bright-200">
                                 {{$content['title']}}
                             </a>
                         @endforeach
@@ -21,7 +21,7 @@
             </aside>
 
             <!-- Main Article -->
-            <div class="content mt-10 flex flex-col gap-16">
+            <div class="content mt-10 md:mt-0 flex flex-col gap-16">
                 <div class="flex justify-between">
                     <h1 class="text-5xl">Welcome back, {{Auth::user()->first_name}}!</h1>
                     <x-ui.link-arrow
@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="flex flex-col justify-between">
                                         <p class="text-sm">Via del Conservatorio, 63, 00186 Roma RM, Italy</p>
-                                        <p class="text-sm font-medium mt-1">Total: €249,00</p>
+                                        <p class="text-sm font-medium sm:text-base mt-1">Total: €249,00</p>
                                     </div>
                                 </div>
                             </div>

@@ -10,7 +10,7 @@
     <main class="w-2/3 space-y-12 lg:w-full">
         <article class="space-y-12 pr-6">
             @foreach($post['content'] as $topic)
-                <div>
+                <div class="smooth-content ">
                     <h2 id="{{Str::slug($topic['title'])}}" class="text-2xl font-bold scroll-mt-12 mb-6">{{$topic['title']}}</h2>
                     {!! $topic['text'] !!}
                 </div>

@@ -2,17 +2,17 @@
     @section('title')
         Account
     @endsection
-    <div class="container mx-auto flex max-w-7xl px-6 py-10 gap-8"
+    <div class="container mx-auto flex md:flex-col max-w-7xl px-6 sm:px-0 py-10 gap-8"
          x-data="tocHandler">
 
         <!-- Table of Contents -->
-        <aside class="w-1/3 lg:hidden">
+        <aside class="w-1/3 md:w-full">
             <div class="sticky top-20 p-4">
-                <nav class="flex flex-col gap-2 mb-10">
+                <nav class="flex flex-col md:flex-row flex-wrap gap-2">
                     @foreach($contents as $content)
-                        <a href="#{{$content['id']}}"
+                        <a  href="{{route('account.welcome')}}#{{$content['id']}}"
                            :class="active === '{{$content['id']}}' ? 'bg-red-300 text-bright-200' : 'text-red-300'"
-                           class="w-fit rounded-3xl py-2 px-4 border border-red-300 transition hover:bg-red-300 hover:text-bright-200">
+                           class="w-fit min-w-max rounded-3xl py-2 px-4 border border-red-300 transition hover:bg-red-300 hover:text-bright-200">
                             {{$content['title']}}
                         </a>
                     @endforeach
@@ -21,17 +21,17 @@
         </aside>
 
         <!-- Main Article -->
-        <div class="content mt-4 flex flex-col gap-16">
+        <div class="content mt-4 sm:mt-0 flex flex-col gap-16">
             <!-- Shipping Addresses -->
-            <section id="shipping_addresses" class="space-y-14">
-                <div class="flex justify-between items-center mb-10">
+            <section id="shipping_addresses" class="space-y-14 sm:space-y-4">
+                <div class="flex justify-between items-center mb-10 sm:mb-0">
                     <a href="{{route('account.welcome')}}" wire:navigate class="text-sm font-bold  hover:text-black">&lt;
                         Back</a>
                 </div>
 
-                <div class="flex justify-between items-end">
-                    <div class="flex gap-8 items-center">
-                        <h1 class="text-5xl mb-1">Order №56 </h1>
+                <div class="flex justify-between items-end gap-4 flex-wrap">
+                    <div class="flex gap-8 items-center flex-wrap sm:gap-4">
+                        <h1 class="text-5xl mb-1 whitespace-nowrap">Order №56 </h1>
                         <span class="bg-red-300 rounded-full w-2 h-2 block "></span>
                         <h1 class="text-5xl text-red-300">Processing</h1>
                     </div>
@@ -41,7 +41,7 @@
                 <!-- Items Purchased -->
                 <div class="mt-8">
                     <h3 class="text-sm uppercase tracking-wide text-red-300 mb-4">Items Purchased</h3>
-                    <div class="grid grid-cols-2 gap-6">
+                    <div class="grid grid-cols-2 sm:grid-cols-1 gap-6">
 
                         <!-- Item 1 -->
                         <div class="flex items-start gap-4  p-4 rounded-lg">

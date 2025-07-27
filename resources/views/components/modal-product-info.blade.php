@@ -49,7 +49,7 @@
         <!-- Header -->
         <div class="flex justify-between items-center mb-5">
             <h1 class="text-5xl">Product Information</h1>
-            <button class="text-3xl" @click="close()">✕</button>
+            <button class="text-3xl sm:text-4xl" @click="close()">✕</button>
         </div>
 
         <!-- Tabs -->

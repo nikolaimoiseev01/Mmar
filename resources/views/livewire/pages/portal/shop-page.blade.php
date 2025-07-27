@@ -6,8 +6,8 @@
 
     <x-shop-filters :hasAnyFilter="$hasAnyFilter" />
 
-    <div class="flex justify-between content mb-7">
-        <a class="flex gap-2 items-center" @click="shopFilters = true">
+    <div class="smooth-content  flex justify-between content mb-7 sm:flex-col gap-4">
+        <a class="flex gap-2 items-center sm:order-2" @click="shopFilters = true">
             <svg width="24" height="15" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect y="2" width="13" height="1" class='fill-red-700 dark:fill-bright-200'/>
                 <rect x="20" y="2" width="4" height="1" class='fill-red-700 dark:fill-bright-200'/>
@@ -26,8 +26,8 @@
             @endif
         </a>
 
-        @if($filtersArray)
-            <div class="flex gap-4 flex-wrap">
+        @if($filtersArray && $hasAnyFilter)
+            <div class="flex gap-4 flex-wrap sm:order-1">
                 @foreach($filtersArray as $key => $filter)
                     @foreach($filter as $value)
                         <div class="inline-block border border-red-700 dark:border-bright-200 px-3 py-1 flex gap-2">
@@ -42,7 +42,7 @@
             </div>
         @endif
 
-        <x-ui.dropdown align="right" width="48">
+        <x-ui.dropdown class="sm:order-3" align="right" width="48">
             <x-slot name="trigger">
                 <a class="flex gap-2">
                     <p class="whitespace-nowrap">Sort By</p>
@@ -75,7 +75,7 @@
         </x-ui.dropdown>
     </div>
 
-    <div class="grid grid-cols-3 md:grid-cols-3 sm:!grid-cols-2 gap-4 content">
+    <div class="smooth-content grid grid-cols-3 md:grid-cols-3 sm:!grid-cols-2 gap-4 content">
         @foreach($products as $product)
             <x-product-card :product="$product" shopMode="true"/>
         @endforeach

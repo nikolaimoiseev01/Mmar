@@ -1,4 +1,9 @@
-<footer class="mb-12 py-8 flex flex-col border-t border-red-50">
+<footer
+    x-data="{ isHome: window.location.pathname === '/'}"
+    :class="isHome ?
+        '!border-none'
+        :''"
+    class="mb-12 pt-8 pb-2 flex flex-col border-t border-red-50 mt-32">
     <div class="content flex gap-16 md:gap-8 justify-between mb-12">
         <div class="flex flex-col gap-4 md:hidden">
             <p class="font-bold">Shop</p>
@@ -47,7 +52,7 @@
             </svg>
         </div>
 
-        <div class="flex gap-4 text-sm text-red-300 content md:flex-wrap">
+        <div class="flex gap-4 text-sm text-red-300 content md:flex-wrap sm:justify-center">
             <span>Copyright © 2024 MMAR</span>
             <div class="bg-red-100 w-px"></div>
             <a href="" class="text-sm">Returns Policy</a>

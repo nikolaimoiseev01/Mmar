@@ -3,7 +3,7 @@
         Main
     @endsection
     <section class="smooth-content w-full h-screen relative flex items-center justify-center mb-20">
-        <img src="/fixed/welcome-bg.png" class="absolute w-full h-full object-cover" alt="">
+        <img src="/fixed/welcome-bg.jpg" class="absolute w-full h-full object-cover" alt="">
         <div class="flex flex-col items-center relative gap-2">
             <x-logo class="w-40 md:w-32"/>
             <svg width="234" height="53" viewsmooth-content="0 0 234 53" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,7 +122,7 @@
         </div>
     </section>
 
-    <section class="smooth-content relative flex flex-col items-center justify-center py-40">
+    <section class="smooth-content relative flex flex-col items-center justify-center py-40 -mb-32">
         <img src="/fixed/subscribe-bg.png" class="w-full h-full absolute object-cover" alt="">
         <div class="content flex flex-col items-center">
             <h2 class="text-white relative text-center mb-9">

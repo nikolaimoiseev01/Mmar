@@ -141,19 +141,31 @@ lenis.on('scroll', ScrollTrigger.update)
 ScrollTrigger.refresh()
 
 // Анимации появления блоков
-gsap.utils.toArray('.smooth-content').forEach((el) => {
-    gsap.to(el, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: el,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-        },
-    })
+
+document.addEventListener('DOMContentLoaded', function () {
+    window.smoothContent = function () {
+        gsap.utils.toArray('.smooth-content').forEach((el) => {
+            gsap.to(el, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse',
+                },
+            })
+        })
+    }
 })
+
+window.addEventListener('livewire:navigated', function () {
+    updateBasketCount()
+    updateBasketButtons()
+    updateWishlistCount()
+    smoothContent()
+});
 
 ;
 if (window.APP_ENV === 'production') {

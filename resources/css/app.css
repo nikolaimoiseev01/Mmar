@@ -10,7 +10,7 @@
 }
 
 html {
-    @apply text-[1vw] 2xl:text-[16px] md:!text-[14px]
+    @apply text-[1vw] 2xl:text-[16px] md:!text-[15px]
 }
 body {
     @apply bg-bright-200 dark:bg-red-700 text-red-700 dark:text-bright-200;
@@ -28,11 +28,15 @@ a {
 }
 
 h1 {
-    @apply font-[Forum] font-normal text-6xl;
+    @apply font-[Forum] font-normal text-6xl sm:text-5xl;
 }
 
 h2 {
-    @apply font-[Forum] font-normal text-5xl;
+    @apply font-[Forum] font-normal text-5xl sm:text-4xl;
+}
+
+p {
+    @apply sm:text-lg;
 }
 
 .content {

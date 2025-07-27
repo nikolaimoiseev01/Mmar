@@ -17,17 +17,25 @@
         {{$post['title']}}
     @endsection
     <section class="w-full flex flex-col mb-24">
-        <div class="w-full bg-green-300 dark:bg-red-500 pt-12">
+        <div class="smooth-content w-full bg-green-300 dark:bg-red-500 pt-12">
             <div class="w-full post-content flex flex-col items-center mx-auto ">
-                <span class="rounded-3xl bg-red-100 dark:bg-red-700 dark:text-bright-200 px-3 py-2 text-bright-200 w-fit mb-10">
+                <div class="grid grid-cols-3  mb-10 w-full">
+                    <a wire:navigate href="{{route('portal.insights')}}" class="flex items-center gap-px font-bold">
+                        <x-heroicon-c-chevron-left class="w-5"/>
+                        <span> Back</span></a>
+                    <span
+                        class="rounded-3xl mx-auto bg-red-300 dark:bg-red-700 dark:text-bright-200 px-3 py-2 text-bright-200 w-fit">
                     {{$post->postTopic['name']}}
                 </span>
-                <h1 class="mb-6 max-w-4xl text-center">{{$post['title']}}</h1>
+                    <div></div>
+                </div>
+
+                <h1 class="mb-6 text-5xl max-w-4xl text-center">{{$post['title']}}</h1>
                 <p class="max-w-4xl text-center">{{$post['description']}}</p>
             </div>
         </div>
 
-        <div class="pt-6 relative w-full mx-auto min-w-full">
+        <div class="smooth-content pt-6 relative w-full mx-auto min-w-full">
             <div class="absolute w-full top-0 left-0 h-1/2 bg-green-300 dark:bg-red-500"></div>
             <div class="post-content  post-content relative mx-auto">
                 <img src="{{$post->getFirstMediaUrl('cover')}}" class="w-full max-h-[642px] object-cover" alt="">
@@ -38,7 +46,7 @@
     </section>
     <x-post-content :post="$post"/>
 
-    <div class="bg-green-300 dark:bg-red-500 py-20">
+    <div class="smooth-content bg-green-300 dark:bg-red-500 py-20 mt-44">
         <div class="content flex gap-16 md:flex-col">
             <div class="flex flex-col gap-4">
                 <h2 class="text-nowrap md:text-center">You May Also Like</h2>

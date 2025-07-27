@@ -11,14 +11,14 @@
                         <p class="text-base">SIZE: 38</p>
                         <p class="text-base mt-auto">Amount: {{$product['count']}}</p>
                     </div>
-                    <p class="ml-auto mt-auto" x-text="formatPrice({{$product['price']}})"></p>
+                    <p class="ml-auto mt-auto" x-text="formatPrice({{$product['count_price']}})"></p>
                 </div>
             @endforeach
         </div>
         <div class="mt-auto flex flex-col gap-4">
             <div class="flex justify-between">
                 <p>SUBTOTAL:</p>
-                <p x-text="formatPrice({{$products->sum('price')}})"></p>
+                <p x-text="formatPrice({{$products->sum('count_price')}})"></p>
             </div>
             @Auth
                 <x-ui.link href="{{route('portal.cart')}}" wire:navigate>CHECKOUT</x-ui.link>

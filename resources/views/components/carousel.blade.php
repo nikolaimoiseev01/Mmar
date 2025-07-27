@@ -1,65 +1,163 @@
-<!-- Подключи Alpine.js, если ещё не -->
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+@props([
+    'cards' => [
+        [
+            'img' => '/fixed/innovation.jpg',
+            'title' => 'Innovation',
+            'description' => "Embracing new technologies not only for their cool factor but also for their potential to drive progress and reduce the fashion industry's impact."
+        ],
+        [
+            'img' => '/fixed/fassion.jpg',
+            'title' => 'Fashion as Art',
+            'description' => "Celebrating the creative process in every garment, honouring the designers' vision, and emphasising the importance of details that elevate ideas into wearable works of art."
+        ],
+        [
+            'img' => '/fixed/care.jpg',
+            'title' => 'Care',
+            'description' => "Valuing the people who create our clothes, the lands where raw materials are sourced, the stories behind each garment, and how these pieces become part of our personal histories."
+        ],
+        [
+            'img' => '/fixed/innovation.jpg',
+            'title' => 'Innovation',
+            'description' => "Embracing new technologies not only for their cool factor but also for their potential to drive progress and reduce the fashion industry's impact."
+        ],
+        [
+            'img' => '/fixed/fassion.jpg',
+            'title' => 'Fashion as Art',
+            'description' => "Celebrating the creative process in every garment, honouring the designers' vision, and emphasising the importance of details that elevate ideas into wearable works of art."
+        ],
+    ]
+])
+<style>
+    .carousel {
+        width: 100%;
+        height: clamp(500px, 100vh, 1200px);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        perspective: 2000px;
+    }
 
-<section class="block-carousel py-20 bg-white">
-    <div class="container mx-auto relative w-full max-w-7xl h-[400px] perspective-[1500px] overflow-hidden">
-        <div
-            x-data="carousel3DSmooth()"
-            x-init="startRotation()"
-            class="w-full h-full relative transform-style-preserve-3d will-change-transform"
-            :style="`transform: translateZ(-${radius}px) rotateY(${rotationY}deg)`"
-        >
-            <template x-for="(slide, index) in slides" :key="index">
-                <figure
-                    class="absolute w-64 h-64 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl overflow-hidden shadow-xl flex flex-col items-center justify-center bg-gray-100 text-white"
-                    :style="`transform: rotateY(${index * angle}deg) translateZ(${radius}px);`"
-                >
-                    <!-- VIDEO -->
-                    <template x-if="slide.type === 'video'">
-                        <video :src="slide.src" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
-                    </template>
-
-                    <!-- IMAGE -->
-                    <template x-if="slide.type === 'image'">
-                        <img :src="slide.src" alt="" class="w-full h-full object-cover" />
-                    </template>
-
-                    <!-- TEXT CARD -->
-                    <template x-if="slide.type === 'text'">
-                        <div class="flex flex-col items-center justify-center w-full h-full bg-yellow-400">
-                            <div class="text-4xl font-bold" x-text="slide.title"></div>
-                            <div class="text-xl mt-2" x-text="slide.subtitle"></div>
-                        </div>
-                    </template>
-                </figure>
-            </template>
-        </div>
-    </div>
-</section>
-
-<script>
-    function carousel3DSmooth() {
-        return {
-            slides: [
-                { type: 'video', src: 'https://cdn.sanity.io/files/ds6qxd1h/production/5dfadc398263aaa81d0967c8019ccd28e190fdde.mp4' },
-                { type: 'text', title: '30+', subtitle: 'products' },
-                { type: 'image', src: 'https://cdn.sanity.io/images/ds6qxd1h/production/3e54142be488064e045794f167afbfa831c20264-664x664.jpg?w=664&h=664&auto=format' },
-                { type: 'video', src: 'https://cdn.sanity.io/files/ds6qxd1h/production/7da9878c5cda30efea67438c2db2a81b82fc0920.mp4' },
-                { type: 'text', title: '2014', subtitle: 'established' },
-            ],
-            radius: 822, // как у YOLO
-            rotationY: 0,
-            speed: 0.1, // скорость вращения (чем меньше, тем медленнее)
-            get angle() {
-                return 360 / this.slides.length;
-            },
-            startRotation() {
-                const rotate = () => {
-                    this.rotationY -= this.speed;
-                    requestAnimationFrame(rotate);
-                };
-                rotate();
-            },
+    @media (max-width: 1024px) {
+        .carousel {
+            perspective: 1400px;
         }
     }
+
+    @media (max-width: 768px) {
+        .carousel {
+            perspective: 2500px;
+        }
+    }
+
+    .carousel__track {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+    }
+
+    .carousel__slide {
+        width: clamp(280px, 80%, 600px);
+
+        aspect-ratio: 4 / 5;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-style: preserve-3d;
+        background-size: cover;
+        background-position: center;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        transition: transform 0.6s ease, opacity 0.6s ease;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .carousel__slide h3 {
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .carousel__slide p {
+        font-size: 1rem;
+    }
+</style>
+
+<div class="carousel">
+    <div class="carousel__track" id="carouselTrack">
+        @foreach($cards as $card)
+            <div class="carousel__slide" data-index="{{ $loop->index }}"
+                 style="background-image: url('{{ $card['img'] }}');">
+                <div class="bg-gradient-to-b from-transparent to-[#000000ba] p-4">
+                    <h3>{{ $card['title'] }}</h3>
+                    <p>{{ $card['description'] }}</p>
+                </div>
+
+            </div>
+        @endforeach
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.carousel__slide');
+    const totalSlides = slides.length;
+    let baseAngle = -100;
+    const step = 360 / totalSlides;
+
+
+    function getRadius() {
+        const width = window.innerWidth;
+        if (width < 640) return 280;     // sm
+        if (width < 768) return 350;     // md
+        if (width < 1024) return 450;    // lg
+        return 500;                      // xl and above
+    }
+
+
+    const radius = getRadius();
+
+    function renderSlides() {
+        slides.forEach((slide, i) => {
+            const angle = baseAngle + i * step;
+            const rad = angle * Math.PI / 180;
+            const x = Math.sin(rad) * radius;
+            const z = Math.cos(rad) * radius;
+
+            const mirrored = angle % 360 > 90 && angle % 360 < 270;
+
+            slide.style.transform = `
+    translate(-50%, -50%)
+    translateX(${x}px)
+    translateZ(${z}px)
+    rotateY(${angle}deg)
+    ${mirrored ? 'scaleX(-1)' : ''}
+`;
+
+            // Скрывать, если карточка "далеко за спиной"
+            if (z < -100) {
+                slide.style.opacity = '1';
+                slide.style.pointerEvents = 'none';
+            } else {
+                slide.style.opacity = '0';
+                slide.style.pointerEvents = 'auto';
+            }
+        });
+    }
+
+    function animate() {
+        baseAngle += 0.05;
+        renderSlides();
+        requestAnimationFrame(animate);
+    }
+
+    renderSlides();
+    animate();
 </script>

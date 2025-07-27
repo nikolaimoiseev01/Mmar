@@ -56,7 +56,7 @@ class Footer extends Component
                 ],
                 [
                     'name' => 'Our Story',
-                    'url' => '/',
+                    'url' => route('portal.about'),
                 ],
                 [
                     'name' => 'Journal',

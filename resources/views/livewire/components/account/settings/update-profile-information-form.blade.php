@@ -6,7 +6,7 @@
             PERSONAL INFORMATION
         </h3>
 
-        <div class="flex items-center space-x-4 text-sm font-bold">
+        <div class="flex items-center space-x-4 font-bold">
             <button type="button"
                     class="flex items-center space-x-1"
                     @click="editing = !editing">
@@ -46,9 +46,9 @@
         wire:submit.prevent="updateProfileInformation"
         x-show="editing"
         x-cloak
-        class="grid grid-cols-2 gap-6">
+        class="grid grid-cols-2 md:grid-cols-1 gap-6">
 
-        <div>
+        <div class="md:col-span-2">
             <x-ui.input-label for="first_name" value="First name" />
             <x-ui.input-text wire:model.defer="first_name"
                              id="first_name" name="first_name" type="text"
@@ -56,7 +56,7 @@
             <x-ui.input-error class="mt-2" :messages="$errors->get('first_name')" />
         </div>
 
-        <div>
+        <div class="md:col-span-2">
             <x-ui.input-label for="last_name" value="Last name" />
             <x-ui.input-text wire:model.defer="last_name"
                              id="last_name" name="last_name" type="text"
@@ -64,7 +64,7 @@
             <x-ui.input-error class="mt-2" :messages="$errors->get('last_name')" />
         </div>
 
-        <div>
+        <div class="md:col-span-2">
             <x-ui.input-label for="age" value="Age" />
             <x-ui.input-text wire:model.defer="age"
                              id="age" name="age" type="number"
@@ -72,7 +72,7 @@
             <x-ui.input-error class="mt-2" :messages="$errors->get('age')" />
         </div>
 
-        <div>
+        <div class="md:col-span-2">
             <x-ui.input-label for="telephone" value="telephone number" />
             <x-ui.input-text wire:model.defer="telephone"
                              id="telephone" name="telephone" type="text"
@@ -89,7 +89,7 @@
         </div>
 
         <div class="col-span-2">
-            <x-ui.button class="!w-fit">{{ __('Save') }}</x-ui.button>
+            <x-ui.button class="!w-fit sm:!w-full">{{ __('Save') }}</x-ui.button>
         </div>
     </form>
 

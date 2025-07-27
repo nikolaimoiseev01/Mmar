@@ -2,7 +2,7 @@
     'hasAnyFilter' => ''
 ])
 <x-sidebar name="shopFilters">
-    <div class="flex justify-between mt-20 mb-10 items-end">
+    <div class="flex justify-between mt-20 sm:mt-4 mb-10 items-end">
         <h2 class="text-5xl">Filter</h2>
         @if($hasAnyFilter)
             <a wire:click="clearAllFilters()">Clear All</a>

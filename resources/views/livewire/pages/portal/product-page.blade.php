@@ -5,23 +5,23 @@
     <x-modal-product-info name="product-info" :tabs="['details', 'materials', 'aftercare', 'manufacturing']">
     </x-modal-product-info>
     <section class="flex mb-52 md:flex-col">
-        <div class="bg-bright-300 w-1/2 md:w-full aspect-square relative" x-data="{ open: false }">
-            <div class="absolute transition top-3 left-3 flex gap-4 z-50">
+        <div class="smooth-content bg-bright-300 w-1/2 md:w-full aspect-square relative" x-data="{ open: false }">
+            <div class="absolute transition top-3 left-3 flex gap-4 z-50 sm:hidden">
                 <div
                     id="wishlist-button-{{$product['id']}}"
                     wire:ignore
                     wire:click="makeToWishlist({{$product['id']}})"
-                    class="bg-red-300 aspect-square  cursor-pointer w-12 h-12 p-2 rounded-full flex justify-center items-center group/svg">
+                    class="bg-red-100 aspect-square  cursor-pointer w-12 h-12 p-2 rounded-full flex justify-center items-center group/svg">
                     <svg class="w-full" width="17" height="20" viewBox="0 0 17 20" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1 3.04685V17.9746C1 18.8854 2.00969 19.3429 2.60031 18.6981L8.5 12.2577L14.3997 18.6981C14.9903 19.3429 16 18.8864 16 17.9746V3.04685C16 2.504 15.8025 1.98337 15.4508 1.59951C15.0992 1.21565 14.6223 1 14.125 1H2.875C2.37772 1 1.90081 1.21565 1.54917 1.59951C1.19754 1.98337 1 2.504 1 3.04685Z"
-                            class="stroke-red-700 dark:stroke-bright-200 group-hover/svg:fill-red-700 transition"
+                            class="stroke-bright-200 dark:stroke-bright-200 group-hover/svg:fill-red-700 transition"
                             stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
                 <div x-on:click="open = ! open"
-                     class="bg-red-300  p-2 w-12 h-12 cursor-pointer rounded-full flex justify-center items-center aspect-square group">
+                     class="bg-red-100   p-2 w-12 h-12 cursor-pointer rounded-full flex justify-center items-center aspect-square group">
                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M13.7795 9.05271L21.0526 1.77962M21.0526 1.77962L21.4162 8.68906M21.0526 1.77962L14.1431 1.41596"
@@ -34,7 +34,7 @@
             </div>
             <x-product-examples-slider :examples="$product->getMedia('examples')"/>
         </div>
-        <div class="flex flex-col pt-20 pl-10 md:pl-6 pr-6 w-1/2 md:w-full">
+        <div class="smooth-content flex flex-col pt-20 pl-10 md:pl-6 pr-6 w-1/2 md:w-full">
             <div class="w-full flex justify-between items-end">
                 <h1>{{$product['name']}}</h1>
                 <h1 class="text-2xl" x-text="formatPrice({{$product['price']}})"></h1>
@@ -94,7 +94,7 @@
             </div>
 
 
-            <div class="flex flex-wrap gap-8">
+            <div class="flex flex-wrap gap-8 sm:grid sm:grid-cols-2">
                 <div
                     @click="window.dispatchEvent(new CustomEvent('open-modal', { detail: { name: 'product-info', tab: 'details' } }))"
                     class="flex gap-2 flex-1 cursor-pointer">
@@ -114,7 +114,7 @@
                 <div
                     @click="window.dispatchEvent(new CustomEvent('open-modal', { detail: { name: 'product-info', tab: 'aftercare' } }))"
                     class="flex gap-2 flex-1 cursor-pointer">
-                    {{--                    <x-iconoir-wash class="w-5" />--}}
+                                        <x-iconoir-wash class="w-5" />
                     <p>AFTERCARE</p>
                 </div>
                 <div
@@ -149,7 +149,7 @@
 
         </div>
     </section>
-    <section class="content mb-36">
+    <section class="smooth-content content mb-36">
         <h2 class="mb-8">Complete the Look</h2>
         <x-three-cards id="shop" :products="$products"/>
     </section>

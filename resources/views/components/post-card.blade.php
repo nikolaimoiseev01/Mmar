@@ -7,7 +7,7 @@
         <img src="{{$post->getFirstMediaUrl('cover')}}" alt="Blog Post" class="w-full h-auto rounded-t"/>
 
         <!-- Tag -->
-        <span class="absolute top-4 left-4 bg-gray-300 text-gray-800 text-xs px-3 py-1 rounded-full">
+        <span class="absolute top-4 left-4 bg-red-300 text-bright-200 text-base px-4 py-1 rounded-3xl">
           {{$post->postTopic['name']}}
         </span>
 

@@ -1,8 +1,11 @@
-<x-sidebar name="mobileMenu">
+<x-sidebar mobile_menu="true" name="mobileMenu">
     <div class="flex flex-col">
-        <div class="flex gap-4 justify-between">
+        <div class="flex gap-4 justify-between sm:mb-6">
             <x-header.currency-selection/>
             <x-header.mode-toggle/>
+        </div>
+        <div>
+            <input type="text" class="outline-none border-0 pl-0 mb-4 !border-b border-red-100 w-full bg-transparent" placeholder="Search">
         </div>
         <div class="flex flex-col">
             <div x-data="{ open: false }" class="py-4 border-b border-red-100 py-10">
@@ -59,9 +62,9 @@
                     x-collapse
                     class="mt-2 flex flex-col gap-4 text-gray-600"
                 >
-                    <a href="">Sustainability</a>
-                    <a href="">Our Story</a>
-                    <a href="">Journal</a>
+                    <a href="{{route('portal.sustainability')}}">Sustainability</a>
+                    <a href="{{route('portal.about')}}">Our Story</a>
+                    <a href="{{route('portal.sustainability')}}">Journal</a>
                 </div>
             </div>
             <a href="" class="mt-4 text-lg font-medium">Wishlist</a>
