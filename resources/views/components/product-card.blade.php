@@ -7,10 +7,10 @@
     <div class="aspect-square relative flex-1 mb-2 image-item group">
         @if($shopMode)
             <div class="flex flex-col gap-2 absolute  top-3 left-3 sm:gap-1">
-                @foreach($product['label'] as $label)
+                @forelse($product['label'] as $label)
                     <span
                         class="py-1 px-4 bg-blue-300 dark:bg-red-700 dark:text-bright-200 w-fit rounded-2xl flex justify-center z-30 items-center sm:text-xs">{{$label}}</span>
-                @endforeach
+                @endforelse
             </div>
             <div
                 class="absolute opacity-0 group-hover:opacity-100 transition bottom-3 right-3 sm:hidden flex gap-4 z-30">
