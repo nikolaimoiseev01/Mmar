@@ -11,10 +11,10 @@
         Growing up, we were inspired by our parents’ fashion choices, which beautifully showcased their cultural
         heritage and individuality. Through them, we learned that fashion isn’t just about appearance; it’s about
         expressing oneself with confidence and pride.</p>
-    <div class="smooth-content flex flex-col gap-4 max-w-md min-w-[448px] mb-24 mx-auto">
-        <img src="/fixed/about-1.png" class="mx-auto w-full" alt="">
+    <div class="smooth-content flex flex-col gap-4 max-w-md min-w-[448px] sm:min-w-full mb-24 mx-auto">
+        <img src="/fixed/about-1.png" class="mx-auto w-full max-w-full" alt="">
         <p class="font-bold">"Land Day", a Poster by the GUPW, 1977 </p>
-        <p>Issued by the General Union of Palestinian Women on Land Day in 1977, this poster shows a cubist painting by
+        <p class="max-w-full">Issued by the General Union of Palestinian Women on Land Day in 1977, this poster shows a cubist painting by
             Palestinian artist Mona al-Saudi.</p>
     </div>
 
