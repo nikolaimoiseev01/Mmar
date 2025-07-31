@@ -41,23 +41,24 @@
                 </div>
             </div>
             <style>
-                .product-examples-slider-opened {
-                    aspect-ratio: 1/1;
-                    height:100vh;
-                    width: calc(100vh * 1/1);
-                    &::before {
-                        float: left;
-                        padding-top: 100%;
-                        content: "";
-                    }
+                @media only screen and (min-width: 768px) {
+                    .product-examples-slider-opened {
+                        aspect-ratio: 1/1;
+                        height:100vh;
+                        width: calc(100vh * 1/1);
+                        &::before {
+                            float: left;
+                            padding-top: 100%;
+                            content: "";
+                        }
 
-                    &::after {
-                        display: block;
-                        content: "";
-                        clear: both;
+                        &::after {
+                            display: block;
+                            content: "";
+                            clear: both;
+                        }
                     }
                 }
-
             </style>
             <div :class="open ? 'product-examples-slider-opened h-screen max-w-max mx-auto sm:h-auto' : ''">
                 <x-product-examples-slider :examples="$product->getMedia('examples')"/>
