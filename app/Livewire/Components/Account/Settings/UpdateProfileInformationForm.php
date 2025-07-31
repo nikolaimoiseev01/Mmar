@@ -21,6 +21,7 @@ class UpdateProfileInformationForm extends Component
     public int $age;
     public string $telephone = '';
     public string $email = '';
+    public string $current_password = '', $new_password = '', $new_password_confirmation = '';
 
     /**
      * Mount the component.
@@ -55,6 +56,21 @@ class UpdateProfileInformationForm extends Component
         $user->save();
 
         $this->dispatch('profile-updated', name: $user->name);
+    }
+
+    public function changePassword()
+    {
+        $this->validate([
+            'current_password' => ['required', 'current_password'],
+            'new_password' => ['required', 'min:8', 'confirmed'],
+        ]);
+
+        auth()->user()->update([
+            'password' => bcrypt($this->new_password),
+        ]);
+
+        $this->reset(['current_password', 'new_password', 'new_password_confirmation']);
+        session()->flash('message', 'Password changed successfully.');
     }
 
     /**

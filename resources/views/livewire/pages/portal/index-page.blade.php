@@ -24,7 +24,7 @@
     </section>
 
     <section class="smooth-content mb-20">
-        <div class="mb-4 flex justify-between content gap-4 md:flex-col">
+        <div class="mb-4 flex justify-between content gap-4">
             <h2>Just In</h2>
             <x-ui.link-arrow
                 href="{{route('portal.shop')}}"
@@ -36,8 +36,8 @@
         <x-three-cards id="index1" :products="$products"/>
     </section>
 
-    <section class="smooth-content flex md:flex-col mb-20 pl-6 md:pl-0 h-screen" id="welcomeSection">
-        <div class="w-1/2 md:w-full md:px-6 flex flex-col pt-32 gap-12">
+    <section class="smooth-content flex md:flex-col mb-20 pl-6 md:pl-0 h-screen min-h-screen sm:h-auto" id="welcomeSection">
+        <div class="w-1/2 md:w-full md:px-6 flex flex-col pt-32 sm:pt-4 gap-12">
             <p class="font-[Forum] text-2xl leading-relaxed">
                 Welcome to MMAR,<br>
                 the ultimate destination where next-gen fashion is curated, connecting you with innovative, sustainable,
@@ -58,7 +58,7 @@
         <img class="w-1/2 md:w-full max-h-[800px] object-right object-contain" src="/fixed/welcome2.png" alt="">
     </section>
 
-    <section class="pb-20 bg-bright-200 dark:bg-red-700 relative pt-16" id="whatMattersBlock">
+    <section class="smooth-content pb-20 bg-bright-200 dark:bg-red-700 relative pt-16 sm:py-4 sm:mb-20" id="whatMattersBlock">
         <div class="mb-4 content flex justify-between  gap-4 md:flex-col">
             <h2>Find What Matters to You</h2>
             <x-ui.link-arrow
@@ -66,6 +66,7 @@
                 text="View All"
                 textSize="text-base"
                 iconSize="h-4 w-4"
+                class="sm:hidden"
             />
         </div>
         <x-three-vertical-cards id="whatMattersSlider"/>
@@ -73,17 +74,28 @@
 
     @push('page-js')
         <script type="module">
-            document.addEventListener('DOMContentLoaded', () => {
-                ScrollTrigger.create({
-                    trigger: "#welcomeSection",
-                    start: "top top",
-                    endTrigger: "#whatMattersBlock",
-                    end: "top top", // «конец» триггера совпадёт с top другого элемента
-                    pinSpacing: false,
-                    pin: true,
-                    scrub: true
-                });
-            })
+            window.addEventListener('load', () => {
+                if (window.innerWidth > 768) {
+                    $('#whatMattersBlock').removeClass('smooth-content');
+                    ScrollTrigger.create({
+                        trigger: "#welcomeSection",
+                        start: "top top",
+                        endTrigger: "#whatMattersBlock",
+                        end: "top top",
+                        pinSpacing: false,
+                        pin: true,
+                        scrub: true
+                    });
+
+                    // Нужно на мобилках
+                    setTimeout(() => {
+                        ScrollTrigger.refresh();
+                    }, 100);
+
+                } else {
+
+                }
+            });
         </script>
     @endpush
 
@@ -99,7 +111,7 @@
     <section class="smooth-content content mb-20">
         <h2 class="mb-4">Insights and Inspiration</h2>
         <div class="flex gap-4 bg-green-300 dark:bg-red-500 p-4 md:flex-col">
-            <img src="/fixed/insights.png" class="w-2/3 min-w-2/3 md:order-2 md:w-full" alt="">
+            <img src="{{$post->getFirstMediaUrl('cover')}}" class="w-2/3 min-w-2/3 md:order-2 md:w-full" alt="">
             <div class="flex flex-col gap-6 w-1/3 md:w-full">
                 <span class="rounded-3xl bg-red-300 px-3 py-2 text-bright-200 w-fit">
                     {{$post->postTopic['name']}}

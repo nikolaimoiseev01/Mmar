@@ -55,5 +55,4 @@ class ProductPage extends Component
         );
         $this->sent = true;
     }
-
 }

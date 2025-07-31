@@ -39,6 +39,15 @@ export default {
                     300: '#C2E0FE'
                 }
             },
+            animation: {
+                'logo-pulse': 'logo-pulse 1.6s ease-in-out infinite',
+            },
+            keyframes: {
+                'logo-pulse': {
+                    '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+                    '50%': { transform: 'scale(1.15)', opacity: '0.7' },
+                },
+            },
             screens: {
                 '2xl': {'max': '1535px'}, // => @media (max-width: 1535px) { ... }
                 'xl': {'max': '1279px'}, // => @media (max-width: 1279px) { ... }

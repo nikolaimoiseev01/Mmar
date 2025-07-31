@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>MMar | @yield('title')</title>
+    <title>MMAR | @yield('title')</title>
 
     <link rel="icon" type="image/png" href="/fixed/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/fixed/favicon/favicon.svg" />
@@ -34,10 +34,12 @@
 
 </head>
 <body class="antialiased flex flex-col min-h-screen overflow-x-hidden" x-data="currencySwitcher()">
+<x-preloader />
 {{--<div id="cursor" class="fixed top-0 left-0 w-5 h-5 rounded-full bg-transparent border-2 border-red-700 dark:border-red-300 pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2"></div>--}}
 <x-header.header/>
 {{ $slot }}
 <x-footer/>
 @stack('page-js')
+
 </body>
 </html>

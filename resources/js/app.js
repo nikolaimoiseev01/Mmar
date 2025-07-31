@@ -16,6 +16,11 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import Lenis from '@studio-freight/lenis';
 
 
+document.addEventListener('alpine:init', () => {
+    Alpine.store('sidebarOpened', false)
+})
+
+
 // don't forget to register plugins
 gsap.registerPlugin(ScrollTrigger);
 window.gsap = gsap;
@@ -82,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
             let button = $(`#big-basket-button-${item.id}`);
             button.text('ADDED');
             button.addClass('disabled');
+            $(`#product-basket-button-${item.id}`).addClass('added');
         });
     }
 })
@@ -106,7 +112,24 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 })
+
+document.addEventListener('DOMContentLoaded', function () {
+    window.updateWishlistButtons = function () {
+        let data = getCookie('wishlist-products');
+        data = data ? JSON.parse(data) : [];
+
+        // Сначала очищаем все .wishlist-button от класса 'added'
+        $('.wishlist-button').removeClass('added');
+
+        // Добавляем 'added' только тем, чьи ID есть в куке
+        $.each(data, function (index, item) {
+            $(`#product-wishlist-button-${item.id}`).addClass('added');
+        });
+    }
+});
+
 document.addEventListener('afterWishlistUpdate', function () {
+    updateWishlistButtons()
     updateWishlistCount()
 });
 
@@ -116,6 +139,7 @@ gsap.registerPlugin(ScrollTrigger)
 const lenis = new Lenis({
     smooth: true,
 })
+window.lenis = lenis;
 
 // rAF для Lenis
 function raf(time) {
@@ -161,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
 Livewire.hook('morph.updated', ({el, component}) => {
     updateBasketCount()
     updateBasketButtons()
+    updateWishlistButtons()
     updateWishlistCount()
     smoothContent()
 });
@@ -168,6 +193,7 @@ Livewire.hook('morph.updated', ({el, component}) => {
 window.addEventListener('livewire:navigated', function () {
     updateBasketCount()
     updateBasketButtons()
+    updateWishlistButtons()
     updateWishlistCount()
     smoothContent()
 });

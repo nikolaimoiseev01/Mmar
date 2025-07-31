@@ -24,7 +24,7 @@
                         <x-heroicon-c-chevron-left class="w-5"/>
                         <span> Back</span></a>
                     <span
-                        class="rounded-3xl mx-auto bg-red-300 dark:bg-red-700 dark:text-bright-200 px-3 py-2 text-bright-200 w-fit">
+                        class="rounded-3xl mx-auto bg-red-300 dark:bg-red-700 dark:text-bright-200 px-3 py-2 text-center text-bright-200 w-fit">
                     {{$post->postTopic['name']}}
                 </span>
                     <div></div>

@@ -30,6 +30,13 @@
             document.body.classList.remove('overflow-y-hidden');
         }
     }"
+    x-init="$watch('show', value => {
+        if (value) {
+            if (typeof lenis !== 'undefined') lenis.stop();
+        } else {
+            if (typeof lenis !== 'undefined') lenis.start();
+        }
+    })"
     x-on:open-modal.window="
         if ($event.detail.name === '{{ $name }}') {
             open($event.detail.tab);
@@ -44,7 +51,7 @@
     <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" @click="close()"></div>
 
     <!-- Modal -->
-    <div
+    <div data-lenis-prevent
         class="relative flex flex-col bg-bright-200 dark:bg-red-500 h-[80vh] rounded-lg shadow-xl transform transition-all sm:w-full max-w-2xl sm:mx-auto z-50 p-6">
         <!-- Header -->
         <div class="flex justify-between items-center mb-5">
@@ -68,7 +75,7 @@
         <!-- Tab slots -->
         @foreach($contents as $key=>$content)
             <div class="overflow-auto" x-show="activeTab === '{{$key}}'">
-                {{$content}}
+                {!! $content !!}
             </div>
         @endforeach
     </div>

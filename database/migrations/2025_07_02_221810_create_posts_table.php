@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('post_topic_id');
             $table->json('content');
+            $table->date('custom_created_at');
             $table->timestamps();
         });
     }

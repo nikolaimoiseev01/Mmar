@@ -4,15 +4,18 @@
     @endsection
     <x-modal-product-info name="product-info" :tabs="['details', 'materials', 'aftercare', 'manufacturing']">
     </x-modal-product-info>
-    <section class="flex mb-52 md:flex-col">
-        <div class="smooth-content bg-bright-300 w-1/2 md:w-full aspect-square relative" x-data="{ open: false }">
-            <div class="absolute transition top-3 left-3 flex gap-4 z-50 sm:hidden">
+    <section class="flex mb-52 md:flex-col" x-data="{ open: false }">
+        <div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-[60]" x-show="open"></div>
+        <div class="bg-bright-300 w-1/2 md:w-full aspect-square relative"
+             :class="open ? '!fixed h-[90vh] sm:!h-auto !z-[9999] aspect-square top-1/2 left-1/2 max-w-max !-translate-x-1/2 !-translate-y-1/2' : ''">
+
+            <div class="absolute transition top-3 left-3 flex gap-4 z-50">
                 <div
                     id="wishlist-button-{{$product['id']}}"
                     wire:ignore
                     wire:click="makeToWishlist({{$product['id']}})"
-                    class="bg-red-100 aspect-square  cursor-pointer w-12 h-12 p-2 rounded-full flex justify-center items-center group/svg">
-                    <svg class="w-full" width="17" height="20" viewBox="0 0 17 20" fill="none"
+                    class="basket-wishlist-button bg-red-100 aspect-square  cursor-pointer w-12 h-12 p-2 rounded-full flex justify-center items-center group/svg">
+                    <svg id="product-wishlist-button-{{$product['id']}}" class="w-full" width="17" height="20" viewBox="0 0 17 20" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1 3.04685V17.9746C1 18.8854 2.00969 19.3429 2.60031 18.6981L8.5 12.2577L14.3997 18.6981C14.9903 19.3429 16 18.8864 16 17.9746V3.04685C16 2.504 15.8025 1.98337 15.4508 1.59951C15.0992 1.21565 14.6223 1 14.125 1H2.875C2.37772 1 1.90081 1.21565 1.54917 1.59951C1.19754 1.98337 1 2.504 1 3.04685Z"
@@ -21,18 +24,22 @@
                     </svg>
                 </div>
                 <div x-on:click="open = ! open"
-                     class="bg-red-100   p-2 w-12 h-12 cursor-pointer rounded-full flex justify-center items-center aspect-square group">
-                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M13.7795 9.05271L21.0526 1.77962M21.0526 1.77962L21.4162 8.68906M21.0526 1.77962L14.1431 1.41596"
-                            class='stroke-bright-200 group-hover:stroke-red-700 transition'/>
-                        <path
-                            d="M9.05256 13.7793L1.77947 21.0524M1.77947 21.0524L1.41581 14.143M1.77947 21.0524L8.68891 21.4161"
-                            class='stroke-bright-200 group-hover:stroke-red-700 transition'/>
-                    </svg>
+                     class="basket-wishlist-button bg-red-100   p-2 w-12 h-12 cursor-pointer rounded-full flex justify-center items-center aspect-square group">
+{{--                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                        <path--}}
+{{--                            d="M13.7795 9.05271L21.0526 1.77962M21.0526 1.77962L21.4162 8.68906M21.0526 1.77962L14.1431 1.41596"--}}
+{{--                            class='stroke-bright-200 group-hover:stroke-red-700 transition'/>--}}
+{{--                        <path--}}
+{{--                            d="M9.05256 13.7793L1.77947 21.0524M1.77947 21.0524L1.41581 14.143M1.77947 21.0524L8.68891 21.4161"--}}
+{{--                            class='stroke-bright-200 group-hover:stroke-red-700 transition'/>--}}
+{{--                    </svg>--}}
+                    <x-clarity-resize-line x-show="!open" class="text-bright-200 w-6 group-hover:text-red-700 sm:group-hover:text-bright-200 transition" />
+                    <x-clarity-resize-down-line x-show="open" class="text-bright-200 w-6 group-hover:text-red-700 sm:group-hover:text-bright-200 transition" />
                 </div>
             </div>
-            <x-product-examples-slider :examples="$product->getMedia('examples')"/>
+            <div>
+                <x-product-examples-slider :examples="$product->getMedia('examples')"/>
+            </div>
         </div>
         <div class="smooth-content flex flex-col pt-20 pl-10 md:pl-6 pr-6 w-1/2 md:w-full">
             <div class="w-full flex justify-between items-end">
@@ -49,7 +56,17 @@
                 </div>
             </div>
             <div class="flex flex-col gap-2 mb-10">
-                <p>SIZE</p>
+                <div class="flex justify-between">
+                    <p>SIZE:</p>
+                    <x-ui.link-arrow
+                        href="{{route('portal.size-guide')}}"
+                        text="Size Guide"
+                        textSize="text-base"
+                        class="font-bold"
+                        iconSize="h-4 w-4"
+                    />
+                </div>
+
                 <div class="flex gap-2 text-base">
                     <span
                         class="p-4 rounded bg-red-700 dark:bg-red-300 dark:text-red-700 cursor-pointer text-bright-200 flex items-center justify-center">10</span>
@@ -149,7 +166,7 @@
 
         </div>
     </section>
-    <section class="smooth-content content mb-36">
+    <section class="smooth-content content mb-20">
         <h2 class="mb-8">Complete the Look</h2>
         <x-three-cards id="shop" :products="$products"/>
     </section>

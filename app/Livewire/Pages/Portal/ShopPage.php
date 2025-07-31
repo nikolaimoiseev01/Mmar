@@ -31,7 +31,13 @@ class ShopPage extends Component
 
     public $products;
 
-    public $sortBy = 'products.created_at';
+    public $isWishlist = false;
+    public $wishListProducts;
+
+    public $sortBy = "Relevance";
+    public $sortByColumn = "products.created_at";
+
+    protected $listeners = ['updateShopProducts' => '$refresh'];
 
     public function render()
     {
@@ -45,7 +51,6 @@ class ShopPage extends Component
             'availability' => $this->availability
         ]);
         $this->hasAnyFilter = $this->filtersArray->filter()->isNotEmpty();
-//        dd($this->filtersArray );
 
         $this->products = QueryBuilder::for(Product::class)
             ->join('categories', 'categories.id', '=', 'products.category_id')
@@ -71,11 +76,14 @@ class ShopPage extends Component
             ->when($this->availability, function ($q) {
                 return $q->whereIn('availability', $this->availability);
             })
-            ->when($this->sortBy !== 'price_desc', function ($q) {
-                return $q->orderBy($this->sortBy);
+            ->when($this->sortBy !== 'Price: High to Low', function ($q) {
+                return $q->orderBy($this->sortByColumn);
             })
-            ->when($this->sortBy == 'price_desc', function ($q) {
+            ->when($this->sortBy == 'Price: High to Low', function ($q) {
                 return $q->orderByDesc('price');
+            })
+            ->when($this->isWishlist, function ($query) {
+                return $query->whereIn('products.id', $this->wishListProducts->pluck('id') ?? [99999999999]);
             })
             ->with('brand')
             ->with('media')
@@ -84,6 +92,19 @@ class ShopPage extends Component
             ->get();
 
         return view('livewire.pages.portal.shop-page');
+    }
+
+    public function mount() {
+        if (request()->is('wishlist*')) {
+            // URL начинается с /wishlist
+            $this->isWishlist = true;
+            $cookie = collect(json_decode(request()->cookie('wishlist-products')));
+            $this->wishListProducts = Product::whereIn('id', $cookie->pluck('id'))
+                ->with('media')
+                ->get();
+        } else {
+            $this->isWishlist = false;
+        }
     }
 
     public function clearAllFilters()
@@ -95,6 +116,17 @@ class ShopPage extends Component
     public function setSort($option)
     {
         $this->sortBy = $option;
+        if ($this->sortBy === "Relevance") {
+            $this->sortByColumn = "products.created_at";
+        } elseif ($this->sortBy === "Newest Arrivals") {
+            $this->sortByColumn = "products.created_at";
+        } elseif ($this->sortBy === "Bestsellers") {
+            $this->sortByColumn = "products.created_at";
+        } elseif ($this->sortBy === "Price: High to Low") {
+            $this->sortByColumn = "price ";
+        } elseif ($this->sortBy === "Price: Low to High") {
+            $this->sortByColumn = "price";
+        }
     }
 
     public function removeFilter($filterKey, $filterValue)

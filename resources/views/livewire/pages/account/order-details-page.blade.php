@@ -31,25 +31,24 @@
 
                 <div class="flex justify-between items-end gap-4 flex-wrap">
                     <div class="flex gap-8 items-center flex-wrap sm:gap-4">
-                        <h1 class="text-5xl mb-1 whitespace-nowrap">Order №56 </h1>
+                        <h1 class="text-5xl mb-1 whitespace-nowrap sm:text-4xl">Order №56 </h1>
                         <span class="bg-red-300 rounded-full w-2 h-2 block "></span>
-                        <h1 class="text-5xl text-red-300">Processing</h1>
+                        <h1 class="text-5xl text-red-300 sm:text-4xl">Processing</h1>
                     </div>
                     <span class="text-sm ">12.01.2025</span>
                 </div>
 
                 <!-- Items Purchased -->
                 <div class="mt-8">
-                    <h3 class="text-sm uppercase tracking-wide text-red-300 mb-4">Items Purchased</h3>
+                    <h3 class="text-base uppercase tracking-wide text-red-300 mb-4">Items Purchased</h3>
                     <div class="grid grid-cols-2 sm:grid-cols-1 gap-6">
 
                         <!-- Item 1 -->
                         <div class="flex items-start gap-4  p-4 rounded-lg">
                             <div class="relative">
-                                <img src="/fixed/test/product-1.png" alt="JILL MID, PREV"
+                                <img src="/fixed/test/product-1_1.png" alt="JILL MID, PREV"
                                      class="w-40 h-40 object-cover rounded"/>
-                                <span
-                                    class="absolute top-0 left-0  text-white text-xs px-2 py-0.5 rounded-full">1</span>
+                                <span class="flex items-center justify-center absolute -top-2 -right-2 bg-red-300 text-bright-200 w-5 h-5 text-xs px-1 rounded-full">1</span>
                             </div>
                             <div class="flex flex-col h-40">
                                 <p class="font-semibold mb-8">JILL MID, PREV</p>
@@ -61,10 +60,9 @@
                         <!-- Item 2 -->
                         <div class="flex items-start gap-4  p-4 rounded-lg">
                             <div class="relative">
-                                <img src="/fixed/test/product-2.png" alt="JILL MID, PREV"
+                                <img src="/fixed/test/product-2_1.png" alt="JILL MID, PREV"
                                      class="w-40 h-40 object-cover rounded"/>
-                                <span
-                                    class="absolute top-0 left-0  text-white text-xs px-2 py-0.5 rounded-full">1</span>
+                                <span class="flex items-center justify-center absolute -top-2 -right-2 bg-red-300 text-bright-200 w-5 h-5 text-xs px-1 rounded-full">1</span>
                             </div>
                             <div class="flex flex-col h-40">
                                 <p class="font-semibold mb-8">JILL MID, PREV</p>
@@ -78,18 +76,21 @@
 
                 <!-- Order Summary -->
                 <div class="mt-10 border-t border-gray-200 pt-6">
-                    <h3 class="text-sm  uppercase tracking-wide mb-4">Order Summary</h3>
+                    <h3 class="text-sm uppercase tracking-wide text-red-300 mb-4">Order Summary</h3>
                     <div class="space-y-2 text-sm">
                         <div class="flex justify-between">
                             <span>SUBTOTAL</span>
+                            <span class="flex-1 border-b border-red-300 border-dashed mx-2 mb-1"></span>
                             <span>€244,00</span>
                         </div>
                         <div class="flex justify-between">
                             <span>SHIPING</span>
+                            <span class="flex-1 border-b border-red-300 border-dashed mx-2 mb-1"></span>
                             <span>€5</span>
                         </div>
                         <div class="flex justify-between font-semibold text-lg border-t pt-2 mt-2">
                             <span>Total</span>
+                            <span class="flex-1 border-b border-red-300 border-dashed mx-2 mb-1"></span>
                             <span>€249,00</span>
                         </div>
                     </div>

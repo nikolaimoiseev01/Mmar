@@ -6,12 +6,11 @@
         <div class="flex flex-1 md:flex-col relative mb-20">
 
             <!-- Левая колонка -->
-            <div class="w-1/2 md:w-full md:order-2 overflow-y-auto md:h-auto px-6 pt-8 flex flex-col gap-16">
+            <div class="w-1/2 overflow-hidden md:w-full md:order-2 md:h-auto px-6 pt-8 flex flex-col gap-16">
                 <div class="smooth-content flex flex-col gap-16 px-6 pt-6 md:w-full md:mb-16">
                     <h1 class="text-5xl">Contact Us</h1>
                     <div class="flex flex-col gap-4">
-                        <p class="text-red-100">Reach out to us for any inquiries or support.<br>
-                            We're here to help!</p>
+                        <p class="text-red-100">Reach out to us for any inquiries or support.</p>
                         <div class="flex gap-8">
                             <a href="">support@mmar.com</a>
                             <a href="">+1-800-123-4567</a>
@@ -20,8 +19,7 @@
                     <div class="smooth-content flex flex-col gap-4">
                         <p class="text-red-100">Follow us on social media to stay updated on the latest trends<br> and
                             join our
-                            vibrant community<br>
-                            We're here to help!</p>
+                            vibrant community!</p>
                         <div class="flex gap-8 sm:w-full sm:justify-between">
                             <a href="">Instagram</a>
                             <a href="">Facebook</a>
@@ -29,8 +27,7 @@
                         </div>
                     </div>
                     <div class="smooth-content flex flex-col gap-4">
-                        <p class="text-red-100">Press Inquiries<br>
-                            We're here to help!</p>
+                        <p class="text-red-100">Press Inquiries</p>
                         <p>For media inquiries, please contact our PR team at press@mmar.com.</p>
                     </div>
                     <div class="smooth-content flex flex-col gap-4 mb-52">

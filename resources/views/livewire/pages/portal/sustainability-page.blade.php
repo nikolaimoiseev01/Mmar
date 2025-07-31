@@ -2,12 +2,12 @@
     @section('title')
         Sustainability
     @endsection
-    <x-page-title class="smooth-content mb-12 content">At MMAR, we’re defining the next generation of fashion through
+    <x-page-title class="smooth-content mb-12 content sm:text-3xl">At MMAR, we’re defining the next generation of fashion through
         the meticulous curation
         of sustainable
         and animal-free products from ethical and innovative brands.
     </x-page-title>
-    <p class="smooth-content mb-24 max-w-2xl  mx-auto">Our mission is to lead the way in making conscious living
+    <p class="smooth-content mb-24 sm:mb-10 max-w-2xl mx-auto sm:text-base">Our mission is to lead the way in making conscious living
         effortless and more
         inclusive,
         acknowledging the
@@ -17,8 +17,8 @@
         Our essence is woven from the threads of cooperation, innovation, and beauty. At the heart of it all lies our
         unwavering respect for every form of life. We passionately curate high-quality products that honour the welfare
         of animals, the dignity of people, and the health of our planet.</p>
-    <img src="/fixed/sustainability-1.png" class="smooth-content content mb-24" alt="">
-    <p class="smooth-content max-w-2xl mb-24 mx-auto">We recognise that every action has a social and environmental
+    <img src="/fixed/sustainability-1.png" class="smooth-content content mb-24 sm:mb-10" alt="">
+    <p class="smooth-content max-w-2xl mb-24 mx-auto sm:text-base">We recognise that every action has a social and environmental
         impact, and so does the
         fashion industry. However,
         we should not neglect that fashion is not only a physical necessity but often fulfils a complex set of emotional
@@ -33,7 +33,7 @@
         <div class="flex-1 bg-bright-400 h-[444px]"></div>
         <div class="flex-1 bg-bright-400 h-[444px]"></div>
     </div>
-    <p class="smooth-content max-w-2xl mx-auto">Balancing the sustainability of traditional materials with modern
+    <p class="smooth-content max-w-2xl mx-auto sm:text-base">Balancing the sustainability of traditional materials with modern
         alternatives, we champion the rise of new
         materials and technologies that reduce environmental impact, ensuring we find the best solutions for the future.
         By embracing sustainability in all areas of life and promoting slow and circular fashion that respects social

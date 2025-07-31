@@ -3,7 +3,7 @@
 
         <!-- Кнопка закрытия -->
         <button
-            class="absolute top-4 right-4 text-2xl"
+            class="absolute top-4 right-4 text-4xl"
             onclick="window.dispatchEvent(new CustomEvent('close-modal', { detail: 'auth-modal' }))">
             &times;
         </button>
@@ -13,14 +13,14 @@
             <h2 class="text-4xl" x-text="tab === 'signin' ? 'Sign In' : 'Register'"></h2>
         </div>
 
-        <div class="flex justify-between items-center text-sm">
+        <div class="flex justify-between items-center !text-sm sm:!text-xs">
             <template x-if="tab === 'signin'">
-                <p>Don’t have an account yet?
+                <p class="sm:!text-base">Don’t have an account yet?
                     <button class="font-semibold underline" @click="tab = 'register'">Register &gt;</button>
                 </p>
             </template>
             <template x-if="tab === 'register'">
-                <p>Already have an account?
+                <p class="sm:!text-base">Already have an account?
                     <button class="font-semibold underline" @click="tab = 'signin'">Sign in &gt;</button>
                 </p>
             </template>
@@ -32,11 +32,11 @@
             <span x-show="tab === 'register'">Create an account to check your orders and save your information</span>
         </p>
 
-        <div class=""  x-show="tab === 'signin'">
+        <div data-lenis-prevent class=""  x-show="tab === 'signin'">
             <livewire:components.auth.login-form/>
         </div>
 
-        <div class=""  x-show="tab === 'register'">
+        <div data-lenis-prevent class=""  x-show="tab === 'register'">
             <livewire:components.auth.register-form/>
         </div>
 

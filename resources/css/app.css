@@ -6,11 +6,10 @@
 * {
     margin: 0;
     box-sizing: border-box;
-    @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
 }
 
 html {
-    @apply text-[1vw] 2xl:text-[16px] md:!text-[15px]
+    @apply text-[1vw] 2xl:text-[16px] md:!text-[15px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
 }
 body {
     @apply bg-bright-200 dark:bg-red-700 text-red-700 dark:text-bright-200;
@@ -64,6 +63,10 @@ input[type="checkbox"] {
     transform: translateY(50px);
     transition: all 0.6s ease-out;
     will-change: opacity, transform;
+}
+
+.basket-wishlist-button svg.added path:first-child {
+    fill: #240309;
 }
 
 

@@ -1,9 +1,9 @@
 @props([
     'cards' => [
         [
-            'img' => '/fixed/innovation.jpg',
-            'title' => 'Innovation',
-            'description' => "Embracing new technologies not only for their cool factor but also for their potential to drive progress and reduce the fashion industry's impact."
+            'img' => '/fixed/responsibility.jpg',
+            'title' => 'Responsibility',
+            'description' => "Committing to ethical practices, transparency, and quality as the cornerstones of a sustainable future."
         ],
         [
             'img' => '/fixed/fassion.jpg',
@@ -16,9 +16,9 @@
             'description' => "Valuing the people who create our clothes, the lands where raw materials are sourced, the stories behind each garment, and how these pieces become part of our personal histories."
         ],
         [
-            'img' => '/fixed/innovation.jpg',
-            'title' => 'Innovation',
-            'description' => "Embracing new technologies not only for their cool factor but also for their potential to drive progress and reduce the fashion industry's impact."
+            'img' => '/fixed/responsibility.jpg',
+            'title' => 'Responsibility',
+            'description' => "Committing to ethical practices, transparency, and quality as the cornerstones of a sustainable future."
         ],
         [
             'img' => '/fixed/fassion.jpg',
@@ -48,6 +48,7 @@
     @media (max-width: 768px) {
         .carousel {
             perspective: 2500px;
+            height:400px;
         }
     }
 
@@ -97,7 +98,7 @@
             <div class="carousel__slide" data-index="{{ $loop->index }}"
                  style="background-image: url('{{ $card['img'] }}');">
                 <div class="bg-gradient-to-b from-transparent to-[#000000ba] p-4">
-                    <h3>{{ $card['title'] }}</h3>
+                    <h3 class="uppercase !font-normal">{{ $card['title'] }}</h3>
                     <p>{{ $card['description'] }}</p>
                 </div>
 

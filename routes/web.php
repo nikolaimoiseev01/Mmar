@@ -64,6 +64,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', IndexPage::class)->name('portal.index');
 Route::get('/shop', ShopPage::class)->name('portal.shop');
+Route::get('/wishlist', ShopPage::class)->name('portal.wishlist');
 Route::get('/shop/{slug}', ProductPage::class)->name('portal.product');
 Route::get('/cart', CartPage::class)->name('portal.cart');
 

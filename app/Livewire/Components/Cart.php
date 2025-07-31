@@ -64,7 +64,52 @@ class Cart extends Component
             $this->dispatch('afterBasketUpdate');
             $this->dispatch('updateCartProducts');
         } else {
-            dd('Уже есть в куках!');
         }
     }
+
+    public function increment($id)
+    {
+        $cookie = collect(json_decode(request()->cookie('basket-products')));
+
+        $cookie = $cookie->map(function ($item) use ($id) {
+            if ($item->id === $id) {
+                $item->count++;
+            }
+            return $item;
+        });
+//dd($cookie);
+        $this->setCookie($cookie);
+        $this->dispatch('updateCartProducts');
+    }
+
+    public function decrement($id)
+    {
+        $cookie = collect(json_decode(request()->cookie('basket-products')));
+
+        $cookie = $cookie->map(function ($item) use ($id) {
+            if ($item->id === $id) {
+                $item->count--;
+            }
+            return $item;
+        })->filter(fn($item) => $item->count > 0); // удаляем, если стало 0
+
+        $this->setCookie($cookie->values());
+        $this->updateCartProducts();
+    }
+
+    protected function setCookie($cookie)
+    {
+        Cookie::queue(
+            Cookie::make(
+                'basket-products',
+                json_encode($cookie),
+                60,
+                '/',
+                null,
+                false,
+                false
+            )
+        );
+    }
+
 }

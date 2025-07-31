@@ -15,14 +15,14 @@
                     class="flex w-full justify-between items-center text-left hover:text-purple-700 transition"
                 >
                     <span class="text-lg font-medium">Shop</span>
-                    <span class="text-2xl transition-transform duration-300" :class="open ? 'rotate-45' : ''">+</span>
+                    <span class="text-3xl transition-transform duration-300" :class="open ? 'rotate-45' : ''">+</span>
                 </button>
 
                 <!-- Ответ -->
                 <div
                     x-show="open"
                     x-collapse
-                    class="mt-2 text-gray-600"
+                    class="mt-8 text-gray-600"
                 >
                     <x-header.categories/>
                 </div>
@@ -34,7 +34,7 @@
                     class="flex w-full justify-between items-center text-left hover:text-purple-700 transition"
                 >
                     <span class="text-lg font-medium">Designers</span>
-                    <span class="text-2xl transition-transform duration-300" :class="open ? 'rotate-45' : ''">+</span>
+                    <span class="text-3xl transition-transform duration-300" :class="open ? 'rotate-45' : ''">+</span>
                 </button>
 
                 <!-- Ответ -->
@@ -53,7 +53,7 @@
                     class="flex w-full justify-between items-center text-left hover:text-purple-700 transition"
                 >
                     <span class="text-lg font-medium">About</span>
-                    <span class="text-2xl transition-transform duration-300" :class="open ? 'rotate-45' : ''">+</span>
+                    <span class="text-3xl transition-transform duration-300" :class="open ? 'rotate-45' : ''">+</span>
                 </button>
 
                 <!-- Ответ -->

@@ -176,7 +176,7 @@
                 <p class="font-bold" x-text="formatPrice({{$cart_products->sum('count_price') + 5}})"></p>
             </div>
             <div x-show="!isEnabled || isOpen"
-                 class="sticky md:relative top-0 md:h-auto dark:bg-red-500 h-screen flex flex-col bg-red-50 pt-6md:pt-0 px-4 pb-8 overflow-y-auto">
+                 class="sticky md:relative top-0 md:h-auto dark:bg-red-500 h-[calc(100vh-135px)] flex flex-col bg-red-50 pt-6md:pt-0 px-4 pb-8 overflow-y-auto">
                 <div class="flex flex-col mb-8">
                     @foreach($cart_products as $product)
                         <div class="flex gap-4 border-b border-b-red-100 pb-4 pt-4 last:pb-0 last:border-0">

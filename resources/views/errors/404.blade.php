@@ -3,7 +3,7 @@
     @section('title')
         Oops, This Page Didn’t Sustain
     @endsection
-    <section class="flex flex-col items-center justify-center mt-9 gap-2 mb-20 content">
+    <section class="flex flex-col items-center justify-center mt-9 gap-2 mb-20 sm:mb-10 content">
         <h2 class="mx-auto text-center">Oops, This Page Didn’t Sustain</h2>
         <p class=" text-center">Unlike our timeless designs, this link didn’t last. Let’s take you somewhere better.</p>
     </section>
