@@ -25,7 +25,7 @@
     </div>
 
     @foreach($userAddresses as $address)
-        <div class="space-y-4 border p-4 pl-0 rounded-md" x-data="{ id: {{ $address->id }} }">
+        <div class="space-y-4 p-4 pl-0 rounded-md" x-data="{ id: {{ $address->id }} }">
             <!-- Просмотр -->
             <div x-show="editingId !== id" class="flex justify-between md:flex-col">
                 <div>

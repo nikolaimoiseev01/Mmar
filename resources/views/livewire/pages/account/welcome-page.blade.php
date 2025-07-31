@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <div
-                            class="flex flex-col items-end gap-2 justify-between h-[156px] md:h-auto md:flex-row md:justify-between md:w-full">
+                            class="flex flex-col items-end gap-2 justify-between h-[156px] md:h-shiauto md:flex-row md:justify-between md:w-full">
                             <span class="text-sm text-red-700 dark:text-bright-100">12.01.2025</span>
                             <a type="button"
                                href="{{route('account.order')}}" wire:navigate
@@ -97,49 +97,11 @@
         </div>
     </div>
 
-    {{--        <script>--}}
-    {{--            let observer = null;--}}
-
-    {{--            function initTocObserver() {--}}
-    {{--                // Удаляем предыдущего observer'а, если есть--}}
-    {{--                if (observer) observer.disconnect();--}}
-
-    {{--                const $links = $('#toc a');--}}
-
-    {{--                observer = new IntersectionObserver(--}}
-    {{--                    (entries) => {--}}
-    {{--                        entries.forEach((entry) => {--}}
-    {{--                            if (entry.isIntersecting) {--}}
-    {{--                                const id = entry.target.id;--}}
-
-    {{--                                $links.removeClass('active');--}}
-    {{--                                $links.filter(`[data-id="${id}"]`).addClass('bg-red-300 text-bright-200');--}}
-    {{--                            }--}}
-    {{--                        });--}}
-    {{--                    },--}}
-    {{--                    {--}}
-    {{--                        rootMargin: '0px 0px -70% 0px',--}}
-    {{--                        threshold: 0,--}}
-    {{--                    }--}}
-    {{--                );--}}
-
-    {{--                $('section').each(function () {--}}
-    {{--                    observer.observe(this);--}}
-    {{--                });--}}
-    {{--            }--}}
-
-    {{--            // Первая инициализация--}}
-    {{--            window.addEventListener('load', () => {--}}
-    {{--                initTocObserver();--}}
-    {{--            });--}}
-
-    {{--            // Переинициализация после Livewire перехода--}}
-    {{--            document.addEventListener('livewire:navigated', () => {--}}
-    {{--                setTimeout(() => {--}}
-    {{--                    initTocObserver();--}}
-    {{--                }, 100); // небольшая задержка для отрисовки DOM--}}
-    {{--            });--}}
-    {{--        </script>--}}
+     <script type="module">
+        setTimeout(function () {
+            lenis.start();
+        }, 100)
+    </script>
 
     <script>
         let tocObserver = null;
