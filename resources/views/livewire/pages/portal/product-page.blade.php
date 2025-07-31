@@ -40,7 +40,26 @@
                                                 class="text-bright-200 w-6 group-hover:text-red-700 sm:group-hover:text-bright-200 transition"/>
                 </div>
             </div>
-            <div :class="open ? 'h-screen aspect-square max-w-max mx-auto sm:h-auto' : ''">
+            <style>
+                .product-examples-slider {
+                    aspect-ratio: 1/1;
+                    @supports not (aspect-ratio: 1 / 1) {
+                        &::before {
+                            float: left;
+                            padding-top: 100%;
+                            content: "";
+                        }
+
+                        &::after {
+                            display: block;
+                            content: "";
+                            clear: both;
+                        }
+                    }
+                }
+
+            </style>
+            <div class="product-examples-slider" :class="open ? 'h-screen aspect-square max-w-max mx-auto sm:h-auto' : ''">
                 <x-product-examples-slider :examples="$product->getMedia('examples')"/>
             </div>
         </div>
