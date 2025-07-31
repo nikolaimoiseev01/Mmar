@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.updateBasketButtons = function () {
         let data = getCookie('basket-products');
         data = data ? JSON.parse(data) : [];
+        $('.cart-button').removeClass('added');
         $.each(data, function (index, item) {
             let button = $(`#big-basket-button-${item.id}`);
             button.text('ADDED');
