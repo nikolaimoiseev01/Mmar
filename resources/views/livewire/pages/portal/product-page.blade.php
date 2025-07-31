@@ -41,8 +41,8 @@
                 </div>
             </div>
             <style>
-                .product-examples-slider {
-                    /*aspect-ratio: 1/1;*/
+                .product-examples-slider-opened {
+                    aspect-ratio: 1/1;
                     height:100vh;
                     width: calc(100vh * 1/1);
                     &::before {
@@ -59,7 +59,7 @@
                 }
 
             </style>
-            <div class="product-examples-slider" :class="open ? 'h-screen max-w-max mx-auto sm:h-auto' : ''">
+            <div :class="open ? 'product-examples-slider-opened h-screen max-w-max mx-auto sm:h-auto' : ''">
                 <x-product-examples-slider :examples="$product->getMedia('examples')"/>
             </div>
         </div>
