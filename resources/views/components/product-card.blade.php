@@ -51,11 +51,12 @@
        href="{{route('portal.product', $product['slug'])}}"
        class="flex flex-col"
     >
-        <div class="flex justify-between">
-            <p class="sm:uppercase">{{$product['name']}}</p>
-            <p x-text="formatPrice({{$product['price']}})"></p>
+        <div class="flex justify-between ">
+            <p class="sm:uppercase sm:!text-base">{{$product['name']}}</p>
+            <p class="sm:hidden" x-text="formatPrice({{$product['price']}})"></p>
         </div>
-        <p>{{$product->brand['name']}}</p>
+        <p class=" sm:!text-base">{{$product->brand['name']}}</p>
+        <p class="hidden sm:block  sm:!text-base" x-text="formatPrice({{$product['price']}})"></p>
     </a>
 
 </div>
