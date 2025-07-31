@@ -15,7 +15,6 @@
             'image' => "/fixed/what-matters-3.png",
             'text' => 'Vegan Brands'
         ]
-
     ]
 @endphp
 <div class="swiper w-full relative content md:px-0" id="{{$id}}">

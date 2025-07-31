@@ -61,7 +61,6 @@
 
     .carousel__slide {
         width: clamp(280px, 80%, 600px);
-
         aspect-ratio: 4 / 5;
         position: absolute;
         top: 50%;
@@ -101,7 +100,6 @@
                     <h3 class="uppercase !font-normal">{{ $card['title'] }}</h3>
                     <p>{{ $card['description'] }}</p>
                 </div>
-
             </div>
         @endforeach
     </div>
