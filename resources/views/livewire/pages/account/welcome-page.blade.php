@@ -82,17 +82,17 @@
                 </div>
             </section>
 
-       </div>
+        </div>
     </div>
 
-        <section id="recently_viewed" class="mb-20">
-            <div class="mb-4 flex justify-between content">
-                <h2>Recently viewed</h2>
-            </div>
-            <x-three-cards id="index1" :products="$products"/>
-        </section>
+    <section id="recently_viewed" class="mb-20 mt-20">
+        <div class="mb-4 flex justify-between content">
+            <h2>Recently viewed</h2>
+        </div>
+        <x-three-cards id="index1" :products="$products"/>
+    </section>
 
-     <script type="module">
+    <script type="module">
         setTimeout(function () {
             lenis.start();
         }, 100)
