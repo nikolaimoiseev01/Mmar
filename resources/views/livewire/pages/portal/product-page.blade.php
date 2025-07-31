@@ -42,24 +42,24 @@
             </div>
             <style>
                 .product-examples-slider {
-                    aspect-ratio: 1/1;
-                    @supports not (aspect-ratio: 1 / 1) {
-                        &::before {
-                            float: left;
-                            padding-top: 100%;
-                            content: "";
-                        }
+                    /*aspect-ratio: 1/1;*/
+                    height:100vh;
+                    width: calc(100vh * 1/1);
+                    &::before {
+                        float: left;
+                        padding-top: 100%;
+                        content: "";
+                    }
 
-                        &::after {
-                            display: block;
-                            content: "";
-                            clear: both;
-                        }
+                    &::after {
+                        display: block;
+                        content: "";
+                        clear: both;
                     }
                 }
 
             </style>
-            <div class="product-examples-slider" :class="open ? 'h-screen aspect-square max-w-max mx-auto sm:h-auto' : ''">
+            <div class="product-examples-slider" :class="open ? 'h-screen max-w-max mx-auto sm:h-auto' : ''">
                 <x-product-examples-slider :examples="$product->getMedia('examples')"/>
             </div>
         </div>
