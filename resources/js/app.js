@@ -188,7 +188,6 @@ Livewire.hook('morph.updated', ({el, component}) => {
     updateWishlistButtons()
     updateWishlistCount()
     smoothContent()
-    lenis.start()
 });
 
 window.addEventListener('livewire:navigated', function () {
@@ -197,7 +196,6 @@ window.addEventListener('livewire:navigated', function () {
     updateWishlistButtons()
     updateWishlistCount()
     smoothContent()
-    lenis.start()
 });
 
 ;

@@ -221,4 +221,10 @@
 
     </div>
 
+        <script type="module">
+            setTimeout(function() {
+                lenis.start();
+            }, 100)
+        </script>
+
 </main>
