@@ -4,17 +4,17 @@
 @php
     $elements = [
         [
-            'img' => '/fixed/responsibility.jpg',
+            'img' => '/fixed/responsibility.png',
             'title' => 'Responsibility',
             'description' => "Committing to ethical practices, transparency, and quality as the cornerstones of a sustainable future."
         ],
         [
-            'img' => '/fixed/fassion.jpg',
+            'img' => '/fixed/fassion.png',
             'title' => 'Fashion as Art',
             'description' => "Celebrating the creative process in every garment, honouring the designers' vision, and emphasising the importance of details that elevate ideas into wearable works of art."
         ],
         [
-            'img' => '/fixed/care.jpg',
+            'img' => '/fixed/care.png',
             'title' => 'Care',
             'description' => "Valuing the people who create our clothes, the lands where raw materials are sourced, the stories behind each garment, and how these pieces become part of our personal histories."
         ]
