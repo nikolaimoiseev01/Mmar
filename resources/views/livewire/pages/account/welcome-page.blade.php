@@ -82,20 +82,15 @@
                 </div>
             </section>
 
-            <section id="recently_viewed" class="mb-20">
-                <div class="mb-4 flex justify-between content">
-                    <h2>Recently viewed</h2>
-                    <x-ui.link-arrow
-                        href="{{route('portal.shop')}}"
-                        text="View All"
-                        textSize="text-base"
-                        iconSize="h-4 w-4"
-                    />
-                </div>
-                <x-three-cards id="index1" :products="$products"/>
-            </section>
-        </div>
+       </div>
     </div>
+
+        <section id="recently_viewed" class="mb-20">
+            <div class="mb-4 flex justify-between content">
+                <h2>Recently viewed</h2>
+            </div>
+            <x-three-cards id="index1" :products="$products"/>
+        </section>
 
      <script type="module">
         setTimeout(function () {

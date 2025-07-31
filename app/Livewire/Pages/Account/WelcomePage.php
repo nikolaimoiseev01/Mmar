@@ -11,7 +11,7 @@ class WelcomePage extends Component
     public $contents;
     public function render()
     {
-        $this->products = Product::orderBy('created_at', 'desc')->take(3)->get();
+        $this->products = Product::orderBy('created_at', 'asc')->take(3)->get();
         $this->contents = [
             [
                 'id' => 'personal_information',
