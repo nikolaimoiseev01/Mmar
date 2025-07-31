@@ -12,7 +12,7 @@ class IndexPage extends Component
     public $post;
     public function render()
     {
-        $this->products = Product::orderBy('created_at', 'desc')->take(3)->get();
+        $this->products = Product::orderBy('created_at', 'asc')->take(3)->get();
         $this->post = Post::with(['postTopic', 'media'])
             ->orderBy('created_at', 'desc')
             ->first();
