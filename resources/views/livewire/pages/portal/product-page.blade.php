@@ -9,7 +9,7 @@
         <div class="bg-bright-300 w-1/2 md:w-full aspect-square relative"
              :class="open ? '!fixed h-[90vh] sm:!h-auto !z-[9999] aspect-square top-1/2 left-1/2 max-w-max !-translate-x-1/2 !-translate-y-1/2' : ''">
 
-            <div class="absolute transition top-3 left-3 flex gap-4 z-50">
+            <div class="absolute transition top-3 left-3 flex gap-4 z-40">
                 <div
                     id="wishlist-button-{{$product['id']}}"
                     wire:ignore
