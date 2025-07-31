@@ -2,13 +2,25 @@
     @section('title')
         Insights and Inspiration
     @endsection
-    <x-page-title class="mb-8">Insights and Inspiration</x-page-title>
-    <div class="smooth-content flex flex-wrap gap-4 my-8 mx-auto w-fit justify-center max-w-5xl sm:flex-nowrap sm:flex-row items-center overflow-x-auto sm:px-4 sm:max-w-full sm:justify-start">
+    <div class="content">
+        <x-page-title class="mb-8 sm:text-5xl">Insights and Inspiration</x-page-title>
+    </div>
+        <style>
+            .no-scrollbar {
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* IE 10+ */
+            }
+
+            .no-scrollbar::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, Opera */
+            }
+        </style>
+    <div class="smooth-content flex flex-wrap gap-4 my-8 mx-auto w-fit justify-center max-w-5xl sm:flex-nowrap sm:flex-row items-center overflow-x-auto sm:px-4 no-scrollbar sm:max-w-full sm:justify-start">
         @foreach($postTopics as $topic)
             <button
                 type="button"
                 wire:click="toggleTopic({{ $topic['id'] }})"
-                class="border rounded-3xl p-2 px-4 transition sm:w-max sm:min-w-max sm:text-lg
+                class="border rounded-3xl p-2 px-4 transition sm:w-max sm:min-w-max sm:text-base
                 {{ in_array($topic['id'], $selectedTopics)
                     ? 'bg-red-300 text-red-300 border-red-300 hover:!text-bright-200'
                     : 'text-red-300 border-red-300 hover:!text-bright-200 hover:bg-red-300' }}"
