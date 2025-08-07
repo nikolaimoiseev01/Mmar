@@ -3,7 +3,7 @@
     :class="isHome ?
         'absolute top-0 left-0'
         :'relative'"
-    class="w-full border-b border-red-100 bg-bright-200 dark:bg-red-700 flex flex-col z-50">
+    class="w-full border-b border-red-100 dark:border-b-0 bg-bright-200 dark:bg-red-700 flex flex-col z-50">
 
     <livewire:components.cart/>
     <livewire:components.wish-list/>
@@ -57,8 +57,14 @@
 
             <!-- Остальные ссылки -->
             <a href="" class=" group-hover/links:opacity-50 hover:!opacity-100 transition">Designers</a>
-            <a wire:navigate href="{{ route('portal.about') }}"
-               class=" group-hover/links:opacity-50 hover:!opacity-100 transition">About</a>
+            <div class="relative group/about">
+                <a class=" group-hover/links:opacity-50 hover:!opacity-100 transition">About</a>
+                <div class="flex flex-col gap-3 p-5 bg-bright-200 dark:bg-red-700 absolute top-full left-1/2 -translate-x-1/2 opacity-0 group-hover/about:opacity-100 group-hover/about:visible transition invisible text-lg">
+                    <a wire:navigate href="{{ route('portal.sustainability')}}" class="group-hover/links:opacity-50 hover:!opacity-100 transition">Sustainability</a>
+                    <a wire:navigate href="{{ route('portal.about')}}" class="group-hover/links:opacity-50 hover:!opacity-100 transition">Our Story</a>
+                    <a wire:navigate href="{{route('portal.insights')}}" class="group-hover/links:opacity-50 hover:!opacity-100 transition">Journal</a>
+                </div>
+            </div>
         </div>
         <div class="flex justify-end gap-6 md:flex-1 group/buttons">
             <a class="relative w-fit md:hidden group-hover/buttons:opacity-50 hover:!opacity-100 transition"

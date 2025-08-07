@@ -111,7 +111,7 @@
     <section class="smooth-content content mb-20">
         <h2 class="mb-4">Insights and Inspiration</h2>
         <div class="flex gap-4 bg-green-300 dark:bg-red-500 p-4 md:flex-col">
-            <img src="{{$post->getFirstMediaUrl('cover')}}" class="w-2/3 min-w-2/3 md:order-2 md:w-full" alt="">
+            <img src="{{$post->getFirstMediaUrl('cover')}}" class="w-2/3 min-w-2/3 md:order-2 md:w-full object-cover" alt="">
             <div class="flex flex-col gap-6 w-1/3 md:w-full">
                 <span class="rounded-3xl bg-red-300 px-3 py-2 text-bright-200 w-fit">
                     {{$post->postTopic['name']}}

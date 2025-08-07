@@ -9,9 +9,9 @@
         /*    transition: width 0.2s ease;*/
         /*}*/
     </style>
-    <x-page-title class="mb-12 content sm:text-3xl">MMAR emerged from a desire to create a simplified shopping
-        experience tailored
-        for fashion enthusiasts who value conscious choices.
+    <x-page-title class="mb-12 !text-5xl sm:!text-4xl  content sm:text-3xl">MMAR emerged from a desire to create <br>
+        a simplified shopping experience tailored for fashion enthusiasts <br>
+        who value conscious choices.
     </x-page-title>
     <p class="smooth-content mb-24 sm:mb-10 max-w-2xl  mx-auto sm:text-base">Our journey began with the goal of
         combining our love for fashion with a
@@ -21,8 +21,8 @@
         heritage and individuality. Through them, we learned that fashion isn’t just about appearance; it’s about
         expressing oneself with confidence and pride.</p>
     <div
-        class=" flex flex-col gap-4 min-w-[448px] sm:min-w-full mb-24 mx-auto sm:mb-10">
-        <img id="image-expand" src="/fixed/about-1.png" class="mx-auto w-[30vw] sm:w-full sm:max-w-lg max-w-full"
+        class="smooth-content flex flex-col gap-4 min-w-[448px] sm:min-w-full mb-24 mx-auto sm:mb-10">
+        <img id="image-expand" src="/fixed/about-1.png" class="mx-auto sm:w-full sm:max-w-lg max-w-full w-[30vw]"
              alt="">
         <p class="font-bold max-w-2xl mx-auto">"Land Day", a Poster by the GUPW, 1977 </p>
         <p class="max-w-2xl sm:text-base mx-auto">Issued by the General Union of Palestinian Women on Land Day in 1977,

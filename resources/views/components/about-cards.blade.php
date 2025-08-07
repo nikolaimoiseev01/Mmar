@@ -4,9 +4,9 @@
 @php
     $elements = [
         [
-            'img' => '/fixed/responsibility.png',
-            'title' => 'Responsibility',
-            'description' => "Committing to ethical practices, transparency, and quality as the cornerstones of a sustainable future."
+            'img' => '/fixed/innovation.jpg',
+            'title' => 'Innovation',
+            'description' => "Embracing new technologies not only for their cool factor but also for their potential to drive progress and reduce the fashion industry's impact."
         ],
         [
             'img' => '/fixed/fassion.png',
@@ -20,7 +20,7 @@
         ]
     ]
 @endphp
-<div class="swiper w-full relative content md:px-0" id="{{$id}}">
+<div class="smooth-content swiper w-full relative content md:px-0" id="{{$id}}">
 {{--    <x-heroicon-c-chevron-left id="{{$id}}_prev"--}}
 {{--                               class="absolute top-1/2 -translate-y-1/2 hidden md:block text-red-700 left-0 w-12 bg-red-100 text-red-100 cursor-pointer z-20 transition"/>--}}
 {{--    <x-heroicon-c-chevron-right id="{{$id}}_next"--}}

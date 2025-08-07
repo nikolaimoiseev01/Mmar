@@ -58,23 +58,23 @@
 
             <x-slot name="content">
                 <button wire:click="setSort('Relevance')"
-                        class="@if($sortBy === 'Relevance')font-bold @endif block w-full text-left px-4 py-2 hover:bg-gray-200 transition">
+                        class="@if($sortBy === 'Relevance')font-bold @endif block w-full text-left px-4 py-2 hover:bg-gray-200 hover:dark:bg-blue-300 hover:dark:!text-red-700 transition">
                     Relevance
                 </button>
                 <button wire:click="setSort('Newest Arrivals')"
-                        class="@if($sortBy === 'Newest Arrivals')font-bold @endif block w-full text-left px-4 py-2 hover:bg-gray-200 transition">
+                        class="@if($sortBy === 'Newest Arrivals')font-bold @endif block w-full text-left px-4 py-2 hover:bg-gray-200 hover:dark:bg-blue-300 hover:dark:!text-red-700 transition">
                     Newest Arrivals
                 </button>
                 <button wire:click="setSort('Bestsellers')"
-                        class="@if($sortBy === 'Bestsellers')font-bold @endif block w-full text-left px-4 py-2 hover:bg-gray-200 transition">
+                        class="@if($sortBy === 'Bestsellers')font-bold @endif block w-full text-left px-4 py-2 hover:bg-gray-200 hover:dark:bg-blue-300 hover:dark:!text-red-700 transition">
                     Bestsellers
                 </button>
                 <button wire:click="setSort('Price: Low to High')"
-                        class="@if($sortBy === 'Price: Low to High')font-bold @endif block w-full text-left px-4 py-2 hover:bg-gray-200 transition">
+                        class="@if($sortBy === 'Price: Low to High')font-bold @endif block w-full text-left px-4 py-2 hover:bg-gray-200 hover:dark:bg-blue-300 hover:dark:!text-red-700 transition">
                     Price: Low to High
                 </button>
                 <button wire:click="setSort('Price: High to Low')"
-                        class="@if($sortBy === 'Price: High to Low')font-bold @endif block w-full text-left px-4 py-2 hover:bg-gray-200 transition">
+                        class="@if($sortBy === 'Price: High to Low')font-bold @endif block w-full text-left px-4 py-2 hover:bg-gray-200 hover:dark:bg-blue-300 hover:dark:!text-red-700 transition">
                     Price: High to Low
                 </button>
             </x-slot>

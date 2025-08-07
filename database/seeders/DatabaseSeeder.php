@@ -44,17 +44,17 @@ class DatabaseSeeder extends Seeder
             'img' => '/fixed/test/icon-cat-outerwear.svg'
         ],
         [
-            'name' => 'Shoes',
-            'img' => '/fixed/test/icon-cat-shoes.svg',
-            'subcategories' => [
-                'Boots', 'Casual&Flats', 'Heels', 'Sneakers'
-            ]
-        ],
-        [
             'name' => 'Bags',
             'img' => '/fixed/test/icon-cat-bags.svg',
             'subcategories' => [
                 'Shoulder', 'Bags', 'Crossbody', 'Handbags', 'Luggage and Travel', 'Backpacks'
+            ]
+        ],
+        [
+            'name' => 'Shoes',
+            'img' => '/fixed/test/icon-cat-shoes.svg',
+            'subcategories' => [
+                'Boots', 'Casual&Flats', 'Heels', 'Sneakers'
             ]
         ],
         [
@@ -173,10 +173,10 @@ class DatabaseSeeder extends Seeder
                     'name' => 'RACHEL MULE',
                     'slug' => 'rachel-mule',
                     'brand_id' => 1,
-                    'category_id' => 5,
+                    'category_id' => 6,
                     'subcategory_id' => null,
                     'designers' => json_encode(['Alex', 'John', 'Emily']),
-                    'gender' => 'male',
+                    'gender' => 'Menswear',
                     'label' => ['Vegan Brand'],
                 ],
                 'img_1' => ENV('APP_URL') . "/fixed/test/product-1_1.png",
@@ -190,7 +190,7 @@ class DatabaseSeeder extends Seeder
                     'category_id' => 4,
                     'subcategory_id' => null,
                     'designers' => json_encode(['Alex', 'John', 'Emily']),
-                    'gender' => 'female',
+                    'gender' => 'Womenswear',
                     'label' => ['Recycled Materials', 'Customizable'],
                 ],
                 'img_1' => ENV('APP_URL') . "/fixed/test/product-2_1.png",
@@ -201,10 +201,10 @@ class DatabaseSeeder extends Seeder
                     'name' => "JILL MID - JASPER",
                     'slug' => 'jill-mid-jasper',
                     'brand_id' => 1,
-                    'category_id' => 5,
+                    'category_id' => 6,
                     'subcategory_id' => null,
                     'designers' => json_encode(['Alex', 'John', 'Emily']),
-                    'gender' => 'female',
+                    'gender' => 'Womenswear',
                     'label' => ['Recycled Materials'],
                 ],
                 'img_1' => ENV('APP_URL') . "/fixed/test/product-3_1.png",

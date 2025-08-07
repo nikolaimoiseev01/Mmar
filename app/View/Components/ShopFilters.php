@@ -60,12 +60,12 @@ class ShopFilters extends Component
                 'model' => 'gender',
                 'options' => [
                     [
-                        'label' => 'male',
-                        'value' => 'male'
+                        'label' => 'Menswear',
+                        'value' => 'Menswear'
                     ],
                     [
-                        'label' => 'female',
-                        'value' => 'female'
+                        'label' => 'Womenswear',
+                        'value' => 'Womenswear'
                     ]
                 ]
             ],

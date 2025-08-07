@@ -17,7 +17,7 @@
                                 wire:click="decrement({{$product['id']}})"
                             >-
                             </button>
-                            <span wire:loading.remove class="text-xl font-medium text-gray-900 mx-2">
+                            <span wire:loading.remove class="text-xl dark:text-bright-200 font-medium text-gray-900 mx-2">
                                 {{$product['count']}}
                             </span>
                             <x-ui.spinner class="w-6 h-6"/>

@@ -64,7 +64,7 @@
             @foreach ($tabs as $tab)
                 <button
                     @click="activeTab = '{{ $tab }}'"
-                    :class="activeTab === '{{ $tab }}' ? 'bg-bright-200 dark:bg-red-700 dark:text-bright-200' : 'bg-red-100'"
+                    :class="activeTab === '{{ $tab }}' ? 'bg-bright-200 dark:bg-red-700 dark:!text-bright-200' : 'bg-red-100'"
                     class="py-4 flex-1 border md:w-1/2 md:min-w-[50%] dark:text-red-700"
                 >
                     {{ strtoupper($tab) }}

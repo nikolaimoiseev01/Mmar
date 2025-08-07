@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 ease: 'power2.out',
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 80%',
+                    start: 'top 70%',
                     toggleActions: 'play none none reverse',
                 },
             })
