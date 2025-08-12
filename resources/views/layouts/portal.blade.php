@@ -40,6 +40,14 @@
 {{ $slot }}
 <x-footer/>
 @stack('page-js')
-
+<script>
+    window.YGC_WIDGET_ID = "a03168c3-0e63-46a4-b3ca-4e200e8eaa87";
+    (function() {
+        var script = document.createElement('script');
+        script.src = "https://widget.yourgpt.ai/script.js";
+        script.id = 'yourgpt-chatbot';
+        document.body.appendChild(script);
+    })();
+</script>
 </body>
 </html>
