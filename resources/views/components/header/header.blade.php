@@ -16,7 +16,7 @@
         <div>
         </div>
         <div>
-            <x-logo class="w-28 mx-auto"/>
+            <x-logo.logo class="w-28 mx-auto"/>
         </div>
         <div class="text-right flex gap-4 justify-end">
             <x-header.currency-selection/>
@@ -59,7 +59,7 @@
             <a href="" class=" group-hover/links:opacity-50 hover:!opacity-100 transition">Designers</a>
             <div class="relative group/about">
                 <a class=" group-hover/links:opacity-50 hover:!opacity-100 transition">About</a>
-                <div class="flex flex-col gap-3 p-5 bg-bright-200 dark:bg-red-700 absolute top-full left-1/2 -translate-x-1/2 opacity-0 group-hover/about:opacity-100 group-hover/about:visible transition invisible text-lg">
+                <div class="flex flex-col gap-3 p-5 bg-bright-200 dark:bg-red-500 absolute top-full left-1/2 -translate-x-1/2 opacity-0 group-hover/about:opacity-100 group-hover/about:visible transition invisible text-lg">
                     <a wire:navigate href="{{ route('portal.sustainability')}}" class="group-hover/links:opacity-50 hover:!opacity-100 transition">Sustainability</a>
                     <a wire:navigate href="{{ route('portal.about')}}" class="group-hover/links:opacity-50 hover:!opacity-100 transition">Our Story</a>
                     <a wire:navigate href="{{route('portal.insights')}}" class="group-hover/links:opacity-50 hover:!opacity-100 transition">Journal</a>

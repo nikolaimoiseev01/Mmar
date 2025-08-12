@@ -3,7 +3,7 @@
         Insights and Inspiration
     @endsection
     <div class="content">
-        <x-page-title class="mb-8 sm:text-5xl">Insights and Inspiration</x-page-title>
+        <x-page-title class="mb-8">Insights and Inspiration</x-page-title>
     </div>
         <style>
             .no-scrollbar {

@@ -9,7 +9,7 @@
         /*    transition: width 0.2s ease;*/
         /*}*/
     </style>
-    <x-page-title class="mb-12 !text-5xl sm:!text-4xl  content sm:text-3xl">MMAR emerged from a desire to create <br>
+    <x-page-title class="mb-12 content">MMAR emerged from a desire to create <br>
         a simplified shopping experience tailored for fashion enthusiasts <br>
         who value conscious choices.
     </x-page-title>
@@ -62,9 +62,9 @@
         coastlines and emerald waters merges with the deep-rooted spirit of the uplands and the people of the land.
         Experiencing all of this has provided us with the opportunity to understand the importance of integrating such
         harmony into every aspect of someone’s existence.</p>
-    <x-page-title class="smooth-content mb-12 content sm:text-3xl sm:mb-6">As devoted fashion enthusiasts, shopping was
-        more than a pastime— it was a way
-        to express love and bond with our family.
+    <x-page-title class="smooth-content mb-12 contentsm:mb-6">As devoted fashion enthusiasts, shopping was<br>
+        more than a pastime— it was a way to express love<br>
+        and bond with our family.
     </x-page-title>
     <p class="smooth-content max-w-2xl mx-auto mb-24 sm:text-base">Nearly a decade ago, we embarked on our journey
         towards a lifestyle free from
@@ -89,9 +89,9 @@
         <br><br>
         This inspired us to create MMAR, a marketplace that values ethical practices, sustainability, community, and
         cultural diversity.</p>
-    <x-page-title class="smooth-content mb-12 content sm:text-3xl sm:mb-6">Redefining Fashion with Creativity,
-        Innovation, and a Deep Commitment to Ethics
-        and Sustainability
+    <x-page-title class="smooth-content mb-12 content sm:mb-6">Redefining Fashion with Creativity,
+        Innovation, and a Deep<br>
+        Commitment to Ethics and Sustainability
     </x-page-title>
     {{--    <x-carousel/>--}}
     <x-about-cards id="aboutCards"/>

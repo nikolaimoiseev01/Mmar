@@ -81,7 +81,7 @@
         </x-ui.dropdown>
     </div>
 
-    <div class="smooth-content grid grid-cols-3 md:grid-cols-3 sm:!grid-cols-2 gap-4 content">
+    <div class="smooth-content grid grid-cols-3 md:grid-cols-3 sm:!grid-cols-2 gap-4 gap-y-5 content">
         @forelse($products as $product)
             <x-product-card :product="$product" shopMode="true"/>
         @empty

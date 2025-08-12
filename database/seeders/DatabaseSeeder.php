@@ -170,7 +170,7 @@ class DatabaseSeeder extends Seeder
         $products = [
             [
                 'attributes' => [
-                    'name' => 'RACHEL MULE',
+                    'name' => 'Rachel Mule',
                     'slug' => 'rachel-mule',
                     'brand_id' => 1,
                     'category_id' => 6,
@@ -198,7 +198,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'attributes' => [
-                    'name' => "JILL MID - JASPER",
+                    'name' => "Jill Mid",
                     'slug' => 'jill-mid-jasper',
                     'brand_id' => 1,
                     'category_id' => 6,

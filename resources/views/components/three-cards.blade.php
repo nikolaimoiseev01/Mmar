@@ -25,7 +25,9 @@
                 spaceBetween: 20,
                 slidesPerView: 'auto',
                 loop: true,
+                // allowTouchMove: false,
                 centeredSlides: true,
+                preventClicks: false,        // Разрешить клики
                 initialSlide: 2, // <-- индексация с 0!
                 navigation: {
                     nextEl: "#{{$id}}_next",
@@ -33,6 +35,14 @@
                 }
             });
         }
+
+        document.querySelector("#{{$id}}").addEventListener('click', (e) => {
+            const link = e.target.closest('a[wire\\:navigate]');
+            if (link) {
+                e.preventDefault(); // не даём Swiper или браузеру блокировать
+                window.Livewire.navigate(link.getAttribute('href'));
+            }
+        });
 
     </script>
 @endpush

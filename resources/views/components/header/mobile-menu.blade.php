@@ -41,7 +41,7 @@
                 <div
                     x-show="open"
                     x-collapse
-                    class="mt-2 text-gray-600"
+                    class="mt-2 pt-6 dark:text-bright-200 text-gray-600"
                 >
                    Designers
                 </div>
@@ -60,11 +60,11 @@
                 <div
                     x-show="open"
                     x-collapse
-                    class="mt-2 flex flex-col gap-4 text-gray-600"
+                    class="mt-2 flex pt-6 flex-col gap-4 text-gray-600"
                 >
-                    <a href="{{route('portal.sustainability')}}">Sustainability</a>
-                    <a href="{{route('portal.about')}}">Our Story</a>
-                    <a href="{{route('portal.sustainability')}}">Journal</a>
+                    <a href="{{route('portal.sustainability')}}" class="dark:text-bright-200">Sustainability</a>
+                    <a href="{{route('portal.about')}}" class="dark:text-bright-200">Our Story</a>
+                    <a href="{{route('portal.sustainability')}}" class="dark:text-bright-200">Journal</a>
                 </div>
             </div>
             <a href="" class="mt-4 text-lg font-medium">Wishlist</a>

@@ -26,14 +26,6 @@
                 </div>
                 <div x-on:click="open = ! open"
                      class="basket-wishlist-button bg-red-100   p-2 w-12 h-12 cursor-pointer rounded-full flex justify-center items-center aspect-square group">
-                    {{--                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-                    {{--                        <path--}}
-                    {{--                            d="M13.7795 9.05271L21.0526 1.77962M21.0526 1.77962L21.4162 8.68906M21.0526 1.77962L14.1431 1.41596"--}}
-                    {{--                            class='stroke-bright-200 group-hover:stroke-red-700 transition'/>--}}
-                    {{--                        <path--}}
-                    {{--                            d="M9.05256 13.7793L1.77947 21.0524M1.77947 21.0524L1.41581 14.143M1.77947 21.0524L8.68891 21.4161"--}}
-                    {{--                            class='stroke-bright-200 group-hover:stroke-red-700 transition'/>--}}
-                    {{--                    </svg>--}}
                     <x-clarity-resize-line x-show="!open"
                                            class="text-bright-200 w-6 group-hover:text-red-700 sm:group-hover:text-bright-200 transition"/>
                     <x-clarity-resize-down-line x-show="open"
@@ -64,9 +56,9 @@
                 <x-product-examples-slider :examples="$product->getMedia('examples')"/>
             </div>
         </div>
-        <div class="smooth-content flex flex-col pt-20 pl-10 md:pl-6 pr-6 w-1/2 md:w-full">
-            <div class="w-full flex justify-between items-end">
-                <h1>{{$product['name']}}</h1>
+        <div class="smooth-content flex flex-col pt-20 pl-10 md:pl-6 pr-6 w-1/2 md:w-full md:pt-8">
+            <div class="w-full flex justify-between items-end flex-wrap">
+                <h1 class="text-5xl sm:text-4xl">{{$product['name']}}</h1>
                 <h1 class="text-2xl" x-text="formatPrice({{$product['price']}})"></h1>
             </div>
             <p class="text-xl mb-12">{{$product->brand['name']}}</p>
@@ -134,7 +126,7 @@
             </div>
 
 
-            <div class="flex flex-wrap gap-8 sm:grid sm:grid-cols-2">
+            <div class="flex flex-wrap gap-8 sm:grid sm:grid-cols-2 sm:gap-4">
                 <div
                     @click="window.dispatchEvent(new CustomEvent('open-modal', { detail: { name: 'product-info', tab: 'details' } }))"
                     class="flex gap-2 flex-1 cursor-pointer">
@@ -160,7 +152,7 @@
                 <div
                     @click="window.dispatchEvent(new CustomEvent('open-modal', { detail: { name: 'product-info', tab: 'manufacturing' } }))"
                     class="flex gap-2 flex-1 cursor-pointer">
-                    <svg class="w-5" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 min-w-5" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1.90145 7.07446V9.27036C1.90145 10.2348 2.68328 11.0166 3.64772 11.0166C4.32014 11.0166 4.93283 10.6306 5.22301 10.024L5.24629 9.97531C5.55071 9.33899 6.19343 8.93398 6.89882 8.93398H9.33927C10.9961 8.93398 12.3393 10.2771 12.3393 11.934V12.0332C12.3393 13.69 10.9961 15.0332 9.33927 15.0332H2.98348C1.88803 15.0332 1 15.9212 1 17.0167C1 18.1121 1.88803 19.0001 2.98348 19.0001H18.9433C20.0387 19.0001 20.9267 18.1121 20.9267 17.0167V15.9583C20.9267 15.4474 20.5125 15.0332 20.0016 15.0332C19.4906 15.0332 19.0764 14.619 19.0764 14.108V7.07446C19.0764 5.41761 17.7333 4.07446 16.0764 4.07446H4.90145C3.24459 4.07446 1.90145 5.41761 1.90145 7.07446Z"
                             class="stroke-red-700 dark:stroke-bright-200" stroke-width="1.5"/>

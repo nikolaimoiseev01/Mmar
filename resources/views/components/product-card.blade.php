@@ -6,7 +6,7 @@
 <div {{ $attributes->merge(['class' => 'flex flex-col']) }}>
     <div class="aspect-square relative flex-1 mb-2 image-item group">
         @if($shopMode)
-            <div class="flex flex-col gap-2 absolute  top-3 left-3 sm:gap-1">
+            <div class="flex flex-col gap-2 absolute  top-3 left-3 sm:gap-1 sm:hidden">
                 @if($product['label'] ?? null)
                     @foreach($product['label'] as $label)
                         <span
@@ -52,7 +52,7 @@
        class="flex flex-col"
     >
         <div class="flex justify-between ">
-            <p class="sm:uppercase sm:!text-base">{{$product['name']}}</p>
+            <p class="uppercase sm:!text-base">{{$product['name']}}</p>
             <p class="sm:hidden" x-text="formatPrice({{$product['price']}})"></p>
         </div>
         <p class=" sm:!text-base">{{$product->brand['name']}}</p>

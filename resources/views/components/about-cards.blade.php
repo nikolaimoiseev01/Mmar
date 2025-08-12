@@ -4,9 +4,9 @@
 @php
     $elements = [
         [
-            'img' => '/fixed/innovation.jpg',
-            'title' => 'Innovation',
-            'description' => "Embracing new technologies not only for their cool factor but also for their potential to drive progress and reduce the fashion industry's impact."
+            'img' => '/fixed/responsibility.png',
+            'title' => 'Responsibility',
+            'description' => "Committing to ethical practices, transparency, and quality as the cornerstones of a sustainable future."
         ],
         [
             'img' => '/fixed/fassion.png',

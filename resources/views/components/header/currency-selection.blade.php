@@ -13,12 +13,12 @@
     <!-- Выпадающий список -->
     <div x-show="open" @click.away="open = false"
          x-transition
-         class="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg">
+         class="absolute z-10 mt-2 w-full md:w-fit bg-white border border-gray-200 dark:bg-red-300 rounded-md shadow-lg">
         <ul>
             <template x-for="item in currencies" :key="item">
                 <li>
                     <button @click="currency = item; open = false"
-                            class="w-full text-left px-4 py-2 hover:bg-gray-100">
+                            class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:text-bright-200">
                         <span x-text="item"></span>
                     </button>
                 </li>

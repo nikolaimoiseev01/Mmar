@@ -4,7 +4,7 @@
         <img src="/fixed/icon-new-in.svg"
              class="h-16 w-14 hover:scale-110 transition"
              alt="">
-        <p>New In</p>
+        <p class="md:text-sm dark:text-bright-200">New In</p>
     </a>
     @foreach ($categories as $category)
         <a wire:navigate href="{{ route('portal.shop') }}?category[0]={{ $category['name'] }}"
@@ -12,7 +12,7 @@
             <img src="{{ $category->getFirstMediaUrl('cover') }}"
                  class="h-16 w-14 hover:scale-110 transition"
                  alt="">
-            <p>{{ $category['name'] }}</p>
+            <p class="md:text-sm dark:text-bright-200">{{ $category['name'] }}</p>
         </a>
     @endforeach
 </div>

@@ -2,10 +2,9 @@
     @section('title')
         Sustainability
     @endsection
-    <x-page-title class="smooth-content mb-12 content sm:text-3xl">At MMAR, we’re defining the next generation of fashion through
-        the meticulous curation
-        of sustainable
-        and animal-free products from ethical and innovative brands.
+    <x-page-title class="smooth-content mb-12 content">At MMAR, we’re defining the next generation <br>
+        of fashion through the meticulous curation of sustainable and<br>
+        animal-free products from ethical and innovative brands.
     </x-page-title>
     <p class="smooth-content mb-24 sm:mb-10 max-w-2xl mx-auto sm:text-base">Our mission is to lead the way in making conscious living
         effortless and more
