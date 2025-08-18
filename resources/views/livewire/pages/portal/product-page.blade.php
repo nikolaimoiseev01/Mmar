@@ -15,7 +15,7 @@
                     wire:ignore
                     wire:click="makeToWishlist({{$product['id']}})"
                     class="basket-wishlist-button bg-red-100 aspect-square  cursor-pointer w-12 h-12 p-2 rounded-full flex justify-center items-center group/svg">
-                    <svg id="product-wishlist-button-{{$product['id']}}" class="w-full" width="17" height="20"
+                    <svg  id="product-wishlist-button-{{$product['id']}}" class="wishlist-button w-full" width="17" height="20"
                          viewBox="0 0 17 20" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path

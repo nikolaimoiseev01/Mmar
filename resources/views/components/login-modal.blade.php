@@ -1,4 +1,4 @@
-<x-ui.modal  name="auth-modal" :show="false" maxWidth="md">
+<x-ui.modal class="z-[9999]" name="auth-modal" :show="false" maxWidth="md">
     <div x-data="{ tab: 'register' }" class="relative p-8 space-y-6">
 
         <!-- Кнопка закрытия -->

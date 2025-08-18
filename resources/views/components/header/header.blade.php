@@ -3,7 +3,7 @@
     :class="isHome ?
         'absolute top-0 left-0'
         :'relative'"
-    class="w-full border-b border-red-100 dark:border-b-0 bg-bright-200 dark:bg-red-700 flex flex-col z-50">
+    class="w-full border-b border-red-100 dark:border-b-0 bg-bright-200 dark:bg-red-700 flex flex-col z-30">
 
     <livewire:components.cart/>
     <livewire:components.wish-list/>

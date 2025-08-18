@@ -50,7 +50,7 @@
         x-transition:leave="transition transform duration-300"
         x-transition:leave-start="{{ $enterEnd }}"
         x-transition:leave-end="{{ $enterStart }}"
-        {{$attributes ->merge(['class' => "fixed $positionClasses top-0 sm:top-[auto] sm:h-[calc(100dvh-53px)]  sm:bottom-0 h-screen w-full max-w-md bg-bright-200 dark:bg-red-500 z-50 p-6 sm:p-3 overflow-auto md:max-w-full md:pt-16 sm:!pt-4"])}}
+        {{$attributes ->merge(['class' => "fixed $positionClasses top-0 sm:top-[auto] sm:h-[calc(100dvh-53px)]  sm:bottom-0 h-screen w-full max-w-md bg-bright-200 dark:bg-red-500 z-40 p-6 sm:p-3 overflow-auto md:max-w-full md:pt-16 sm:!pt-4"])}}
     >
         <x-heroicon-o-x-mark
             @click="{{ $name }} = false"

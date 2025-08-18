@@ -18,7 +18,7 @@
             <template x-for="item in currencies" :key="item">
                 <li>
                     <button @click="currency = item; open = false"
-                            class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:text-bright-200">
+                            class="w-full text-center px-4 py-2 hover:bg-gray-100 hover:dark:bg-dark-100 hover:dark:!text-red-700 dark:text-red-700">
                         <span x-text="item"></span>
                     </button>
                 </li>

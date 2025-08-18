@@ -17,6 +17,11 @@
             'img' => '/fixed/care.png',
             'title' => 'Care',
             'description' => "Valuing the people who create our clothes, the lands where raw materials are sourced, the stories behind each garment, and how these pieces become part of our personal histories."
+        ],
+        [
+            'img' => '/fixed/innovation.png',
+            'title' => 'Innovation',
+            'description' => "Embracing new technologies not only for their cool factor but also for their potential to drive progress and reduce the fashion industry's impact."
         ]
     ]
 @endphp
@@ -30,9 +35,9 @@
         @foreach($elements as $element)
             <div class="swiper-slide flex-1 md:flex-auto md:max-w-[70vw] !flex aspect-square bg-cover bg-center items-end text-bright-200 rounded-2xl"
                  style="background-image: url('{{ $element['img'] }}');">
-                <div class="bg-gradient-to-b from-transparent to-[#000000ba] rounded-b-2xl p-4 mt-auto">
+                <div class="bg-gradient-to-t from-[rgba(0,0,0,0.9)_0%] via-[rgba(0,0,0,0.52)_70%] to-[rgba(0,0,0,0)_100%] h-1/2 rounded-b-2xl p-4 mt-auto">
                     <h3 class="uppercase !font-normal text-lg">{{ $element['title'] }}</h3>
-                    <p>{{ $element['description'] }}</p>
+                    <p class="font">{{ $element['description'] }}</p>
                 </div>
             </div>
         @endforeach
