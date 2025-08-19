@@ -56,7 +56,7 @@
                 <x-product-examples-slider :examples="$product->getMedia('examples')"/>
             </div>
         </div>
-        <div class="smooth-content flex flex-col pt-20 pl-10 md:pl-6 pr-6 w-1/2 md:w-full md:pt-8">
+        <div class="smooth-content  flex flex-col pt-20 pl-10 md:pl-6 pr-6 w-1/2 md:w-full md:pt-8">
             <div class="w-full flex justify-between items-end flex-wrap">
                 <h1 class="text-5xl sm:text-4xl">{{$product['name']}}</h1>
                 <h1 class="text-2xl" x-text="formatPrice({{$product['price']}})"></h1>

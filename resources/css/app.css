@@ -69,4 +69,6 @@ input[type="checkbox"] {
     fill: #240309;
 }
 
-
+.yourgpt_root {
+    z-index: 1 !important;
+}
