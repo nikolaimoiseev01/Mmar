@@ -5,7 +5,7 @@
     <section class="smooth-content w-full h-screen relative flex items-center justify-center mb-44">
         <img src="/fixed/welcome-bg.jpg" class="absolute w-full h-full object-cover" alt="">
         <div class="flex flex-col items-center relative gap-2">
-            <x-logo.logo-text class="w-60"/>
+            <x-logo.logo-text class="w-60 md:w-44"/>
         </div>
     </section>
 
