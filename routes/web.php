@@ -61,23 +61,23 @@ Route::middleware('auth')->group(function () {
 });
 //endregion Auth
 
+Route::middleware('auth')->group(function () {
+    Route::get('/', IndexPage::class)->name('portal.index');
+    Route::get('/shop', ShopPage::class)->name('portal.shop');
+    Route::get('/wishlist', ShopPage::class)->name('portal.wishlist');
+    Route::get('/shop/{slug}', ProductPage::class)->name('portal.product');
+    Route::get('/cart', CartPage::class)->name('portal.cart');
 
-Route::get('/', IndexPage::class)->name('portal.index');
-Route::get('/shop', ShopPage::class)->name('portal.shop');
-Route::get('/wishlist', ShopPage::class)->name('portal.wishlist');
-Route::get('/shop/{slug}', ProductPage::class)->name('portal.product');
-Route::get('/cart', CartPage::class)->name('portal.cart');
+    Route::get('/insights', InsightsPage::class)->name('portal.insights');
+    Route::get('/post/{id}', PostPage::class)->name('portal.post');
 
-Route::get('/insights', InsightsPage::class)->name('portal.insights');
-Route::get('/post/{id}', PostPage::class)->name('portal.post');
-
-Route::get('/sustainability', SustainabilityPage::class)->name('portal.sustainability');
-Route::get('/about', AboutPage::class)->name('portal.about');
-Route::get('/contact', ContactUsPage::class)->name('portal.contact');
-Route::get('/faq', FaqPage::class)->name('portal.faq');
-Route::get('/size-guide', SizeGuidePage::class)->name('portal.size-guide');
-Route::get('/shipping-info', ShippingInfoPage::class)->name('portal.shipping-info');
-
+    Route::get('/sustainability', SustainabilityPage::class)->name('portal.sustainability');
+    Route::get('/about', AboutPage::class)->name('portal.about');
+    Route::get('/contact', ContactUsPage::class)->name('portal.contact');
+    Route::get('/faq', FaqPage::class)->name('portal.faq');
+    Route::get('/size-guide', SizeGuidePage::class)->name('portal.size-guide');
+    Route::get('/shipping-info', ShippingInfoPage::class)->name('portal.shipping-info');
+});
 Route::middleware('auth')->prefix('account')->group(function () {
     Route::get('welcome', WelcomePage::class)->middleware(['auth', 'verified'])->name('account.welcome');
     Route::get('order/1', OrderDetailsPage::class)->middleware(['auth', 'verified'])->name('account.order');
