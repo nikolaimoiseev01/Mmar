@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "andreiio/blade-iconoir": "^4.7",
+        "bezhansalleh/filament-shield": "^3.9",
         "blade-ui-kit/blade-heroicons": "^2.6",
         "codeat3/blade-clarity-icons": "^1.10",
         "faisal50x/blade-ionicons": "^1.1",

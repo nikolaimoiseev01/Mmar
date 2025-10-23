@@ -85,10 +85,11 @@ class ShopPage extends Component
             ->when($this->isWishlist, function ($query) {
                 return $query->whereIn('products.id', $this->wishListProducts->pluck('id') ?? [99999999999]);
             })
+            ->where('is_active', true)
             ->with('brand')
             ->with('media')
             ->select('products.*') // ВАЖНО: иначе будет мешанина полей из join
-            ->take(5)
+            ->take(50)
             ->get();
 
         return view('livewire.pages.portal.shop-page');

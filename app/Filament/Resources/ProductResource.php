@@ -6,12 +6,16 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Helpers\Constant;
 use App\Models\Product;
+use Filament\Facades\Filament;
 use Filament\Forms;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Support\Enums\MaxWidth;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -31,15 +35,20 @@ class ProductResource extends Resource
                     SpatieMediaLibraryFileUpload::make('examples')
                         ->multiple()
                         ->reorderable()
+                        ->required()
                         ->panelLayout('grid')
                         ->collection('examples'),
                     Forms\Components\Grid::make()->schema([
+                        Forms\Components\Grid::make()->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('slug')
                             ->required()
                             ->maxLength(255),
+                        Forms\Components\Toggle::make('is_active')
+                            ->disabled(fn () => Filament::auth()->user()->hasRole('brand')),
+                        ])->columns(3),
                         Forms\Components\Select::make('brand_id')
                             ->relationship('brand', 'name'),
                         Forms\Components\Select::make('category_id')
@@ -62,6 +71,11 @@ class ProductResource extends Resource
                     Forms\Components\Textarea::make('manufacturing')
                         ->required()
                         ->columnSpanFull(),
+                    Repeater::make('label')
+                        ->label('Labels')
+                        ->simple(
+                            TextInput::make('email'),
+                        )->grid(2),
                     Forms\Components\Grid::make()->schema([
                         Forms\Components\Select::make('exclusive')
                             ->required()
@@ -105,8 +119,12 @@ class ProductResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
+                IconColumn::make('is_active')
+                    ->icon('heroicon-o-check-circle')
+                    ->color(fn (string $state): string => match ($state) {
+                        '1' => 'success',
+                        default => 'gray',
+                    })->sortable(),
                 Tables\Columns\TextColumn::make('brand.name')
                     ->numeric()
                     ->sortable(),

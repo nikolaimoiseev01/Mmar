@@ -24,8 +24,9 @@ return new class extends Migration
             $table->text('materials');
             $table->text('aftercare');
             $table->text('manufacturing');
-            $table->json('label');
+            $table->json('label')->nullable();
             $table->string('exclusive');
+            $table->boolean('is_active')->default(false);
 
             $table->string('customization_options');
             $table->string('material_focus');

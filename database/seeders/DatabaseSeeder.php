@@ -122,18 +122,6 @@ class DatabaseSeeder extends Seeder
     {
         $file = new Filesystem;
         $file->cleanDirectory(storage_path('app/public/media'));
-        $email = ENV('APP_ENV') == ('local') ? 'admin@mail.ru' : ENV('ADMIN_EMAIL');
-        $password = ENV('APP_ENV') == ('local') ? '12345678' : ENV('ADMIN_PASSWORD');
-        User::create([
-            'first_name' => 'admin',
-            'last_name' => 'admin',
-            'age' => 30,
-            'telephone' => '12345678',
-            'email' => $email,
-            'email_verified_at' => now(),
-            'password' => Hash::make($password),
-            'remember_token' => Str::random(10),
-        ]);
         UserAddress::create([
             'user_id' => 1,
             'name' => 'Sister’s house',
@@ -211,7 +199,7 @@ class DatabaseSeeder extends Seeder
                 'img_2' => ENV('APP_URL') . "/fixed/test/product-3_2.png"
             ],
         ];
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 6; $i++) {
             foreach ($products as $product) {
                 $general_attrs = [
                     'exclusive' => Arr::random(Constant::EXCLUSIVE),
@@ -222,6 +210,7 @@ class DatabaseSeeder extends Seeder
                     'materials' => 'Materials for product ',
                     'aftercare' => 'Aftercare instructions for product ',
                     'manufacturing' => 'Manufacturing details for product ',
+                    'is_active' => true,
                     'price' => rand(100, 1000),
                 ];
                 $product['attributes']['slug'] = Str::slug($product['attributes']['slug'] . '-' . uniqid());
@@ -235,5 +224,6 @@ class DatabaseSeeder extends Seeder
         }
         $this->make_post_topics();
         $this->make_posts();
+        (new UserAndRoles())->run();
     }
 }
