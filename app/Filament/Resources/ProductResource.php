@@ -8,6 +8,8 @@ use App\Helpers\Constant;
 use App\Models\Product;
 use Filament\Facades\Filament;
 use Filament\Forms;
+use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
@@ -40,23 +42,31 @@ class ProductResource extends Resource
                         ->collection('examples'),
                     Forms\Components\Grid::make()->schema([
                         Forms\Components\Grid::make()->schema([
-                        Forms\Components\TextInput::make('name')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('slug')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\Toggle::make('is_active')
-                            ->disabled(fn () => Filament::auth()->user()->hasRole('brand')),
-                        ])->columns(3),
+                            Forms\Components\TextInput::make('name')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('slug')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\Toggle::make('is_active')
+                                ->disabled(fn() => Filament::auth()->user()->hasRole('brand')),
+                            Forms\Components\TextInput::make('quantity_of_item')
+                                ->required()
+                                ->numeric(),
+
+                        ])->columns(4),
                         Forms\Components\Select::make('brand_id')
+                            ->required()
                             ->relationship('brand', 'name'),
                         Forms\Components\Select::make('category_id')
                             ->relationship('category', 'name'),
                         Forms\Components\Select::make('subcategory_id')
                             ->relationship('subcategory', 'name'),
-                        Forms\Components\TextInput::make('gender')
-                            ->maxLength(255),
+                        Forms\Components\Select::make('gender')
+                            ->options(array_combine(
+                                Constant::GENDER,
+                                Constant::GENDER
+                            )),
                     ]),
 //                Forms\Components\TextInput::make('designers'),
                     Forms\Components\Textarea::make('details')
@@ -66,32 +76,37 @@ class ProductResource extends Resource
                         ->required()
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('aftercare')
-                        ->required()
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('manufacturing')
                         ->required()
                         ->columnSpanFull(),
-                    Repeater::make('label')
-                        ->label('Labels')
-                        ->simple(
-                            TextInput::make('email'),
-                        )->grid(2),
+                    Grid::make()->schema([
+                        Repeater::make('label')
+                            ->label('Labels')
+                            ->simple(
+                                TextInput::make('email'),
+                            )->grid(2),
+                        Repeater::make('colors')
+                            ->label('Colors')
+                            ->required()
+                            ->simple(
+                                ColorPicker::make('color'),
+                            )->grid(2),
+                    ]),
+
                     Forms\Components\Grid::make()->schema([
                         Forms\Components\Select::make('exclusive')
-                            ->required()
                             ->options(array_combine(
                                 Constant::EXCLUSIVE,
                                 Constant::EXCLUSIVE
                             ))
                         ,
                         Forms\Components\Select::make('customization_options')
-                            ->required()
                             ->options(array_combine(
                                 Constant::CUSTOMMIZATION_OPTIONS,
                                 Constant::CUSTOMMIZATION_OPTIONS
                             )),
                         Forms\Components\Select::make('material_focus')
-                            ->required()
                             ->options(array_combine(
                                 Constant::MATERIAL_FOCUS,
                                 Constant::MATERIAL_FOCUS
@@ -116,12 +131,21 @@ class ProductResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->modifyQueryUsing(function ($query) {
+                $user = Filament::auth()->user();
+                if ($user && $user->brand_id) {
+                    $query->where('brand_id', $user->brand_id);
+                }
+                if ($user && $user->hasRole('super')) {
+                    return $query;
+                }
+            })
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 IconColumn::make('is_active')
                     ->icon('heroicon-o-check-circle')
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         '1' => 'success',
                         default => 'gray',
                     })->sortable(),

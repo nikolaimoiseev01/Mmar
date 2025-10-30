@@ -27,6 +27,7 @@ class Product extends Model implements HasMedia
     }
 
     protected $casts = [
-        'label' => 'array'
+        'label' => 'array',
+        'colors' => 'array'
     ];
 }

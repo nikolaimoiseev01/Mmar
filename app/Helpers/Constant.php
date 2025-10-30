@@ -24,6 +24,12 @@ class Constant
         'In Stock',
         'Pre-Order'
     ];
+
+    public const GENDER = [
+        'Menswear',
+        'Woweswear',
+        'All'
+    ];
 }
 
 
