@@ -30,7 +30,7 @@ return new class extends Migration
 
             $table->string('customization_options');
             $table->string('material_focus');
-            $table->string('availability');
+            $table->json('availability');
 
             $table->float('price');
             $table->timestamps();

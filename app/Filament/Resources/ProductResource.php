@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
-use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Helpers\Constant;
 use App\Models\Product;
 use Filament\Facades\Filament;
@@ -11,7 +10,9 @@ use Filament\Forms;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -33,97 +34,115 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Card::make()->schema([
-                    SpatieMediaLibraryFileUpload::make('examples')
-                        ->multiple()
-                        ->reorderable()
-                        ->required()
-                        ->panelLayout('grid')
-                        ->collection('examples'),
-                    Forms\Components\Grid::make()->schema([
+                Forms\Components\Tabs::make()->schema([
+                    Tab::make('General')->schema([
+                        SpatieMediaLibraryFileUpload::make('examples')
+                            ->multiple()
+                            ->reorderable()
+                            ->required()
+                            ->panelLayout('grid')
+                            ->collection('examples'),
                         Forms\Components\Grid::make()->schema([
-                            Forms\Components\TextInput::make('name')
-                                ->required()
-                                ->maxLength(255),
-                            Forms\Components\TextInput::make('slug')
-                                ->required()
-                                ->maxLength(255),
-                            Forms\Components\Toggle::make('is_active')
-                                ->disabled(fn() => Filament::auth()->user()->hasRole('brand')),
-                            Forms\Components\TextInput::make('quantity_of_item')
-                                ->required()
-                                ->numeric(),
+                            Forms\Components\Grid::make()->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('slug')
+                                    ->required()
+                                    ->maxLength(255),
+                                Forms\Components\Toggle::make('is_active')
+                                    ->disabled(fn() => Filament::auth()->user()->hasRole('brand')),
+                                Forms\Components\TextInput::make('quantity_of_item')
+                                    ->required()
+                                    ->numeric(),
 
-                        ])->columns(4),
-                        Forms\Components\Select::make('brand_id')
-                            ->required()
-                            ->relationship('brand', 'name'),
-                        Forms\Components\Select::make('category_id')
-                            ->relationship('category', 'name'),
-                        Forms\Components\Select::make('subcategory_id')
-                            ->relationship('subcategory', 'name'),
-                        Forms\Components\Select::make('gender')
-                            ->options(array_combine(
-                                Constant::GENDER,
-                                Constant::GENDER
-                            )),
-                    ]),
+                            ])->columns(4),
+                            Forms\Components\Select::make('brand_id')
+                                ->required()
+                                ->relationship('brand', 'name'),
+                            Forms\Components\Select::make('category_id')
+                                ->relationship('category', 'name'),
+                            Forms\Components\Select::make('subcategory_id')
+                                ->relationship('subcategory', 'name'),
+                            Forms\Components\Select::make('gender')
+                                ->options(array_combine(
+                                    Constant::GENDER,
+                                    Constant::GENDER
+                                )),
+                        ]),
 //                Forms\Components\TextInput::make('designers'),
-                    Forms\Components\Textarea::make('details')
-                        ->required()
-                        ->columnSpanFull(),
-                    Forms\Components\Textarea::make('materials')
-                        ->required()
-                        ->columnSpanFull(),
-                    Forms\Components\Textarea::make('aftercare')
-                        ->columnSpanFull(),
-                    Forms\Components\Textarea::make('manufacturing')
-                        ->required()
-                        ->columnSpanFull(),
-                    Grid::make()->schema([
-                        Repeater::make('label')
-                            ->label('Labels')
-                            ->simple(
-                                TextInput::make('email'),
-                            )->grid(2),
-                        Repeater::make('colors')
-                            ->label('Colors')
+                        Forms\Components\Textarea::make('details')
                             ->required()
-                            ->simple(
-                                ColorPicker::make('color'),
-                            )->grid(2),
-                    ]),
+                            ->columnSpanFull(),
+                        Forms\Components\Textarea::make('materials')
+                            ->required()
+                            ->columnSpanFull(),
+                        Forms\Components\Textarea::make('aftercare')
+                            ->columnSpanFull(),
+                        Forms\Components\Textarea::make('manufacturing')
+                            ->required()
+                            ->columnSpanFull(),
+                        Grid::make()->schema([
+                            Repeater::make('label')
+                                ->label('Labels')
+                                ->simple(
+                                    TextInput::make('email'),
+                                )->grid(2),
+                        ]),
 
-                    Forms\Components\Grid::make()->schema([
-                        Forms\Components\Select::make('exclusive')
-                            ->options(array_combine(
-                                Constant::EXCLUSIVE,
-                                Constant::EXCLUSIVE
-                            ))
-                        ,
-                        Forms\Components\Select::make('customization_options')
-                            ->options(array_combine(
-                                Constant::CUSTOMMIZATION_OPTIONS,
-                                Constant::CUSTOMMIZATION_OPTIONS
-                            )),
-                        Forms\Components\Select::make('material_focus')
-                            ->options(array_combine(
-                                Constant::MATERIAL_FOCUS,
-                                Constant::MATERIAL_FOCUS
-                            )),
+                        Forms\Components\Grid::make()->schema([
+                            Forms\Components\Select::make('exclusive')
+                                ->options(array_combine(
+                                    Constant::EXCLUSIVE,
+                                    Constant::EXCLUSIVE
+                                ))
+                            ,
+                            Forms\Components\Select::make('customization_options')
+                                ->options(array_combine(
+                                    Constant::CUSTOMMIZATION_OPTIONS,
+                                    Constant::CUSTOMMIZATION_OPTIONS
+                                )),
+                            Forms\Components\Select::make('material_focus')
+                                ->options(array_combine(
+                                    Constant::MATERIAL_FOCUS,
+                                    Constant::MATERIAL_FOCUS
+                                )),
+                        ])->columns(2),
+
+                        Forms\Components\TextInput::make('price')
+                            ->required()
+                            ->numeric()
+                            ->prefix('€'),
+                    ]),
+                    Tab::make('Availability')->schema([
                         Forms\Components\Select::make('availability')
                             ->required()
                             ->options(array_combine(
                                 Constant::AVAILABILITY,
                                 Constant::AVAILABILITY
                             )),
-                    ])->columns(2),
-
-                    Forms\Components\TextInput::make('price')
-                        ->required()
-                        ->numeric()
-                        ->prefix('€'),
-                ])
+                        Repeater::make('availability_options')
+                            ->addActionLabel('Add color')
+                            ->required()
+                            ->schema([
+                                ColorPicker::make('color'),
+                                Repeater::make('sizes')->schema([
+                                    Select::make('size')
+                                        ->required()
+                                        ->options([
+                                            'XXS' => 'XXS',
+                                            'XS' => 'XS',
+                                            'S' => 'S',
+                                            'M' => 'M',
+                                            'L' => 'L',
+                                            'XL' => 'XL',
+                                            'XXL' => 'XXL',
+                                        ]),
+                                    TextInput::make('quantity')->required()
+                                ])->addActionLabel('Add size')->grid(3)->columns(2),
+                            ])->grid(2)
+                    ])
+                ])->columnSpanFull()
 
             ]);
     }

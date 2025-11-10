@@ -38,6 +38,7 @@ class ProductPage extends Component
             ->with('brand')
             ->with('media')
             ->firstOrFail();
+        $colors = collect($this->product['availability_options']);
     }
 
     public function makeToCookie(Request $request)
