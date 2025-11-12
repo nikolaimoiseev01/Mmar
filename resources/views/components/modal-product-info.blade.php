@@ -52,7 +52,7 @@
 
     <!-- Modal -->
     <div data-lenis-prevent
-        class="relative flex flex-col bg-bright-200 dark:bg-red-500 h-[80vh] rounded-lg shadow-xl transform transition-all sm:w-full max-w-2xl sm:mx-auto z-50 p-6">
+        class="min-w-[800px] relative flex flex-col bg-bright-200 dark:bg-red-500 h-[80vh] rounded-lg shadow-xl transform transition-all sm:w-full max-w-2xl sm:mx-auto z-50 p-6">
         <!-- Header -->
         <div class="flex justify-between items-center mb-5">
             <h1 class="text-5xl">Product Information</h1>

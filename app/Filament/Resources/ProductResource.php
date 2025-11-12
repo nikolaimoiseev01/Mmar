@@ -74,7 +74,9 @@ class ProductResource extends Resource
                         Forms\Components\Textarea::make('details')
                             ->required()
                             ->columnSpanFull(),
-                        Forms\Components\Textarea::make('materials')
+                        Forms\Components\TextInput::make('materials')
+                            ->required(),
+                        Forms\Components\Textarea::make('materials_detailed')
                             ->required()
                             ->columnSpanFull(),
                         Forms\Components\Textarea::make('aftercare')
@@ -126,18 +128,10 @@ class ProductResource extends Resource
                             ->required()
                             ->schema([
                                 ColorPicker::make('color'),
+                                TextInput::make('color_name'),
                                 Repeater::make('sizes')->schema([
-                                    Select::make('size')
-                                        ->required()
-                                        ->options([
-                                            'XXS' => 'XXS',
-                                            'XS' => 'XS',
-                                            'S' => 'S',
-                                            'M' => 'M',
-                                            'L' => 'L',
-                                            'XL' => 'XL',
-                                            'XXL' => 'XXL',
-                                        ]),
+                                    TextInput::make('size')
+                                        ->required(),
                                     TextInput::make('quantity')->required()
                                 ])->addActionLabel('Add size')->grid(3)->columns(2),
                             ])->grid(2)

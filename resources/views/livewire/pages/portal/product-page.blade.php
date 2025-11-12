@@ -2,7 +2,7 @@
     @section('title')
         {{$product['slug']}}
     @endsection
-    <x-modal-product-info name="product-info"
+    <x-modal-product-info :product="$product" name="product-info"
                           :tabs="['details', 'materials', 'aftercare', 'manufacturing']">
     </x-modal-product-info>
     <section class="flex mb-52 md:flex-col"
@@ -88,37 +88,38 @@
                     x-text="formatPrice({{$product['price']}})"></h1>
             </div>
             <p class="text-xl mb-12">{{$product->brand['name']}}</p>
-            <div class="flex flex-col gap-2 mb-9">
-                <p>COLOR: <span
-                        x-text="chosenColor.color"></span>
-                </p>
-                <div class="flex gap-2">
-                    <template
-                        x-for="option in availableOptions"
-                        :key="option.color">
+            @if(count($product['availability_options'] ?? []))
+                <div class="flex flex-col gap-2 mb-9">
+                    <p>COLOR: <span
+                            x-text="chosenColor.color_name"></span>
+                    </p>
+                    <div class="flex gap-2">
+                        <template
+                            x-for="option in availableOptions"
+                            :key="option.color">
                         <span
                             :style="{ background: option.color }"
                             :class="chosenColor.color === option.color ? 'border-2 border-red-700' : ''"
                             @click="chosenColor = option; chosenSize = chosenColor.sizes[0];"
                             class="w-8 h-8 rounded-full cursor-pointer hover:border-2 hover:border-red-700 transition"></span>
-                    </template>
+                        </template>
+                    </div>
                 </div>
-            </div>
-            <div class="flex flex-col gap-2 mb-2">
-                <div class="flex justify-between">
-                    <p>SIZE:</p>
-                    <x-ui.link-arrow
-                        href="{{route('portal.size-guide')}}"
-                        text="Size Guide"
-                        textSize="text-base"
-                        class="font-bold"
-                        iconSize="h-4 w-4"
-                    />
-                </div>
-                <div class="flex gap-2 text-base">
-                    <template
-                        x-for="size in chosenColor.sizes"
-                        :key="chosenColor.color + '_' + size.size">
+                <div class="flex flex-col gap-2 mb-8">
+                    <div class="flex justify-between">
+                        <p>SIZE:</p>
+                        <x-ui.link-arrow
+                            href="{{route('portal.size-guide')}}"
+                            text="Size Guide"
+                            textSize="text-base"
+                            class="font-bold"
+                            iconSize="h-4 w-4"
+                        />
+                    </div>
+                    <div class="flex gap-2 text-base">
+                        <template
+                            x-for="size in chosenColor.sizes"
+                            :key="chosenColor.color + '_' + size.size">
                         <span
                             :class="chosenSize.size === size.size ? 'bg-red-700 dark:bg-red-300 ' : 'bg-red-100 dark:bg-bright-200'"
                             @click="chosenSize = size"
@@ -127,15 +128,15 @@
                             dark:text-red-700 cursor-pointer text-bright-200 flex items-center justify-center">
 
                         </span>
-                        <span
-                            class="">10</span>
-                    </template>
+                            <span
+                                class="">10</span>
+                        </template>
+                    </div>
                 </div>
-            </div>
-            <p class="mb-10">Items available <span x-text="chosenSize.quantity"></span></p>
+            @endif
             <div class="flex flex-col mb-14">
                 <p>MATERIALS:</p>
-                <p>Apple Leather, Rubber, Tea Leather</p>
+                <p>{{$product['materials']}}</p>
             </div>
 
             <div class="flex gap-4">
