@@ -9,7 +9,7 @@
         ],
         [
             'image' => "/fixed/what-matters-2.png",
-            'text' => 'Exclusively Handmade'
+            'text' => 'Exclusive Handmade'
         ],
         [
             'image' => "/fixed/what-matters-3.png",
