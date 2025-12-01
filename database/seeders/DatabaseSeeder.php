@@ -81,6 +81,30 @@ class DatabaseSeeder extends Seeder
         }
     }
 
+    function make_colors()
+    {
+        $colors = [
+            [
+                'name' => 'blue',
+                'color' => '#366ae3',
+                'is_simple_color' => true
+            ],
+            [
+                'name' => 'tiger',
+                'color' => null,
+                'is_simple_color' => false
+            ]
+        ];
+
+        foreach ($colors as $color) {
+            $color = \App\Models\ProductColor::create($color);
+            if (!$color['is_simple_color']) {
+                $color->addMediaFromUrl(ENV('APP_URL') . '/fixed/test/tiger.jpg')
+                    ->toMediaCollection('cover');
+            }
+        }
+    }
+
     public function make_posts()
     {
 
@@ -205,7 +229,7 @@ class DatabaseSeeder extends Seeder
                     'exclusive' => Arr::random(Constant::EXCLUSIVE),
                     'customization_options' => Arr::random(Constant::CUSTOMMIZATION_OPTIONS),
                     'material_focus' => Arr::random(Constant::MATERIAL_FOCUS),
-                    'availability' => Arr::random(Constant::AVAILABILITY),
+                    'availability' => null,
                     'details' => 'Details for product ',
                     'materials' => 'Materials for product ',
                     'aftercare' => 'Aftercare instructions for product ',
@@ -222,8 +246,10 @@ class DatabaseSeeder extends Seeder
                     ->toMediaCollection('examples');
             }
         }
+
         $this->make_post_topics();
         $this->make_posts();
+        $this->make_colors();
         (new UserAndRoles())->run();
     }
 }

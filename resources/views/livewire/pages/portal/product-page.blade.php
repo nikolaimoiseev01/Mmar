@@ -8,7 +8,7 @@
     <section class="flex mb-52 md:flex-col"
              x-data="{
         open: false,
-        availableOptions: @js($product['availability_options']),
+        availableOptions: @js($availabilityOptions),
         chosenColor: null,
         chosenSize: null
     }"
@@ -88,6 +88,7 @@
                     x-text="formatPrice({{$product['price']}})"></h1>
             </div>
             <p class="text-xl mb-12">{{$product->brand['name']}}</p>
+
             @if(count($product['availability_options'] ?? []))
                 <div class="flex flex-col gap-2 mb-9">
                     <p>COLOR: <span
@@ -97,11 +98,14 @@
                         <template
                             x-for="option in availableOptions"
                             :key="option.color">
-                        <span
-                            :style="{ background: option.color }"
-                            :class="chosenColor.color === option.color ? 'border-2 border-red-700' : ''"
-                            @click="chosenColor = option; chosenSize = chosenColor.sizes[0];"
-                            class="w-8 h-8 rounded-full cursor-pointer hover:border-2 hover:border-red-700 transition"></span>
+                            <span
+                                :style="option.is_simple_color
+                                    ? { backgroundColor: option.color }
+                                    : { backgroundImage: `url(${option.colorImg})`, backgroundSize: 'cover' }"
+                                :class="chosenColor.color === option.color ? 'border-2 border-red-700' : ''"
+                                @click="chosenColor = option; chosenSize = chosenColor.sizes[0];"
+                                class="w-8 h-8 rounded-full cursor-pointer hover:border-2 hover:border-red-700 transition"
+                            ></span>
                         </template>
                     </div>
                 </div>

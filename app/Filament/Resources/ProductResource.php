@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Helpers\Constant;
 use App\Models\Product;
+use App\Models\ProductColor;
 use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Components\ColorPicker;
@@ -119,6 +120,7 @@ class ProductResource extends Resource
                     Tab::make('Availability')->schema([
                         Forms\Components\Select::make('availability')
                             ->required()
+                            ->dehydrateStateUsing(fn ($state) => $state) // превращает в строку
                             ->options(array_combine(
                                 Constant::AVAILABILITY,
                                 Constant::AVAILABILITY
@@ -127,8 +129,9 @@ class ProductResource extends Resource
                             ->addActionLabel('Add color')
                             ->required()
                             ->schema([
-                                ColorPicker::make('color'),
-                                TextInput::make('color_name'),
+                                Select::make('color_id')->options(function() {
+                                    return ProductColor::all()->pluck('name', 'id');
+                                }),
                                 Repeater::make('sizes')->schema([
                                     TextInput::make('size')
                                         ->required(),

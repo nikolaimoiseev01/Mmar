@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Portal;
 
 use App\Models\Product;
+use App\Models\ProductColor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
@@ -13,6 +14,7 @@ class ProductPage extends Component
     public $products;
 
     public $count = 1;
+    public $availabilityOptions;
 
     public function render()
     {
@@ -38,7 +40,18 @@ class ProductPage extends Component
             ->with('brand')
             ->with('media')
             ->firstOrFail();
+        $availabilityOptions = collect($this->product->availability_options)->map(function ($option) {
+            $color = ProductColor::find($option['color_id']);
+
+            $option['color_name'] = $color->name ?? null;
+            $option['is_simple_color'] = $color->is_simple_color ?? null;
+            $option['color'] = $color->color ?? null;
+            $option['colorImg'] = $color && !$color->is_simple_color ? $color->getFirstmediaUrl('cover') ?? null : null;
+
+            return $option;
+        })->toArray();
         $colors = collect($this->product['availability_options']);
+        $this->availabilityOptions = $availabilityOptions;
     }
 
     public function makeToCookie(Request $request)

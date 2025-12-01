@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('quantity_of_item');
-            $table->json('colors');
+            $table->integer('quantity_of_item')->nullable();
+            $table->json('colors')->nullable();
         });
     }
 
