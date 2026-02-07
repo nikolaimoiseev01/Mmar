@@ -60,7 +60,7 @@ Route::middleware('auth')->group(function () {
         ->name('auth.password.confirm');
 });
 //endregion Auth
-//Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/', IndexPage::class)->name('portal.index');
     Route::get('/shop', ShopPage::class)->name('portal.shop');
     Route::get('/wishlist', ShopPage::class)->name('portal.wishlist');
@@ -77,9 +77,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/size-guide', SizeGuidePage::class)->name('portal.size-guide');
     Route::get('/shipping-info', ShippingInfoPage::class)->name('portal.shipping-info');
 
-Route::middleware('auth')->prefix('account')->group(function () {
-    Route::get('welcome', WelcomePage::class)->middleware(['auth', 'verified'])->name('account.welcome');
-    Route::get('order/1', OrderDetailsPage::class)->middleware(['auth', 'verified'])->name('account.order');
-    Route::get('settings', SettingsPage::class)->middleware(['auth', 'verified'])->name('account.settings');
+    Route::middleware('auth')->prefix('account')->group(function () {
+        Route::get('welcome', WelcomePage::class)->middleware(['auth', 'verified'])->name('account.welcome');
+        Route::get('order/1', OrderDetailsPage::class)->middleware(['auth', 'verified'])->name('account.order');
+        Route::get('settings', SettingsPage::class)->middleware(['auth', 'verified'])->name('account.settings');
+    });
 });
 
